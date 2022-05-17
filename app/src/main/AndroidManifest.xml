@@ -10,6 +10,11 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Tasty">
         <activity
+                android:name=".ui.login.RestaurantLoginActivity"
+                android:exported="true"
+                android:label="@string/title_activity_restaurant_login"
+                android:parentActivityName=".MainActivity"/>
+        <activity
                 android:name=".CustomerStartActivity"
                 android:exported="true"
                 android:label="@string/title_activity_customer_start"
