@@ -3,4 +3,5 @@
     <string name="logo_description">tasty app logo</string>
     <string name="restaurant_label">Restaurant</string>
     <string name="customer_label">Customer</string>
+    <string name="title_activity_customer_start">Customer</string>
 </resources>
