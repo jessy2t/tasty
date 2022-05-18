@@ -22,9 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void navigateToCustomerStart(View view){
         Intent intent = new Intent(this, CustomerStartActivity.class);
-        Button btn = findViewById(R.id.customer_btn);
-        String message = btn.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
 }
