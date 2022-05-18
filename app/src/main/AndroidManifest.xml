@@ -10,6 +10,11 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.Tasty">
         <activity
+                android:name=".CustomerRecommendationActivity"
+                android:exported="true"
+                android:label="@string/title_activity_customer_recommendation"
+                android:parentActivityName=".CustomerSwipeActivity"/>
+        <activity
                 android:name=".CustomerSwipeActivity"
                 android:exported="true"
                 android:label="@string/title_activity_customer_swipe"

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CustomerRecommendationActivity">
+
+    <TextView
+            android:text="Restaurant Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/restaurant_suggestion"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="250dp"
+            android:onClick="clickOnRestaurantRecommendation"/>
+    <TextView
+            android:text="Meal Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/meal_suggestion"
+            app:layout_constraintTop_toBottomOf="@+id/restaurant_suggestion" android:layout_marginTop="20dp"/>
+    <Button
+            android:text="@string/reservation_delivery_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/reservation_delivery_btn"
+            app:layout_constraintTop_toBottomOf="@+id/meal_suggestion" android:layout_marginTop="50dp"
+            android:onClick="clickOnReservationOrDelivery"/>
+    <Button
+            android:text="@string/new_recommendation_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/new_recommendation_btn"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reservation_delivery_btn" android:layout_marginTop="20dp"
+            android:onClick="clickOnNewRecommendation"/>
+    <Button
+            android:text="@string/new_input_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/new_input_btn"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/new_recommendation_btn" android:layout_marginTop="20dp"
+            android:onClick="clickOnNewInput"/>
+</android.support.constraint.ConstraintLayout>
