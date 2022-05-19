@@ -1,8 +1,8 @@
 package com.acme.tasty.ui.login;
 
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.annotation.NonNull;
 
 import com.acme.tasty.data.LoginDataSource;
 import com.acme.tasty.data.LoginRepository;

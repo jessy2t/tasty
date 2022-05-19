@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -69,14 +69,9 @@
     <Button
             android:text="@string/register_label"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/register_btn"
-            android:layout_marginTop="39dp"
-            app:layout_constraintTop_toBottomOf="@+id/login"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="295dp"
-            android:onClick="navigateToRegistration"/>
+            android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/registration_btn"
+            app:layout_constraintTop_toBottomOf="@+id/login" app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="200dp" android:onClick="navigateToRegistration"/>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
