@@ -23,4 +23,9 @@
     <string name="reservation_delivery_label">Reservierung/Lieferung</string>
     <string name="new_recommendation_label">Neue Empfehlung</string>
     <string name="new_input_label">Neue Eingabe</string>
+    <string name="customer_order_confirmation_text">Ihr Auftrag wurde an die Gaststätte übermittelt.\nDie Gaststätte hat
+        den Eingang\nIhres Auftrags bestätigt.\n\nSie erhalten eine Bestätigung per Mail.
+    </string>
+    <string name="customer_order_confirmation_title">Auftragsbestätigung</string>
+    <string name="ok_label">OK</string>
 </resources>
