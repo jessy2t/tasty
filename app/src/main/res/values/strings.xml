@@ -28,4 +28,5 @@
     </string>
     <string name="customer_order_confirmation_title">Auftragsbestätigung</string>
     <string name="ok_label">OK</string>
+    <string name="suggestion_title">TASTY Empfehlung</string>
 </resources>
