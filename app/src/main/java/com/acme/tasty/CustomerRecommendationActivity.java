@@ -2,11 +2,11 @@ package com.acme.tasty;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import com.acme.tasty.popup.PopupWindowService;
 
 public class CustomerRecommendationActivity extends AppCompatActivity {
     private PopupWindow _popupWindow;
@@ -24,15 +24,7 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
     public void clickOnReservationOrDelivery(View view) {
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.pop_up_order, null);
-
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true;
-        _popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-        _popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-        _popupWindow.setElevation(5.0f);
+        _popupWindow = PopupWindowService.getOrderConfirmationPopupWindow(inflater, view);
     }
 
     public void clickOnNewRecommendation(View view) {
@@ -45,6 +37,6 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
     }
 
     public void closePopUp(View view) {
-        _popupWindow.dismiss();
+        PopupWindowService.closePopUp(_popupWindow, view);
     }
 }

@@ -1,5 +1,8 @@
 package com.acme.tasty;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.PopupWindow;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,11 +14,13 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import com.acme.tasty.fragments.CustomerRestaurantOverviewGeneralFragment;
 import com.acme.tasty.fragments.CustomerRestaurantOverviewRatingsFragment;
+import com.acme.tasty.popup.PopupWindowService;
 import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRestaurantOverviewActivity extends AppCompatActivity {
+    private PopupWindow _popupWindow;
     private Toolbar toolbar;
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -72,5 +77,15 @@ public class CustomerRestaurantOverviewActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return fragmentTitles.get(position);
         }
+    }
+
+    public void clickOnReservationOrDelivery(View view) {
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        _popupWindow = PopupWindowService.getOrderConfirmationPopupWindow(inflater, view);
+    }
+
+    public void closePopUp(View view) {
+        PopupWindowService.closePopUp(_popupWindow, view);
     }
 }
