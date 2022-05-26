@@ -29,7 +29,6 @@
     <string name="customer_order_confirmation_title">Auftragsbestätigung</string>
     <string name="ok_label">OK</string>
     <string name="suggestion_title">TASTY Empfehlung</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="restaurant_name">Tonys Tacos</string>
     <string name="restaurant_address_streetNumber">Straße 1</string>
@@ -58,4 +57,9 @@
     </string>
     <string name="rating_title_2">inakzeptable lieferdauer :(</string>
     <string name="rating_title_3">unfreundliche Bedienung</string>
+    <string name="name_des_restaurants">Name des Restaurants</string>
+    <string name="stra_e">Straße</string>
+    <string name="hausnummer">Hausnummer</string>
+    <string name="ort">Ort</string>
+    <string name="plz">PLZ</string>
 </resources>
