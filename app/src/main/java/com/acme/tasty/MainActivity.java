@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
-import com.acme.tasty.ui.login.RestaurantLoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     @Override
