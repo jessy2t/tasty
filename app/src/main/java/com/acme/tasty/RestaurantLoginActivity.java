@@ -63,7 +63,10 @@ public class RestaurantLoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, CustomerRestaurantOverviewActivity.class);
             intent.putExtra(EXTRA_USERNAME, username.getText().toString());
             intent.putExtra(EXTRA_IS_RESTAURANT_VIEW, true);
+
             startActivity(intent);
+            finish();
+
             validationMessage.setVisibility(View.INVISIBLE);
             Toast.makeText(RestaurantLoginActivity.this, "Willkommen "+username.getText().toString()+"!", Toast.LENGTH_LONG).show();
         }

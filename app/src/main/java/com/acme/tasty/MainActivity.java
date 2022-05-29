@@ -15,10 +15,12 @@ public class MainActivity extends AppCompatActivity {
     public void navigateToRestaurantLogin(View view){
         Intent intent = new Intent(this, RestaurantLoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void navigateToCustomerStart(View view){
         Intent intent = new Intent(this, CustomerStartActivity.class);
         startActivity(intent);
+        finish();
     }
 }
