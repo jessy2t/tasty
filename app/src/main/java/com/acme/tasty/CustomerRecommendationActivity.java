@@ -8,16 +8,22 @@ import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import com.acme.tasty.popup.PopupWindowService;
 
+import static com.acme.tasty.RestaurantLoginActivity.EXTRA_USERNAME;
+
 public class CustomerRecommendationActivity extends AppCompatActivity {
     private PopupWindow _popupWindow;
+    private TextView restaurantName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_recommendation);
+
+        restaurantName = findViewById(R.id.restaurant_suggestion);
     }
 
     public void clickOnRestaurantRecommendation(View view) {
         Intent intent = new Intent(this, CustomerRestaurantOverviewActivity.class);
+        intent.putExtra(EXTRA_USERNAME, restaurantName.getText().toString());
         startActivity(intent);
     }
 
