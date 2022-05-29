@@ -10,7 +10,7 @@
     <string name="title_activity_customer_recommendation">Empfehlung</string>
     <string name="title_activity_customer_restaurantOverview">Restaurant Übersicht</string>
     <string name="prompt_username">Restaurant-Name</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_password">Passwort</string>
     <string name="action_sign_in">Anmelden</string>
     <string name="action_sign_in_short">Anmelden</string>
     <string name="welcome">"Willkommen! "</string>
