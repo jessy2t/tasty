@@ -67,7 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password"
-            android:onClick="login"/>
+            android:onClick="validateLoginCredentials"/>
     <Button
             android:text="@string/register_label"
             android:layout_width="0dp"
