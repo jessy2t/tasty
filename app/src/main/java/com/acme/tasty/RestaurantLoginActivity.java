@@ -9,98 +9,69 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import com.acme.tasty.databaseHelpers.LoginDBHelper;
 
-import java.util.ArrayList;
 import java.util.Base64;
-import java.util.List;
 
 public class RestaurantLoginActivity extends AppCompatActivity {
-
-    public static class LoginUser {
-        public String Name;
-        public String Password;
-        public LoginUser(String name, String password) {
-            this.Name = name;
-            this.Password = password;
-        }
-    }
-
-    abstract static class LoginResult {}
-    public static class UnknownRestaurantResult extends LoginResult {}
-    public static class WrongPasswordResult extends LoginResult {}
-    public static class AccountFoundResult extends LoginResult {}
-    private final List<LoginUser> loginRepository = new ArrayList<>();
     public static final String EXTRA_USERNAME = "com.acme.tasty.RestaurantLoginActivity.Username";
     public static final String EXTRA_IS_RESTAURANT_VIEW = "com.acme.tasty.RestaurantLoginActivity.IsRestaurantView";
-    private EditText username;
-    private EditText password;
-    private TextView validationMessage;
+    private EditText usernameView;
+    private EditText passwordView;
+    private TextView validationMessageView;
+    private LoginDBHelper DB;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_login);
+        usernameView = findViewById(R.id.username);
+        passwordView = findViewById(R.id.password);
+        validationMessageView = findViewById(R.id.validation_message);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
-        validationMessage = findViewById(R.id.validation_message);
         String encodedPassword = Base64.getEncoder().encodeToString(("tasty").getBytes());
-        loginRepository.add(new LoginUser("Tony's Tacos", encodedPassword));
-        loginRepository.add(new LoginUser("Pippa's Pizzeria", encodedPassword));
+        DB = new LoginDBHelper(this);
+        DB.insertData("Tony's Tacos", encodedPassword);
+        DB.insertData("Pippa's Pizzeria", encodedPassword);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void validateLoginCredentials(View view) {
-        if (username.getText().toString().isEmpty()) {
-            showFailedLoginValidationMessage("Bitte geben Sie den Restaurant-Namen ein.");
+        String usernameString = usernameView.getText().toString();
+        String passwordString = passwordView.getText().toString();
+
+        if (usernameString.isEmpty() || passwordString.isEmpty()) {
+            showFailedLoginValidationMessage("Bitte geben Sie ein gültiges Restaurant und Passwort ein.");
             return;
         }
 
-        if (password.getText().toString().isEmpty()) {
-            showFailedLoginValidationMessage("Bitte geben Sie ein gültiges Passwort ein.");
-            return;
-        }
-
-        Class<? extends LoginResult> loginResult = compareLoginCredentialsToLoginRepository().getClass();
-        if (loginResult.equals(UnknownRestaurantResult.class)) {
+        Boolean checkUser = DB.checkUsername(usernameString);
+        if (!checkUser)
             showFailedLoginValidationMessage("Unbekanntes Restaurant. Bitte achten Sie auf Groß- und Kleinschreibung.");
-        }
-        else if (loginResult.equals(WrongPasswordResult.class)) {
-            showFailedLoginValidationMessage("Passwort ungültig.");
-        }
+
         else {
-            validationMessage.setVisibility(View.INVISIBLE);
-            Toast.makeText(RestaurantLoginActivity.this, "Willkommen "+username.getText().toString()+"!", Toast.LENGTH_LONG).show();
-            navigateToSignedInView();
-        }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private LoginResult compareLoginCredentialsToLoginRepository() {
-        String passwordEncoded = Base64.getEncoder().encodeToString((password.getText().toString()).getBytes());
-        LoginUser enteredCredentials = new LoginUser(username.getText().toString(), passwordEncoded);
-        for (LoginUser loginUser : loginRepository) {
-
-            if (enteredCredentials.Name.equals(loginUser.Name)) {
-                if (enteredCredentials.Password.equals(loginUser.Password)) {
-                    return new AccountFoundResult();
-                }
-                return new WrongPasswordResult();
+            String passwordEncoded = Base64.getEncoder().encodeToString(passwordString.getBytes());
+            if (!DB.checkUsernamePassword(usernameString, passwordEncoded)) {
+                showFailedLoginValidationMessage("Passwort ungültig.");
+            }
+            else {
+                validationMessageView.setVisibility(View.INVISIBLE);
+                Toast.makeText(RestaurantLoginActivity.this, "Willkommen "+usernameString+"!", Toast.LENGTH_LONG).show();
+                navigateToSignedInView(usernameString);
             }
         }
-        return new UnknownRestaurantResult();
     }
 
     private void showFailedLoginValidationMessage(String message) {
-        validationMessage.setVisibility(View.VISIBLE);
-        validationMessage.setText(message);
+        validationMessageView.setVisibility(View.VISIBLE);
+        validationMessageView.setText(message);
         Toast.makeText(RestaurantLoginActivity.this, "Anmeldung fehlgeschlagen", Toast.LENGTH_LONG).show();
     }
 
-    private void navigateToSignedInView() {
+    private void navigateToSignedInView(String restaurantName) {
         Intent intent = new Intent(this, CustomerRestaurantOverviewActivity.class);
-        intent.putExtra(EXTRA_USERNAME, username.getText().toString());
+        intent.putExtra(EXTRA_USERNAME, restaurantName);
         intent.putExtra(EXTRA_IS_RESTAURANT_VIEW, true);
 
         startActivity(intent);
@@ -108,11 +79,6 @@ public class RestaurantLoginActivity extends AppCompatActivity {
     }
 
     public void navigateToRegistration(View view) {
-        Intent intent = new Intent(this, RestaurantRegistration2Activity.class);
-        startActivity(intent);
-    }
-
-    public void navigateToRestaurantRegistration2(View view){
         Intent intent = new Intent(this, RestaurantRegistration2Activity.class);
         startActivity(intent);
     }
