@@ -29,9 +29,10 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
+        restaurantName = findViewById(R.id.restaurant_suggestion);
         return true;
 
-        restaurantName = findViewById(R.id.restaurant_suggestion);
+
     }
 
     public void clickOnRestaurantRecommendation(View view) {
