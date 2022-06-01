@@ -1,13 +1,14 @@
 package com.acme.tasty;
 
-import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RestaurantRegistrationActivity extends AppCompatActivity {
+import android.os.Bundle;
+
+public class RestaurantRegistration3Acitivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_registration);
+        setContentView(R.layout.activity_restaurant_registration3);
     }
 }

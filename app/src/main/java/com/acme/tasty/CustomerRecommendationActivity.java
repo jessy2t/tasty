@@ -10,9 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import com.acme.tasty.popup.PopupWindowService;
 
+import static com.acme.tasty.RestaurantLoginActivity.EXTRA_USERNAME;
+
 public class CustomerRecommendationActivity extends AppCompatActivity {
     private PopupWindow _popupWindow;
     private Toolbar mToolbar;
+    private TextView restaurantName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +30,13 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+
+        restaurantName = findViewById(R.id.restaurant_suggestion);
     }
 
     public void clickOnRestaurantRecommendation(View view) {
         Intent intent = new Intent(this, CustomerRestaurantOverviewActivity.class);
+        intent.putExtra(EXTRA_USERNAME, restaurantName.getText().toString());
         startActivity(intent);
     }
 

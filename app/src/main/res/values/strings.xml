@@ -9,8 +9,8 @@
     <string name="title_activity_customer_swipe">Eingabe</string>
     <string name="title_activity_customer_recommendation">Empfehlung</string>
     <string name="title_activity_customer_restaurantOverview">Restaurant Übersicht</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
+    <string name="prompt_username">Restaurant-Name</string>
+    <string name="prompt_password">Passwort</string>
     <string name="action_sign_in">Anmelden</string>
     <string name="action_sign_in_short">Anmelden</string>
     <string name="welcome">"Willkommen! "</string>
@@ -29,7 +29,6 @@
     <string name="customer_order_confirmation_title">Auftragsbestätigung</string>
     <string name="ok_label">OK</string>
     <string name="suggestion_title">TASTY Empfehlung</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="restaurant_name">Tonys Tacos</string>
     <string name="restaurant_address_streetNumber">Straße 1</string>
@@ -44,7 +43,7 @@
     <string name="weekday_mondayToFriday">Montag - Freitag</string>
     <string name="weekday_saturday">Samstag</string>
     <string name="weekday_sunday">Sonntag</string>
-    <string name="opening_hours">07:00 - 17:00</string>
+    <string name="opening_hours">07:00 \ 17:00</string>
     <string name="delivery_label">Lieferung</string>
     <string name="reservation_label">Reservierung</string>
     <string name="average_rating">3,5</string>
@@ -59,4 +58,32 @@
     <string name="rating_title_2">inakzeptable lieferdauer :(</string>
     <string name="rating_title_3">unfreundliche Bedienung</string>
     <string name="startseite">Startseite</string>
+    <string name="name_des_restaurants">Name des Restaurants</string>
+    <string name="stra_e">Straße</string>
+    <string name="hausnummer">Hausnummer</string>
+    <string name="ort">Ort</string>
+    <string name="plz">PLZ</string>
+    <string name="daten_zum_restaurant">Daten zum Restaurant</string>
+    <string name="lieferservice_vorhanden">Lieferservice vorhanden</string>
+    <string name="reservierung_m_glich">Reservierung möglich</string>
+    <string name="reservierung_notwendig">Reservierung notwendig</string>
+    <string name="vegetarisch">Vegetarisch</string>
+    <string name="vegan">Vegan</string>
+    <string name="japanisch">Japanisch</string>
+    <string name="asiatisch">Asiatisch</string>
+    <string name="europ_isch">Europäisch</string>
+    <string name="italienisch">Italienisch</string>
+    <string name="in_app_bezahlung_m_glich">In-App Bezahlung möglich</string>
+    <string name="griechisch">Griechisch</string>
+    <string name="mexikanisch">Mexikanisch</string>
+    <string name="speichern_und_weiter">Speichern und weiter</string>
+    <string name="daten_zum_inhaber">Daten zum Inhaber</string>
+    <string name="anmeldedaten">Anmeldedaten</string>
+    <string name="passwort">Passwort</string>
+    <string name="nachname">Nachname</string>
+    <string name="vorname">Vorname</string>
+    <string name="telefonnummer">Telefonnummer</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="registrieren">Registrieren</string>
+    <string name="passwort_wiederholen">Passwort wiederholen</string>
 </resources>

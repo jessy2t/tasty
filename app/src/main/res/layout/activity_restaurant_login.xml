@@ -10,19 +10,29 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".ui.login.RestaurantLoginActivity">
+        tools:context=".RestaurantLoginActivity">
 
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/tasty_logo"
+            android:id="@+id/tasty_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
     <EditText
             android:id="@+id/username"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
-            android:hint="@string/prompt_email"
-            android:inputType="textEmailAddress"
+            android:layout_marginTop="50dp"
+            android:hint="@string/prompt_username"
+            android:inputType="text"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/tasty_logo"/>
 
     <EditText
             android:id="@+id/password"
@@ -37,41 +47,35 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username"/>
-
+    <TextView
+            android:id="@+id/validation_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Validierungsnachricht"
+            android:textColor="#FF0000"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password"
+            android:layout_marginTop="8dp"/>
     <Button
             android:id="@+id/login"
-            android:enabled="false"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginTop="50dp"
             android:text="@string/action_sign_in"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password"
-            app:layout_constraintVertical_bias="0.2"/>
-
-    <ProgressBar
-            android:id="@+id/loading"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="64dp"
-            android:layout_marginBottom="64dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/password"
-            app:layout_constraintStart_toStartOf="@+id/password"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.3"/>
+            android:onClick="validateLoginCredentials"/>
     <Button
             android:text="@string/register_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/registration_btn"
-            app:layout_constraintTop_toBottomOf="@+id/login" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="200dp" android:onClick="navigateToRegistration"/>
-
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/registration_btn"
+            app:layout_constraintTop_toBottomOf="@+id/login"
+            android:layout_marginTop="8dp"
+            android:onClick="navigateToRestaurantRegistration2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

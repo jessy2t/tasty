@@ -255,7 +255,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/reservation_btn"
-                android:layout_marginBottom="15dp" android:onClick="clickOnReservationOrDelivery"/>
+                android:layout_marginBottom="15dp"
+                android:onClick="clickOnReservationOrDelivery"
+                />
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:src="@drawable/restaurant_icon"
                 android:layout_width="wrap_content"
@@ -269,7 +271,8 @@
                 android:id="@+id/reservation_btn"
                 android:layout_weight="0.5"
                 app:backgroundTint="@color/cardview_light_background"
-                android:layout_marginBottom="15dp" android:onClick="clickOnReservationOrDelivery"/>
+                android:layout_marginBottom="15dp"
+                android:onClick="clickOnReservationOrDelivery"/>
         <TextView
                 android:text="@string/delivery_label"
                 android:layout_width="wrap_content"
