@@ -43,7 +43,7 @@
     <string name="weekday_mondayToFriday">Montag - Freitag</string>
     <string name="weekday_saturday">Samstag</string>
     <string name="weekday_sunday">Sonntag</string>
-    <string name="opening_hours">07:00 - 17:00</string>
+    <string name="opening_hours">07:00 \ 17:00</string>
     <string name="delivery_label">Lieferung</string>
     <string name="reservation_label">Reservierung</string>
     <string name="average_rating">3,5</string>
@@ -62,4 +62,27 @@
     <string name="hausnummer">Hausnummer</string>
     <string name="ort">Ort</string>
     <string name="plz">PLZ</string>
+    <string name="daten_zum_restaurant">Daten zum Restaurant</string>
+    <string name="lieferservice_vorhanden">Lieferservice vorhanden</string>
+    <string name="reservierung_m_glich">Reservierung möglich</string>
+    <string name="reservierung_notwendig">Reservierung notwendig</string>
+    <string name="vegetarisch">Vegetarisch</string>
+    <string name="vegan">Vegan</string>
+    <string name="japanisch">Japanisch</string>
+    <string name="asiatisch">Asiatisch</string>
+    <string name="europ_isch">Europäisch</string>
+    <string name="italienisch">Italienisch</string>
+    <string name="in_app_bezahlung_m_glich">In-App Bezahlung möglich</string>
+    <string name="griechisch">Griechisch</string>
+    <string name="mexikanisch">Mexikanisch</string>
+    <string name="speichern_und_weiter">Speichern und weiter</string>
+    <string name="daten_zum_inhaber">Daten zum Inhaber</string>
+    <string name="anmeldedaten">Anmeldedaten</string>
+    <string name="passwort">Passwort</string>
+    <string name="nachname">Nachname</string>
+    <string name="vorname">Vorname</string>
+    <string name="telefonnummer">Telefonnummer</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="registrieren">Registrieren</string>
+    <string name="passwort_wiederholen">Passwort wiederholen</string>
 </resources>

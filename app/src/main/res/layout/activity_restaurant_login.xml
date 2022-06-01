@@ -77,5 +77,5 @@
             android:id="@+id/registration_btn"
             app:layout_constraintTop_toBottomOf="@+id/login"
             android:layout_marginTop="8dp"
-            android:onClick="navigateToRegistration"/>
+            android:onClick="navigateToRestaurantRegistration2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -108,7 +108,12 @@ public class RestaurantLoginActivity extends AppCompatActivity {
     }
 
     public void navigateToRegistration(View view) {
-        Intent intent = new Intent(this, RestaurantRegistrationActivity.class);
+        Intent intent = new Intent(this, RestaurantRegistration2Activity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToRestaurantRegistration2(View view){
+        Intent intent = new Intent(this, RestaurantRegistration2Activity.class);
         startActivity(intent);
     }
 }
