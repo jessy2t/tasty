@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
 
-        createDatabases();
+        createDatabasesConnection();
     }
 
     @Override
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void createDatabases() {
+    private void createDatabasesConnection() {
         CityDB = new CityDBHelper(this);
         AddressDB = new AddressDBHelper(this);
         CategoriesDB = new CategoriesDBHelper(this);

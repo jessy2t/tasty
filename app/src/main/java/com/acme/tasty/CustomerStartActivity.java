@@ -6,8 +6,14 @@ import android.view.Menu;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import com.acme.tasty.dataModels.DietDataModel;
+import com.acme.tasty.databaseHelpers.*;
 
 public class CustomerStartActivity extends AppCompatActivity {
+    public static DietDBHelper DietDB;
+    public static PriceRangeDBHelper PriceRangeDB;
+    public static SuggestionBasisDBHelper SuggestionBasisDB;
+    public static SuggestionDBHelper SuggestionDB;
 
     private Toolbar mToolbar;
 
@@ -18,6 +24,8 @@ public class CustomerStartActivity extends AppCompatActivity {
 
         mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
+
+        createDatabasesConnection();
     }
 
     @Override
@@ -30,5 +38,12 @@ public class CustomerStartActivity extends AppCompatActivity {
     public void navigateToSwipeMechanism(View view){
         Intent intent = new Intent(this, CustomerSwipeActivity.class);
         startActivity(intent);
+    }
+
+    private void createDatabasesConnection() {
+        DietDB = new DietDBHelper(this);
+        PriceRangeDB = new PriceRangeDBHelper(this);
+        SuggestionBasisDB = new SuggestionBasisDBHelper(this);
+        SuggestionDB = new SuggestionDBHelper(this);
     }
 }
