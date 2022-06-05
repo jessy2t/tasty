@@ -33,7 +33,7 @@
     <string name="restaurant_name">Tonys Tacos</string>
     <string name="restaurant_address_streetNumber">Straße 1</string>
     <string name="restaurant_address_zipCodeCity">12345 Stadt</string>
-    <string name="restaurant_address_country">Land</string>
+    <string name="restaurant_address_country">Deutschland</string>
     <string name="restaurant_distance_label">Entfernung</string>
     <string name="restaurant_distance_value">1,3 km</string>
     <string name="restaurant_walking_distance">20 min</string>

@@ -9,7 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import com.acme.tasty.databaseHelpers.LoginDBHelper;
+import com.acme.tasty.databaseHelpers.RestaurantAttributesDBHelper;
+import com.acme.tasty.databaseHelpers.RestaurantOwnerDBHelper;
 
 import java.util.Base64;
 
@@ -19,7 +20,7 @@ public class RestaurantLoginActivity extends AppCompatActivity {
     private EditText usernameView;
     private EditText passwordView;
     private TextView validationMessageView;
-    private LoginDBHelper DB;
+    private RestaurantOwnerDBHelper RestaurantOwnerDB;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -31,9 +32,9 @@ public class RestaurantLoginActivity extends AppCompatActivity {
         validationMessageView = findViewById(R.id.validation_message);
 
         String encodedPassword = Base64.getEncoder().encodeToString(("tasty").getBytes());
-        DB = new LoginDBHelper(this);
-        DB.insertData("Tony's Tacos", encodedPassword);
-        DB.insertData("Pippa's Pizzeria", encodedPassword);
+        RestaurantOwnerDB = new RestaurantOwnerDBHelper(this);
+        RestaurantOwnerDB.insertData("Tony's Tacos", encodedPassword, "Tony", "Stark", "0762112345", "tonystacos@mail.de");
+        //DB.insertData("Pippa's Pizzeria", encodedPassword);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -46,13 +47,13 @@ public class RestaurantLoginActivity extends AppCompatActivity {
             return;
         }
 
-        Boolean checkUser = DB.checkUsername(usernameString);
+        Boolean checkUser = RestaurantOwnerDB.checkUsername(usernameString);
         if (!checkUser)
             showFailedLoginValidationMessage("Unbekanntes Restaurant. Bitte achten Sie auf Groß- und Kleinschreibung.");
 
         else {
             String passwordEncoded = Base64.getEncoder().encodeToString(passwordString.getBytes());
-            if (!DB.checkUsernamePassword(usernameString, passwordEncoded)) {
+            if (!RestaurantOwnerDB.checkUsernamePassword(usernameString, passwordEncoded)) {
                 showFailedLoginValidationMessage("Passwort ungültig.");
             }
             else {

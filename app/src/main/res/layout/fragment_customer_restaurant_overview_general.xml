@@ -55,42 +55,13 @@
         </LinearLayout>
     </LinearLayout>
     <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             app:flexWrap="wrap">
-        <com.google.android.material.chip.Chip
-                android:id="@+id/chip_vegetarian"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="Vegetarisch"/>
-        <com.google.android.material.chip.Chip
-                android:id="@+id/chip_vegan"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="Vegan"/>
-        <com.google.android.material.chip.Chip
-                android:id="@+id/chip_mexican"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="Mexikanisch"/>
-        <com.google.android.material.chip.Chip
-                android:id="@+id/chip_fastFood"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="Fast food"/>
-        <com.google.android.material.chip.Chip
-                android:id="@+id/chip_delivery"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="Lieferung"/>
-        <com.google.android.material.chip.Chip
-                android:id="@+id/chip_reservation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Vor Ort"/>
     </com.google.android.material.chip.ChipGroup>
     <LinearLayout
             android:orientation="horizontal"
@@ -172,10 +143,11 @@
                         android:layout_marginBottom="6dp"/>
             </LinearLayout>
         </RelativeLayout>
-        <com.google.android.gms.maps.MapView
-                android:layout_width="240dp"
+        <ImageView
+                android:src="@drawable/map"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/mapView"/>
+                android:id="@+id/imageView4"/>
     </LinearLayout>
     <RelativeLayout
             android:layout_width="match_parent"

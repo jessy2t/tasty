@@ -1,8 +1,13 @@
 package com.acme.tasty;
 
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.PopupWindow;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,10 +17,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
+import com.acme.tasty.dataModels.RatingDataModel;
+import com.acme.tasty.databaseHelpers.RatingDBHelper;
 import com.acme.tasty.fragments.CustomerRestaurantOverviewGeneralFragment;
 import com.acme.tasty.fragments.CustomerRestaurantOverviewRatingsFragment;
 import com.acme.tasty.popup.PopupWindowService;
+import com.google.android.material.chip.Chip;
 import com.google.android.material.tabs.TabLayout;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,5 +97,17 @@ public class CustomerRestaurantOverviewActivity extends AppCompatActivity {
 
     public void closePopUp(View view) {
         PopupWindowService.closePopUp(_popupWindow, view);
+    }
+
+    public void sortByNewestDate(View view) {
+        ratingsFragment.sortByNewest();
+    }
+
+    public void sortByHighestRating(View view) {
+        ratingsFragment.sortByHighest();
+    }
+
+    public void sortByLowestRating(View view) {
+        ratingsFragment.sortByLowest();
     }
 }

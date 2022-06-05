@@ -6,11 +6,19 @@ import android.view.Menu;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import com.acme.tasty.databaseHelpers.*;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    public static AddressDBHelper AddressDB;
+    public static RestaurantAttributesDBHelper AttributesDB;
     private Toolbar mToolbar;
+    public static CityDBHelper CityDB;
+    public static CategoriesDBHelper CategoriesDB;
+    public static RestaurantDBHelper RestaurantDB;
+    public static OpeningHoursDBHelper OpeningHoursDB;
+    public static RatingDBHelper RatingDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
+
+        createDatabases();
     }
 
     @Override
@@ -37,5 +47,15 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CustomerStartActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void createDatabases() {
+        CityDB = new CityDBHelper(this);
+        AddressDB = new AddressDBHelper(this);
+        CategoriesDB = new CategoriesDBHelper(this);
+        AttributesDB = new RestaurantAttributesDBHelper(this);
+        RestaurantDB = new RestaurantDBHelper(this);
+        OpeningHoursDB = new OpeningHoursDBHelper(this);
+        RatingDB = new RatingDBHelper(this);
     }
 }
