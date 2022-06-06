@@ -70,4 +70,21 @@
     <string name="praeferenzen_kategorie_indisch">indisch</string>
     <string name="praeferenzen_ernaehrungsweise_vegetarisch">vegetarisch</string>
     <string name="praeferenzen_ernaehrungsweise_vegan">vegan</string>
+    <string-array name="präferenzen_kategorie_array">
+        <item>mexikanisch</item>
+        <item>indisch</item>
+        <item>indonesisch</item>
+        <item>italienisch</item>
+        <item>deutsch</item>
+        <item>amerikanisch</item>
+        <item>chinesisch</item>
+    </string-array>
+    <string-array name="präferenzen_ernaehrungsweise_array">
+        <item>vegetarisch</item>
+        <item>vegan</item>
+        <item>glutenfrei</item>
+        <item>laktosefrei</item>
+        <item>frutarisch</item>
+    </string-array>
+
 </resources>
