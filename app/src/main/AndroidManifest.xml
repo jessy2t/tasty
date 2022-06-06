@@ -47,6 +47,16 @@
                 android:label="@string/title_activity_customer_start"
                 android:parentActivityName=".MainActivity"/>
         <activity
+            android:name=".CustomerPreferencesCategoryActivity"
+            android:exported="true"
+            android:label="@string/title_activity_customer_start"
+            android:parentActivityName=".CustomerPreferencesActivity"/>
+        <activity
+            android:name=".CustomerPreferencesMealtypeActivity"
+            android:exported="true"
+            android:label="@string/title_activity_customer_start"
+            android:parentActivityName=".CustomerPreferencesActivity"/>
+        <activity
                 android:name=".MainActivity"
                 android:exported="true">
             <intent-filter>

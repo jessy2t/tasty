@@ -12,79 +12,147 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".CustomerPreferencesActivity">
 
-    <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="450dp"
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/praeferenzen_preisrahmen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="@string/praeferenzen_preisrahmen"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/praeferenzen_kategorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:text="@string/praeferenzen_kategorie"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/praeferenzen_preisrahmen" />
+
+    <TextView
+        android:id="@+id/praeferenzen_ernaehrungsweise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:text="@string/praeferenzen_ernaehrungsweise"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/praeferenzen_kategorie" />
+
+    <Button
+        android:id="@+id/preisrahmen_aendern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/Save"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/praeferenzen_preisrahmen"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/kategorie_aendern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="160dp"
+        android:text="@string/Edit"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/praeferenzen_kategorie"
+        app:layout_constraintTop_toBottomOf="@+id/preisrahmen_aendern"
+        tools:ignore="DuplicateSpeakableTextCheck"
+        android:onClick="navigateToPreferencesCategory"/>
+
+    <Button
+        android:id="@+id/ernaehrungsweise_aendern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="160dp"
+        android:text="@string/Edit"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/praeferenzen_ernaehrungsweise"
+        app:layout_constraintTop_toBottomOf="@id/kategorie_aendern"
+        android:onClick="navigateToPreferencesMealtype"/>
+
+    <ListView
+        android:id="@+id/praeferenzen_kategorie_liste"
+        android:layout_width="409dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/ernaehrungsweise_aendern"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/praeferenzen_kategorie"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <ListView
+        android:id="@+id/praeferenzen_ernaehrungsweise_liste"
+        android:layout_width="409dp"
+        android:layout_height="170dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/ernaehrungsweise_aendern" />
 
-        <TextView
-            android:id="@+id/praeferenzen_preisramen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/praeferenzen_preisramen"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/editTextNumber2"
+        android:layout_width="94dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:autofillHints="@string/highest_price"
+        android:ems="10"
+        android:hint="@string/highest_price"
+        android:inputType="number"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@id/praeferenzen_preisrahmen" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="98dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:autofillHints="@string/lowest_price"
+        android:ems="10"
+        android:hint="@string/lowest_price"
+        android:inputType="number"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/praeferenzen_preisrahmen" />
 
-        <TextView
-            android:id="@+id/praeferenzen_kategorie"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/praeferenzen_kategorie"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="20sp" />
-
-        <ListView
-            android:id="@+id/praeferenzen_kategorie_liste"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:text="@string/between"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNumber2"
+        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
+        app:layout_constraintTop_toBottomOf="@+id/praeferenzen_preisrahmen" />
 
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="-450dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/praeferenzen_ernaehrungsweise"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/praeferenzen_ernaehrungsweise"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textSize="20sp" />
-
-        <ListView
-            android:id="@+id/praeferenzen_ernaehrungsweise_liste"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

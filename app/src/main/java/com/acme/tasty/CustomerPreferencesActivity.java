@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.acme.tasty.ui.login.RestaurantLoginActivity;
 
@@ -14,31 +15,29 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_praeferenzen_uebersicht);
+
+        populateListView();
     }
 
-    public void navigateToRestaurantLogin(View view){
-        Intent intent = new Intent(this, RestaurantLoginActivity.class);
+    public void populateListView(){
+        String[] ernaehrungsform = { "vegan", "vegetarisch", "laktosefrei"};
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                ernaehrungsform);
+
+        ListView list = (ListView) findViewById(R.id.praeferenzen_ernaehrungsweise_liste);
+        list.setAdapter(adapter);
+    }
+
+    public void navigateToPreferencesCategory(View view){
+        Intent intent = new Intent(this, CustomerPreferencesCategoryActivity.class);
         startActivity(intent);
     }
 
-    public void navigateToCustomerStart(View view){
-        Intent intent = new Intent(this, CustomerStartActivity.class);
+    public void navigateToPreferencesMealtype(View view){
+        Intent intent = new Intent(this, CustomerPreferencesMealtypeActivity.class);
         startActivity(intent);
-    }
-
-    public void onCheckboxClicked(View view) {
-
-        boolean checked = ((CheckBox) view).isChecked();
-
-        switch(view.getId()) {
-            case R.id.checkbox_indisch:
-                if (checked);
-            else
-                break;
-            case R.id.checkbox_mexikanisch:
-                if (checked);
-            else
-                break;
-        }
     }
 }
