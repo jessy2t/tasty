@@ -6,17 +6,33 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
-import com.acme.tasty.ui.login.RestaurantLoginActivity;
-
 public class CustomerPreferencesActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_praeferenzen_uebersicht);
 
         populateListView();
+
+        Button b1 = (Button) findViewById(R.id.kategorie_aendern);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToPreferencesCategory();
+            }
+        });
+
+        Button b2 = (Button) findViewById(R.id.ernaehrungsweise_aendern);
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToPreferencesMealtype();
+            }
+        });
     }
 
     public void populateListView(){
@@ -31,12 +47,12 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
         list.setAdapter(adapter);
     }
 
-    public void navigateToPreferencesCategory(View view){
+    public void navigateToPreferencesCategory(){
         Intent intent = new Intent(this, CustomerPreferencesCategoryActivity.class);
         startActivity(intent);
     }
 
-    public void navigateToPreferencesMealtype(View view){
+    public void navigateToPreferencesMealtype(){
         Intent intent = new Intent(this, CustomerPreferencesMealtypeActivity.class);
         startActivity(intent);
     }
