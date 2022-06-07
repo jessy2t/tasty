@@ -1,39 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="622dp" />
+    android:layout_height="match_parent"
+    tools:context=".CustomerPreferencesCategoryActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/titel_kategorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="73dp" />
+        android:layout_marginTop="30dp"
+        android:text="@string/praeferenzen_kategorie"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-        <CheckBox android:id="@+id/checkbox_meat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/praeferenzen_kategorie_mexikanisch"
-            android:onClick="onCheckboxClicked"/>
-        <CheckBox android:id="@+id/checkbox_cheese"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/praeferenzen_kategorie_indisch"
-            android:onClick="onCheckboxClicked"/>
-    </LinearLayout>
+    <Button
+        android:id="@+id/kategorie_speichern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="90dp"
+        android:text="@string/Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxKat1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/praeferenzen_kategorie_alles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titel_kategorie" />
+
+    <CheckBox
+        android:id="@+id/checkBoxKat2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/praeferenzen_kategorie_indisch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBoxKat1" />
+
+    <CheckBox
+        android:id="@+id/checkBoxKat3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/praeferenzen_kategorie_mexikanisch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBoxKat2" />
+
+    <CheckBox
+        android:id="@+id/checkBoxKat4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/praeferenzen_kategorie_amerikanisch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBoxKat3" />
+
+    <CheckBox
+        android:id="@+id/checkBoxKat5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/praeferenzen_kategorie_chinesisch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBoxKat4" />
+
+    <CheckBox
+        android:id="@+id/checkBoxKat6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/praeferenzen_kategorie_deutsch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBoxKat5" />
+
+    <CheckBox
+        android:id="@+id/checkBoxKat7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/praeferenzen_kategorie_italienisch"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkBoxKat6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

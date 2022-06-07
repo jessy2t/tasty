@@ -93,11 +93,20 @@
     <string name="sample_name">Max Mustermann</string>
     <string name="praeferenzen_preisramen">Preisramen</string>
     <string name="praeferenzen_kategorie">Kategorie</string>
-    <string name="praeferenzen_ernaehrungsweise">Ernährungsweise</string>
+    <string name="praeferenzen_kategorie_alles">alles</string>
     <string name="praeferenzen_kategorie_mexikanisch">mexikanisch</string>
     <string name="praeferenzen_kategorie_indisch">indisch</string>
+    <string name="praeferenzen_kategorie_italienisch">italienisch</string>
+    <string name="praeferenzen_kategorie_deutsch">deutsch</string>
+    <string name="praeferenzen_kategorie_amerikanisch">amerikanisch</string>
+    <string name="praeferenzen_kategorie_chinesisch">chinesisch</string>
+    <string name="praeferenzen_ernaehrungsweise">Ernährungsweise</string>
+    <string name="praeferenzen_ernaehrungsweise_alles">alles</string>
     <string name="praeferenzen_ernaehrungsweise_vegetarisch">vegetarisch</string>
     <string name="praeferenzen_ernaehrungsweise_vegan">vegan</string>
+    <string name="praeferenzen_ernaehrungsweise_glutenfrei">glutenfrei</string>
+    <string name="praeferenzen_ernaehrungsweise_laktosefrei">laktosefrei</string>
+    <string name="praeferenzen_ernaehrungsweise_frutarisch">frutarisch</string>
     <string-array name="präferenzen_kategorie_array">
         <item>mexikanisch</item>
         <item>indisch</item>
