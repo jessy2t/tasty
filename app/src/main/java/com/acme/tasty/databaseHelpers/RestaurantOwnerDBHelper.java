@@ -5,7 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
+import java.util.Base64;
 
 public class RestaurantOwnerDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="restaurant_owner.db";
@@ -13,11 +17,14 @@ public class RestaurantOwnerDBHelper extends SQLiteOpenHelper {
         super(context, DBNAME, null, 1);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table restaurant_owner(owner_id INTEGER primary key autoincrement, username TEXT," +
                 "password TEXT, prename TEXT, surname TEXT, phone NUMBER, mail TEXT," +
                 "foreign key (username) references restaurant(restaurant_name))");
+        String encodedPassword = Base64.getEncoder().encodeToString(("tasty").getBytes());
+        insertData("Tony's Tacos", encodedPassword, "Tony", "Stark", "0762112345", "tonystacos@mail.de");
     }
 
     @Override

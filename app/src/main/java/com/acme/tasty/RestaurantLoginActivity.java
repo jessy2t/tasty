@@ -31,10 +31,7 @@ public class RestaurantLoginActivity extends AppCompatActivity {
         passwordView = findViewById(R.id.password);
         validationMessageView = findViewById(R.id.validation_message);
 
-        String encodedPassword = Base64.getEncoder().encodeToString(("tasty").getBytes());
         RestaurantOwnerDB = new RestaurantOwnerDBHelper(this);
-        RestaurantOwnerDB.insertData("Tony's Tacos", encodedPassword, "Tony", "Stark", "0762112345", "tonystacos@mail.de");
-        //DB.insertData("Pippa's Pizzeria", encodedPassword);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
