@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:srcCompat="@drawable/AdobeStock_238105207_Preview" />
+        app:srcCompat="@drawable/restaurant_whal" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -39,7 +39,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:srcCompat="@drawable/AdobeStock_252388016_Preview" />
+        app:srcCompat="@drawable/gericht_wahl" />
 
     <TextView
         android:id="@+id/textView4"
