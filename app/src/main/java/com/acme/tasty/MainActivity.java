@@ -12,6 +12,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_praeferenzen_uebersicht);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void navigateToRestaurantLogin(View view){
+        Intent intent = new Intent(this, RestaurantLoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToCustomerStart(View view){
+        Intent intent = new Intent(this, CustomerStartActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToCustomerPreferences(View view){
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
+        startActivity(intent);
     }
 }

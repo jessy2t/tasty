@@ -72,7 +72,8 @@
         android:textSize="11sp"
         app:layout_constraintStart_toEndOf="@+id/praeferenzen_kategorie"
         app:layout_constraintTop_toBottomOf="@+id/preisrahmen_aendern"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+        tools:ignore="DuplicateSpeakableTextCheck"
+        android:onClick="navigateToPreferencesCategory"/>
 
     <Button
         android:id="@+id/ernaehrungsweise_aendern"
@@ -83,7 +84,8 @@
         android:text="@string/Edit"
         android:textSize="11sp"
         app:layout_constraintStart_toEndOf="@+id/praeferenzen_ernaehrungsweise"
-        app:layout_constraintTop_toBottomOf="@id/kategorie_aendern" />
+        app:layout_constraintTop_toBottomOf="@id/kategorie_aendern"
+        android:onClick="navigateToPreferencesMealtype"/>
 
     <ListView
         android:id="@+id/praeferenzen_kategorie_liste"
