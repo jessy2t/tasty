@@ -36,7 +36,7 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
     }
 
     public void populateListView(){
-        String[] ernaehrungsform = { "vegan", "vegetarisch", "laktosefrei"};
+        String[] ernaehrungsform = {"vegan", "vegetarisch", "laktosefrei"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
