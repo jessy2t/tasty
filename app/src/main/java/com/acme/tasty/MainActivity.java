@@ -1,10 +1,15 @@
 package com.acme.tasty;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import com.acme.tasty.databaseHelpers.*;
 
@@ -24,17 +29,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(mToolbar);
+
+        //mToolbar = findViewById(R.id.main_toolbar);
+        //setSupportActionBar(mToolbar);
 
         createDatabasesConnection();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
     }
 
     public void navigateToRestaurantLogin(View view){

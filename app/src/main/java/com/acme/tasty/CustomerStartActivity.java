@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 import com.acme.tasty.dataModels.DietDataModel;
 import com.acme.tasty.databaseHelpers.*;
@@ -22,14 +23,17 @@ public class CustomerStartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_start);
 
-        mToolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(mToolbar);
+        //mToolbar = findViewById(R.id.main_toolbar);
+        //setSupportActionBar(mToolbar);
 
         createDatabasesConnection();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        if (menu instanceof MenuBuilder) {
+            ((MenuBuilder) menu).setOptionalIconsVisible(true);
+        }
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;

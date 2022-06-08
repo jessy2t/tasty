@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 
 public class CustomerSwipeActivity extends AppCompatActivity {
@@ -16,12 +17,15 @@ public class CustomerSwipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_swipe);
 
-        mToolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(mToolbar);
+        //mToolbar = findViewById(R.id.main_toolbar);
+        //setSupportActionBar(mToolbar);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        if (menu instanceof MenuBuilder) {
+            ((MenuBuilder) menu).setOptionalIconsVisible(true);
+        }
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
