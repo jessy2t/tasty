@@ -2,42 +2,24 @@ package com.acme.tasty;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
-
-import com.acme.tasty.databaseHelpers.RestaurantOwnerDBHelper;
 
 public class RestaurantRegistration2Acitivity extends AppCompatActivity {
 
-    protected EditText firstName;
-    protected EditText lastName;
-    protected EditText phone;
-    protected EditText mail;
-    protected EditText userName;
-    protected EditText password;
-    protected RestaurantOwnerDBHelper restaurantOwnerDBHelper;
+    protected EditText inhaberVorname;
+    protected EditText inhaberNachname;
+    protected EditText passwort;
+    protected EditText passwortWdh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_registration_2);
-    }
+        setContentView(R.layout.activity_restaurant_registration2);
 
-    public void navigateToRestaurantOverviewRegistration(View view){
-        firstName = findViewById(R.id.inhaberVorname);
-        lastName = findViewById(R.id.inhaberNachname);
-        phone = findViewById(R.id.inhaberTelefon);
-        mail = findViewById(R.id.inhaberEmail);
-        userName = findViewById(R.id.username_register);
-        password = findViewById(R.id.passwort);
-
-        //String username, String password, String prename, String surname, String phone, String mail
-        // restaurantOwnerDBHelper.insertData(userName.getText().toString(),password.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),phone.getText().toString(),mail.getText().toString());
-
-        Intent intent = new Intent(this, RestaurantOverviewRegistration.class);
-        startActivity(intent);
-        finish();
+        inhaberVorname = findViewById(R.id.inhaberVorname);
+        inhaberNachname = findViewById(R.id.inhaberNachname);
+        passwort = findViewById(R.id.passwort);
+        passwortWdh = findViewById(R.id.passwortWdh);
     }
 }
