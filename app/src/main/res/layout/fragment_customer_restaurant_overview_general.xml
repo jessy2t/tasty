@@ -55,13 +55,42 @@
         </LinearLayout>
     </LinearLayout>
     <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             app:flexWrap="wrap">
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip_vegetarian"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Vegetarisch"/>
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip_vegan"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Vegan"/>
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip_mexican"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Mexikanisch"/>
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip_fastFood"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Fast food"/>
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip_delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Lieferung"/>
+        <com.google.android.material.chip.Chip
+                android:id="@+id/chip_reservation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vor Ort"/>
     </com.google.android.material.chip.ChipGroup>
     <LinearLayout
             android:orientation="horizontal"
@@ -143,11 +172,10 @@
                         android:layout_marginBottom="6dp"/>
             </LinearLayout>
         </RelativeLayout>
-        <ImageView
-                android:src="@drawable/map"
-                android:layout_width="match_parent"
+        <com.google.android.gms.maps.MapView
+                android:layout_width="240dp"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView4"/>
+                android:id="@+id/mapView"/>
     </LinearLayout>
     <RelativeLayout
             android:layout_width="match_parent"
@@ -227,9 +255,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/reservation_btn"
-                android:layout_marginBottom="15dp"
-                android:onClick="clickOnReservationOrDelivery"
-                />
+                android:layout_marginBottom="15dp" android:onClick="clickOnReservationOrDelivery"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:src="@drawable/restaurant_icon"
                 android:layout_width="wrap_content"
@@ -243,8 +269,7 @@
                 android:id="@+id/reservation_btn"
                 android:layout_weight="0.5"
                 app:backgroundTint="@color/cardview_light_background"
-                android:layout_marginBottom="15dp"
-                android:onClick="clickOnReservationOrDelivery"/>
+                android:layout_marginBottom="15dp" android:onClick="clickOnReservationOrDelivery"/>
         <TextView
                 android:text="@string/delivery_label"
                 android:layout_width="wrap_content"

@@ -7,11 +7,11 @@
     <string name="title_activity_restaurant_login">Restaurant Login</string>
     <string name="title_activity_restaurant_registration">Registrierung</string>
     <string name="title_activity_customer_start">Kunde</string>
-    <string name="title_activity_customer_swipe">Bestellen</string>
+    <string name="title_activity_customer_swipe">Eingabe</string>
     <string name="title_activity_customer_recommendation">Empfehlung</string>
     <string name="title_activity_customer_restaurantOverview">Restaurant Übersicht</string>
-    <string name="prompt_username">Restaurant-Name</string>
-    <string name="prompt_password">Passwort</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">Anmelden</string>
     <string name="action_sign_in_short">Anmelden</string>
     <string name="welcome">"Willkommen! "</string>
@@ -34,7 +34,7 @@
     <string name="restaurant_name">Tonys Tacos</string>
     <string name="restaurant_address_streetNumber">Straße 1</string>
     <string name="restaurant_address_zipCodeCity">12345 Stadt</string>
-    <string name="restaurant_address_country">Deutschland</string>
+    <string name="restaurant_address_country">Land</string>
     <string name="restaurant_distance_label">Entfernung</string>
     <string name="restaurant_distance_value">1,3 km</string>
     <string name="restaurant_walking_distance">20 min</string>
@@ -58,7 +58,6 @@
     </string>
     <string name="rating_title_2">inakzeptable lieferdauer :(</string>
     <string name="rating_title_3">unfreundliche Bedienung</string>
-    <string name="startseite">Startseite</string>
     <string name="name_des_restaurants">Name des Restaurants</string>
     <string name="stra_e">Straße</string>
     <string name="hausnummer">Hausnummer</string>
