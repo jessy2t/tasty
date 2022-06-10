@@ -8,6 +8,8 @@ import android.text.SpannableString;
 import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.View;
+import android.widget.CheckBox;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
@@ -28,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         //mToolbar = findViewById(R.id.main_toolbar);
         //setSupportActionBar(mToolbar);
@@ -56,5 +57,21 @@ public class MainActivity extends AppCompatActivity {
         RestaurantDB = new RestaurantDBHelper(this);
         OpeningHoursDB = new OpeningHoursDBHelper(this);
         RatingDB = new RatingDBHelper(this);
+    }
+
+    public void onCheckboxClicked(View view) {
+
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.checkbox_indisch:
+                if (checked);
+                else
+                    break;
+            case R.id.checkbox_mexikanisch:
+                if (checked);
+                else
+                    break;
+        }
     }
 }
