@@ -30,16 +30,6 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="20sp" />
-
-        <SeekBar
-            android:id="@+id/seekBar3"
-            android:layout_width="match_parent"
-            android:layout_height="62dp" />
-
-        <SeekBar
-            android:id="@+id/seekBar4"
-            android:layout_width="match_parent"
-            android:layout_height="63dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -61,24 +51,12 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="20sp" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+        <ListView
+            android:id="@+id/praeferenzen_kategorie_liste"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
 
-            <CheckBox android:id="@+id/checkbox_indisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/praeferenzen_kategorie_indisch"
-                android:onClick="onCheckboxClicked"/>
-
-            <CheckBox android:id="@+id/checkbox_mexikanisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/praeferenzen_kategorie_mexikanisch"
-                android:onClick="onCheckboxClicked"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -100,6 +78,12 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/praeferenzen_ernaehrungsweise_liste"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
 
     </LinearLayout>
 
