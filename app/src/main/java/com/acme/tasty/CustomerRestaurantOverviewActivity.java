@@ -1,9 +1,11 @@
 package com.acme.tasty;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
@@ -109,5 +111,10 @@ public class CustomerRestaurantOverviewActivity extends AppCompatActivity {
 
     public void sortByLowestRating(View view) {
         ratingsFragment.sortByLowest();
+    }
+
+    public void navigateToHome(MenuItem item){
+        Intent intent = new Intent(this, CustomerStartActivity.class);
+        startActivity(intent);
     }
 }

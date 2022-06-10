@@ -2,10 +2,11 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/startseite"
-          android:icon="@drawable/ic_icons8_zuhause"
-          app:showAsAction="always"
-          />
+    <item
+            android:title="@string/startseite"
+            android:icon="@drawable/ic_icons8_zuhause"
+            app:showAsAction="always"
+            android:onClick="navigateToHome" />
 
     <item android:icon="@drawable/ic_baseline_account_circle_24" android:title="@string/sample_name"/>
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,5 +59,10 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
 
     public void closePopUp(View view) {
         PopupWindowService.closePopUp(_popupWindow, view);
+    }
+
+    public void navigateToHome(MenuItem item){
+        Intent intent = new Intent(this, CustomerStartActivity.class);
+        startActivity(intent);
     }
 }
