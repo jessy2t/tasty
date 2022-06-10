@@ -13,7 +13,7 @@
     <item android:title="@string/menu_item_1" android:icon="@drawable/user"
             />
     <item android:title="@string/menu_item_2" android:icon="@drawable/like"
-            />
+          android:onClick="navigateToPreferences"/>
     <item android:title="@string/menu_item_3" android:icon="@drawable/creditcard"
             />
 

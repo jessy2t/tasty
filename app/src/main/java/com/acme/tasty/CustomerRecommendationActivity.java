@@ -32,8 +32,11 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         restaurantName = findViewById(R.id.restaurant_suggestion);
         return true;
+    }
 
-
+    public void navigateToPreferences(MenuItem menu) {
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
+        startActivity(intent);
     }
 
     public void clickOnRestaurantRecommendation(View view) {
