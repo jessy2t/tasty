@@ -8,6 +8,8 @@ import android.text.SpannableString;
 import android.text.style.ImageSpan;
 import android.view.Menu;
 import android.view.View;
+import android.widget.CheckBox;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
@@ -56,5 +58,10 @@ public class MainActivity extends AppCompatActivity {
         RestaurantDB = new RestaurantDBHelper(this);
         OpeningHoursDB = new OpeningHoursDBHelper(this);
         RatingDB = new RatingDBHelper(this);
+    }
+
+    public void navigateToCustomerPreferences(View view){
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
+        startActivity(intent);
     }
 }
