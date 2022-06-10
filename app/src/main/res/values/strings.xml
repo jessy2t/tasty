@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Tasty</string>
+
     <string name="logo_description">tasty app logo</string>
     <string name="restaurant_label">Restaurant</string>
     <string name="customer_label">Bestellender</string>
@@ -43,11 +44,11 @@
     <string name="weekday_mondayToFriday">Montag - Freitag</string>
     <string name="weekday_saturday">Samstag</string>
     <string name="weekday_sunday">Sonntag</string>
-    <string name="opening_hours">07:00 \ 17:00</string>
+    <string name="opening_hours">07:00 – 17:00</string>
     <string name="delivery_label">Lieferung</string>
     <string name="reservation_label">Reservierung</string>
     <string name="average_rating">3,5</string>
-    <string name="sort_by_label">Sotieren nach</string>
+    <string name="sort_by_label">Sortieren nach</string>
     <string name="ratings_sort_by_newest_label">Neueste</string>
     <string name="ratings_sort_by_highest_label">Höchste</string>
     <string name="ratings_sort_by_lowest_label">Niedrigste</string>
@@ -86,11 +87,36 @@
     <string name="e_mail">E-Mail</string>
     <string name="registrieren">Registrieren</string>
     <string name="passwort_wiederholen">Passwort wiederholen</string>
-
     <string name="menu_item_1">Meine Daten</string>
     <string name="menu_item_2">Meine Präferenzen</string>
     <string name="menu_item_3">Meine Zahlungswege</string>
     <string name="sample_name">Max Mustermann</string>
-
-
+    <string name="praeferenzen_preisramen">Preisramen</string>
+    <string name="praeferenzen_kategorie">Kategorie</string>
+    <string name="praeferenzen_ernaehrungsweise">Ernährungsweise</string>
+    <string name="praeferenzen_kategorie_mexikanisch">mexikanisch</string>
+    <string name="praeferenzen_kategorie_indisch">indisch</string>
+    <string name="praeferenzen_ernaehrungsweise_vegetarisch">vegetarisch</string>
+    <string name="praeferenzen_ernaehrungsweise_vegan">vegan</string>
+    <string-array name="präferenzen_kategorie_array">
+        <item>mexikanisch</item>
+        <item>indisch</item>
+        <item>indonesisch</item>
+        <item>italienisch</item>
+        <item>deutsch</item>
+        <item>amerikanisch</item>
+        <item>chinesisch</item>
+    </string-array>
+    <string-array name="präferenzen_ernaehrungsweise_array">
+        <item>vegetarisch</item>
+        <item>vegan</item>
+        <item>glutenfrei</item>
+        <item>laktosefrei</item>
+        <item>frutarisch</item>
+    </string-array>
+    <string name="Edit">Edit</string>
+    <string name="Save">Save</string>
+    <string name="lowest_price">minimum</string>
+    <string name="highest_price">maximum</string>
+    <string name="between">to</string>
 </resources>
