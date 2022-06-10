@@ -17,22 +17,6 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_praeferenzen_uebersicht);
 
         populateListView();
-
-        Button b1 = (Button) findViewById(R.id.kategorie_aendern);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateToPreferencesCategory();
-            }
-        });
-
-        Button b2 = (Button) findViewById(R.id.ernaehrungsweise_aendern);
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateToPreferencesMealtype();
-            }
-        });
     }
 
     public void populateListView(){
@@ -47,12 +31,12 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
         list.setAdapter(adapter);
     }
 
-    public void navigateToPreferencesCategory(){
+    public void navigateToPreferencesCategory(View v){
         Intent intent = new Intent(this, CustomerPreferencesCategoryActivity.class);
         startActivity(intent);
     }
 
-    public void navigateToPreferencesMealtype(){
+    public void navigateToPreferencesMealtype(View v){
         Intent intent = new Intent(this, CustomerPreferencesMealtypeActivity.class);
         startActivity(intent);
     }

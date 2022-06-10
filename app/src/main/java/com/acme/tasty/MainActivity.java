@@ -58,4 +58,9 @@ public class MainActivity extends AppCompatActivity {
         OpeningHoursDB = new OpeningHoursDBHelper(this);
         RatingDB = new RatingDBHelper(this);
     }
+
+    public void navigateToCustomerPreferences(View view){
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
+        startActivity(intent);
+    }
 }
