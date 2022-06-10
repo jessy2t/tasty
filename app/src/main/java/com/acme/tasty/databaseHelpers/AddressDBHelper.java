@@ -26,6 +26,7 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         db.execSQL("create table address(address_id INTEGER primary key, street TEXT," +
                 "house_number INTEGER, zip_code TEXT, foreign key (zip_code) references city (zip_code))");
         insertData("Schlemmerstraße", 25, "12345", db);
+        insertData("Burgerallee", 18, "54321", db);
     }
 
     @Override

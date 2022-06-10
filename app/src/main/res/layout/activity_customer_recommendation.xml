@@ -35,7 +35,7 @@
             android:textStyle="bold"
             android:textColor="#94cc88"/>
     <TextView
-            android:text="Restaurant Name"
+            android:text="Cooles Restaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
             app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="250dp"
             android:onClick="clickOnRestaurantRecommendation"/>
     <TextView
-            android:text="Meal Name"
+            android:text="Super Sparmenü"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

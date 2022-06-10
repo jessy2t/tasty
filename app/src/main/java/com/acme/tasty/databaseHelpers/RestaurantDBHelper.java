@@ -23,6 +23,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
                 "attributes_id INTEGER, address_id INTEGER, foreign key(attributes_id) references " +
                 "attributes(attributes_id), foreign key(address_id) references address(address_id))");
         insertData("Tony's Tacos", 1, 1, db);
+        insertData("Billy's Burger", 2, 2, db);
     }
 
     @Override

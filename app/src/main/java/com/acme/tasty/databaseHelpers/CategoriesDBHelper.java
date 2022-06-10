@@ -21,6 +21,7 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         db.execSQL("create table categories(categories_id INTEGER primary key, mexican BOOLEAN," +
                 "indian BOOLEAN, indonesian BOOLEAN, italian BOOLEAN, german BOOLEAN, american BOOLEAN, chinese BOOLEAN)");
         insertData(true, false, false, false, false, false, false, db);
+        insertData(false, false, false, false, false, true, false, db);
     }
 
     @Override

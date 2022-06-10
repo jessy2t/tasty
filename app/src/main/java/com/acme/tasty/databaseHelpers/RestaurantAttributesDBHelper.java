@@ -27,6 +27,8 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
                 "categories(categories_id))");
         insertData(true, true, true, false,
                 true, true, 1, db);
+        insertData(true, true, true, false,
+                true, true, 2, db);
     }
 
     @Override
