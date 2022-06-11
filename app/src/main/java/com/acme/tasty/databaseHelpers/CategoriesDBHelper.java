@@ -22,6 +22,11 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
                 "indian BOOLEAN, indonesian BOOLEAN, italian BOOLEAN, german BOOLEAN, american BOOLEAN, chinese BOOLEAN)");
         insertData(true, false, false, false, false, false, false, db);
         insertData(false, false, false, false, false, true, false, db);
+        insertData(false, true, false, false, false, false, false, db);
+        insertData(false, false, true, false, false, false, false, db);
+        insertData(false, false, false, true, false, false, false, db);
+        insertData(false, false, false, false, true, false, false, db);
+        insertData(false, false, false, false, false, false, true, db);
     }
 
     @Override
