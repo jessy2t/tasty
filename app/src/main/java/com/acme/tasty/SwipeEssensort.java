@@ -14,7 +14,12 @@ public class SwipeEssensort extends AppCompatActivity {
         setContentView(R.layout.activity_swipe_essensort);
     }
 
-    public void navigateToSwipeEmpfehlungsart(View view){
+    public void navigateToSwipeEmpfehlungsart_Zuhause(View view){
+        Intent intent = new Intent(this, SwipeEmpfehlungsart.class);
+        startActivity(intent);
+    }
+
+    public void navigateToSwipeEmpfehlungsart_Restaurant(View view){
         Intent intent = new Intent(this, SwipeEmpfehlungsart.class);
         startActivity(intent);
     }

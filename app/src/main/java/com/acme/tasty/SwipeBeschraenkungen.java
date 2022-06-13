@@ -14,7 +14,17 @@ public class SwipeBeschraenkungen extends AppCompatActivity {
         setContentView(R.layout.activity_swipe_beschraenkungen);
     }
 
-    public void navigateToSwipePreisrahmen(View view){
+    public void navigateToSwipePreisrahmen_Vegetarisch(View view){
+        Intent intent = new Intent(this, SwipePreisrahmen.class);
+        startActivity(intent);
+    }
+
+    public void navigateToSwipePreisrahmen_Vegan(View view){
+        Intent intent = new Intent(this, SwipePreisrahmen.class);
+        startActivity(intent);
+    }
+
+    public void navigateToSwipePreisrahmen_Fleisch(View view){
         Intent intent = new Intent(this, SwipePreisrahmen.class);
         startActivity(intent);
     }

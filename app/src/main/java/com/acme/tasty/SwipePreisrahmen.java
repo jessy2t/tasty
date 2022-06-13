@@ -21,7 +21,7 @@ public class SwipePreisrahmen extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                seekBarValue.setText(String.valueOf(progress));
+                seekBarValue.setText(String.valueOf(progress) + " €");
             }
 
             @Override
