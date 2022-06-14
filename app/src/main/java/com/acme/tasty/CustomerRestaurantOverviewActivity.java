@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupWindow;
@@ -61,6 +62,13 @@ public class CustomerRestaurantOverviewActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setText("Bewertungen");
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
     private class ViewPagerAdapter extends FragmentPagerAdapter {
         private List<Fragment> fragments = new ArrayList<>();
         private List<String> fragmentTitles = new ArrayList<>();
@@ -115,6 +123,11 @@ public class CustomerRestaurantOverviewActivity extends AppCompatActivity {
 
     public void navigateToHome(MenuItem item){
         Intent intent = new Intent(this, CustomerStartActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToPreferences(MenuItem item){
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
         startActivity(intent);
     }
 }
