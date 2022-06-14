@@ -44,11 +44,29 @@ public class DietDBHelper extends SQLiteOpenHelper {
         values.put("vegan", vegan);
         values.put("carnivore", carnivore);
         values.put("glutenfree", glutenfree);
-        values.put("lactosefee", lactosefree);
+        values.put("lactosefree", lactosefree);
         values.put("fruitarian", fruitarian);
 
         long result = db.insert("diet", null, values);
         if(result == -1) return false;
+        else
+            return true;
+    }
+
+    public Boolean updateData(Boolean vegetarian, Boolean vegan, Boolean carnivore, Boolean glutenfree,
+                              Boolean lactosefree, Boolean fruitarian) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("vegetarian", vegetarian);
+        values.put("vegan", vegan);
+        values.put("carnivore", carnivore);
+        values.put("glutenfree", glutenfree);
+        values.put("lactosefree", lactosefree);
+        values.put("fruitarian", fruitarian);
+
+        Integer result = db.update("diet", values, "diet_id=1", null);
+        if(result == 0) return false;
         else
             return true;
     }
