@@ -12,8 +12,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.acme.tasty.dataModels.SuggestionBasisDataModel;
 import com.acme.tasty.popup.PopupWindowService;
 
-import static com.acme.tasty.RestaurantLoginActivity.EXTRA_USERNAME;
-
 public class CustomerRecommendationActivity extends AppCompatActivity {
     public static final String RESTAURANT_SUGGESTION = "com.acme.tasty.RESTAURANT_SUGGESTION";
     private PopupWindow _popupWindow;
@@ -27,8 +25,7 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
 
-        restaurantName = getRestaurantFromSuggestionBasis();
-        ((TextView)findViewById(R.id.restaurant_suggestion)).setText(restaurantName);
+        generateNewRecommendation(null);
     }
 
     @Override
@@ -36,6 +33,11 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    public void generateNewRecommendation(View view) {
+        restaurantName = getRestaurantFromSuggestionBasis();
+        ((TextView)findViewById(R.id.restaurant_suggestion)).setText(restaurantName);
     }
 
     private String getRestaurantFromSuggestionBasis() {
@@ -53,10 +55,6 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
         _popupWindow = PopupWindowService.getOrderConfirmationPopupWindow(inflater, view);
-    }
-
-    public void clickOnNewRecommendation(View view) {
-        //generate new recommendation
     }
 
     public void clickOnNewInput(View view) {
