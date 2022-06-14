@@ -62,6 +62,7 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
+        values.put("categories_id", 100);
         values.put("mexican", mexican);
         values.put("indian", indian);
         values.put("indonesian", indonesian);
@@ -72,6 +73,25 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
 
         long result = db.insert("categories", null, values);
         if(result == -1) return false;
+        else
+            return true;
+    }
+
+    public Boolean updateData(Boolean mexican, Boolean indian, Boolean indonesian, Boolean italian, Boolean german,
+                              Boolean american, Boolean chinese) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put("mexican", mexican);
+        values.put("indian", indian);
+        values.put("indonesian", indonesian);
+        values.put("italian", italian);
+        values.put("german", german);
+        values.put("american", american);
+        values.put("chinese", chinese);
+
+        Integer result = db.update("categories", values, "categories_id=100", null);
+        if(result == 0) return false;
         else
             return true;
     }

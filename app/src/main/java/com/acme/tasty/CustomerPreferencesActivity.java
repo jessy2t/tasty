@@ -18,6 +18,7 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
     public static DietDBHelper DietDB;
     private Boolean priceRangeExists;
     public static Boolean dietExists;
+    public static Boolean categoryExists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
