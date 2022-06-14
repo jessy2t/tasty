@@ -29,6 +29,16 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
                 true, true, 1, db);
         insertData(true, true, true, false,
                 true, true, 2, db);
+        insertData(false, true, true, false,
+                true, false, 6, db);
+        insertData(true, false, true, false,
+                true, true, 3, db);
+        insertData(false, false, true, false,
+                true, true, 7, db);
+        insertData(true, true, true, false,
+                true, true, 4, db);
+        insertData(true, true, true, false,
+                true, true, 5, db);
     }
 
     @Override
