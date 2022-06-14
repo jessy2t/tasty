@@ -39,11 +39,6 @@
             android:label="@string/title_activity_customer_recommendation"
             android:parentActivityName=".CustomerSwipeActivity" />
         <activity
-            android:name=".CustomerSwipeActivity"
-            android:exported="true"
-            android:label="@string/title_activity_customer_swipe"
-            android:parentActivityName=".CustomerStartActivity" />
-        <activity
             android:name=".RestaurantRegistration2Activity"
             android:exported="true"
             android:label="@string/title_activity_restaurant_registration"
