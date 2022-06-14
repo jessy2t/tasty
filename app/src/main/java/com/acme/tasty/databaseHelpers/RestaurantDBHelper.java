@@ -44,7 +44,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         values.put("address_id", addressId);
 
         long result = db.insert("restaurant", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }
@@ -58,7 +58,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         values.put("address_id", addressId);
 
         long result = db.insert("restaurant", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

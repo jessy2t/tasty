@@ -46,7 +46,7 @@ public class SuggestionDBHelper extends SQLiteOpenHelper {
         values.put("suggestion_basis_id", suggestionBasisId);
 
         long result = db.insert("suggestion", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

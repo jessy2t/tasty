@@ -65,7 +65,7 @@ public class RatingDBHelper extends SQLiteOpenHelper {
         values.put("restaurant", restaurant);
 
         long result = db.insert("rating", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

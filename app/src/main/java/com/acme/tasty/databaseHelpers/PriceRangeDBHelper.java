@@ -36,19 +36,19 @@ public class PriceRangeDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put("diet_id", 1);
+        values.put("price_range_id", 1);
         values.put("min_price", minPrice);
         values.put("max_price", maxPrice);
 
         long result = db.insert("price_range", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }
 
     public PriceRangeDataModel getPriceRange() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from price_range where diet_id=?",
+        Cursor cursor = db.rawQuery("select * from price_range where price_range_id=?",
                 new String[] {String.valueOf(1)});
         if(cursor.getCount() <= 0)
             return null;

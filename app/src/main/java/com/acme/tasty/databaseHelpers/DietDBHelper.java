@@ -48,7 +48,7 @@ public class DietDBHelper extends SQLiteOpenHelper {
         values.put("fruitarian", fruitarian);
 
         long result = db.insert("diet", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

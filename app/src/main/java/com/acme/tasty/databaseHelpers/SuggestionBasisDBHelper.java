@@ -54,7 +54,7 @@ public class SuggestionBasisDBHelper extends SQLiteOpenHelper {
         values.put("fixed_price_range_id", fixedPriceRangeId);
 
         long result = db.insert("price_range", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

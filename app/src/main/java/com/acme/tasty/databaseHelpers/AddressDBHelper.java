@@ -47,7 +47,7 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         values.put("zip_code", zipCode);
 
         long result = db.insert("address", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }
@@ -61,7 +61,7 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         values.put("zip_code", zipCode);
 
         long result = db.insert("address", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

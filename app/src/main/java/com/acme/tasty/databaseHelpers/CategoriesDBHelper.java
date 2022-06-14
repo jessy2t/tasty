@@ -52,7 +52,7 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         values.put("chinese", chinese);
 
         long result = db.insert("categories", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }
@@ -71,7 +71,7 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         values.put("chinese", chinese);
 
         long result = db.insert("categories", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

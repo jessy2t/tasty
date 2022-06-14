@@ -47,7 +47,7 @@ public class OpeningHoursDBHelper extends SQLiteOpenHelper {
         values.put("end_time", endTime);
 
         long result = db.insert("opening_hours", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

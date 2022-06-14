@@ -50,7 +50,7 @@ public class RestaurantOwnerDBHelper extends SQLiteOpenHelper {
         values.put("mail", mail);
 
         long result = db.insert("restaurant_owner", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

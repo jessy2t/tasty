@@ -45,7 +45,7 @@ public class CityDBHelper extends SQLiteOpenHelper {
         values.put("city_name", city);
 
         long result = db.insert("city", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }
@@ -63,7 +63,7 @@ public class CityDBHelper extends SQLiteOpenHelper {
         values.put("city_name", city);
 
         long result = db.insert("city", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }

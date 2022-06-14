@@ -74,7 +74,7 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
         values.put("categories_id", categories_id);
 
         long result = db.insert("attributes", null, values);
-        if(result == 1) return false;
+        if(result == -1) return false;
         else
             return true;
     }
