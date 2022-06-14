@@ -7,15 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import com.acme.tasty.databaseHelpers.DietDBHelper;
+import com.acme.tasty.databaseHelpers.PriceRangeDBHelper;
+import com.acme.tasty.databaseHelpers.SuggestionBasisDBHelper;
 
 public class SwipePreisrahmen extends AppCompatActivity {
-
+    public static SuggestionBasisDBHelper SuggestionBasisDB;
+    public static DietDBHelper DietDB;
+    public static PriceRangeDBHelper PriceRangeDB;
+    private SeekBar seekBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_preisrahmen);
 
-        SeekBar seekBar = (SeekBar)findViewById(R.id.seekbar);
+        seekBar = (SeekBar)findViewById(R.id.seekbar);
         final TextView seekBarValue = (TextView)findViewById(R.id.seekbarvalue);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -37,7 +43,17 @@ public class SwipePreisrahmen extends AppCompatActivity {
     }
 
     public void navigateToCustomerRecommendation(View view) {
-        Intent intent = new Intent(this, CustomerRecommendationActivity.class);
-        startActivity(intent);
+        SuggestionBasisDB = new SuggestionBasisDBHelper(this);
+        DietDB = new DietDBHelper(this);
+        PriceRangeDB = new PriceRangeDBHelper(this);
+        String deliveryOrReservation = getIntent().getStringExtra(SwipeEssensort.DELIVERY_OR_RESERVATION);
+        String foodOrRestaurantSuggestion = getIntent().getStringExtra(SwipeEmpfehlungsart.FOOD_OR_RESTAURANT_SUGGESTION);
+        String dietPreference = getIntent().getStringExtra(SwipeBeschraenkungen.DIET_PREFERENCE);
+
+        SuggestionBasisDB.insertData(deliveryOrReservation, foodOrRestaurantSuggestion, dietPreference, 0,
+                seekBar.getProgress());
+
+        Intent nextIntent = new Intent(this, CustomerRecommendationActivity.class);
+        startActivity(nextIntent);
     }
 }

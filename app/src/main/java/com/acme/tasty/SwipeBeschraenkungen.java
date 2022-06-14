@@ -8,6 +8,8 @@ import android.view.View;
 
 public class SwipeBeschraenkungen extends AppCompatActivity {
 
+    public static final String DIET_PREFERENCE = "com.acme.tasty.DIET_PREFERENCE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,17 +17,35 @@ public class SwipeBeschraenkungen extends AppCompatActivity {
     }
 
     public void navigateToSwipePreisrahmen_Vegetarisch(View view){
-        Intent intent = new Intent(this, SwipePreisrahmen.class);
-        startActivity(intent);
+        String deliveryOrReservation = getIntent().getStringExtra(SwipeEssensort.DELIVERY_OR_RESERVATION);
+        String foodOrRestaurantSuggestion = getIntent().getStringExtra(SwipeEmpfehlungsart.FOOD_OR_RESTAURANT_SUGGESTION);
+
+        Intent nextIntent = new Intent(this, SwipePreisrahmen.class);
+        nextIntent.putExtra(SwipeEssensort.DELIVERY_OR_RESERVATION, deliveryOrReservation);
+        nextIntent.putExtra(SwipeEmpfehlungsart.FOOD_OR_RESTAURANT_SUGGESTION, foodOrRestaurantSuggestion);
+        nextIntent.putExtra(DIET_PREFERENCE, "vegetarian");
+        startActivity(nextIntent);
     }
 
     public void navigateToSwipePreisrahmen_Vegan(View view){
-        Intent intent = new Intent(this, SwipePreisrahmen.class);
-        startActivity(intent);
+        String deliveryOrReservation = getIntent().getStringExtra(SwipeEssensort.DELIVERY_OR_RESERVATION);
+        String foodOrRestaurantSuggestion = getIntent().getStringExtra(SwipeEmpfehlungsart.FOOD_OR_RESTAURANT_SUGGESTION);
+
+        Intent nextIntent = new Intent(this, SwipePreisrahmen.class);
+        nextIntent.putExtra(SwipeEssensort.DELIVERY_OR_RESERVATION, deliveryOrReservation);
+        nextIntent.putExtra(SwipeEmpfehlungsart.FOOD_OR_RESTAURANT_SUGGESTION, foodOrRestaurantSuggestion);
+        nextIntent.putExtra(DIET_PREFERENCE, "vegan");
+        startActivity(nextIntent);
     }
 
     public void navigateToSwipePreisrahmen_Fleisch(View view){
-        Intent intent = new Intent(this, SwipePreisrahmen.class);
-        startActivity(intent);
+        String deliveryOrReservation = getIntent().getStringExtra(SwipeEssensort.DELIVERY_OR_RESERVATION);
+        String foodOrRestaurantSuggestion = getIntent().getStringExtra(SwipeEmpfehlungsart.FOOD_OR_RESTAURANT_SUGGESTION);
+
+        Intent nextIntent = new Intent(this, SwipePreisrahmen.class);
+        nextIntent.putExtra(SwipeEssensort.DELIVERY_OR_RESERVATION, deliveryOrReservation);
+        nextIntent.putExtra(SwipeEmpfehlungsart.FOOD_OR_RESTAURANT_SUGGESTION, foodOrRestaurantSuggestion);
+        nextIntent.putExtra(DIET_PREFERENCE, "carnivore");
+        startActivity(nextIntent);
     }
 }
