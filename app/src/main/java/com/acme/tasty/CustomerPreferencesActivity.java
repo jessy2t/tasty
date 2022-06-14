@@ -1,7 +1,10 @@
 package com.acme.tasty;
 
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +12,14 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.acme.tasty.dataModels.CategoriesDataModel;
+import com.acme.tasty.dataModels.DietDataModel;
 import com.acme.tasty.dataModels.PriceRangeDataModel;
 import com.acme.tasty.databaseHelpers.DietDBHelper;
 import com.acme.tasty.databaseHelpers.PriceRangeDBHelper;
+
+import java.util.ArrayList;
 
 public class CustomerPreferencesActivity extends AppCompatActivity {
     public static PriceRangeDBHelper PriceRangeDB;
@@ -28,8 +36,18 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
         PriceRangeDB = new PriceRangeDBHelper(this);
         DietDB = new DietDBHelper(this);
 
+        Toolbar toolbar = findViewById(R.id.preferences_toolbar);
+        setSupportActionBar(toolbar);
+
         getPriceRangeValues();
         populateListView();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
     private void getPriceRangeValues() {
@@ -45,24 +63,62 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
     }
 
     public void populateListView(){
-        String[] ernaehrungsform = {"vegan", "vegetarisch", "laktosefrei"};
-        String[] kategorie = {"mexikanisch", "chinesich", "italienisch"};
+        ArrayList<String> ernaehrungsform = new ArrayList<>();
+        ArrayList<String> kategorie = new ArrayList<>();
 
-        ArrayAdapter<String> ernaehrungsformAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                ernaehrungsform);
+        DietDataModel diet = CustomerPreferencesActivity.DietDB.getDiet();
+        if(diet == null)
+            CustomerPreferencesActivity.dietExists = false;
+        else {
+            CustomerPreferencesActivity.dietExists = true;
 
-        ArrayAdapter<String> kategorieAdapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_list_item_1,
-                kategorie);
+            if (diet.Vegetarian)
+                ernaehrungsform.add("vergetarisch");
+            if (diet.Vegan)
+                ernaehrungsform.add("vegan");
+            if (diet.Glutenfree)
+                ernaehrungsform.add("glutenfrei");
+            if (diet.Fruitarian)
+                ernaehrungsform.add("frutarisch");
+            if (diet.Lactosefree)
+                ernaehrungsform.add("laktosefrei");
+        }
 
-        ListView ernaehrungsformList = (ListView) findViewById(R.id.praeferenzen_ernaehrungsweise_liste);
-        ernaehrungsformList.setAdapter(ernaehrungsformAdapter);
+        CategoriesDataModel categories = MainActivity.CategoriesDB.getCategories(100);
+        if(categories == null)
+            CustomerPreferencesActivity.categoryExists = false;
+        else {
+            CustomerPreferencesActivity.categoryExists = true;
 
-        ListView kategorieList = (ListView) findViewById(R.id.praeferenzen_kategorie_liste);
-        kategorieList.setAdapter(kategorieAdapter);
+            if (categories.Indian)
+                kategorie.add("indisch");
+            if (categories.Mexican)
+                kategorie.add("mexicanisch");
+            if (categories.American)
+                kategorie.add("amerikanisch");
+            if (categories.Chinese)
+                kategorie.add("chinesich");
+            if (categories.German)
+                kategorie.add("deutsch");
+            if (categories.Italian)
+                kategorie.add("italienisch");
+
+            ArrayAdapter<String> ernaehrungsformAdapter = new ArrayAdapter<>(
+                    this,
+                    android.R.layout.simple_list_item_1,
+                    ernaehrungsform);
+
+            ArrayAdapter<String> kategorieAdapter = new ArrayAdapter<>(
+                    this,
+                    android.R.layout.simple_list_item_1,
+                    kategorie);
+
+            ListView ernaehrungsformList = findViewById(R.id.praeferenzen_ernaehrungsweise_liste);
+            ernaehrungsformList.setAdapter(ernaehrungsformAdapter);
+
+            ListView kategorieList = findViewById(R.id.praeferenzen_kategorie_liste);
+            kategorieList.setAdapter(kategorieAdapter);
+        }
     }
 
     public void saveToPreferencesPrice(View v){
@@ -107,6 +163,16 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
 
     public void navigateToPreferencesMealtype(View v){
         Intent intent = new Intent(this, CustomerPreferencesMealtypeActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToHome(MenuItem item){
+        Intent intent = new Intent(this, CustomerStartActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToPreferences(MenuItem item){
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
         startActivity(intent);
     }
 }

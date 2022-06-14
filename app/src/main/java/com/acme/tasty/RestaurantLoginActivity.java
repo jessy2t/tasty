@@ -20,7 +20,7 @@ public class RestaurantLoginActivity extends AppCompatActivity {
     private EditText usernameView;
     private EditText passwordView;
     private TextView validationMessageView;
-    private RestaurantOwnerDBHelper RestaurantOwnerDB;
+    public static RestaurantOwnerDBHelper RestaurantOwnerDB;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

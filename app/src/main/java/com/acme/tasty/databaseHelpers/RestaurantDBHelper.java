@@ -82,4 +82,22 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
 
         return new RestaurantDataModel(name, attributes, address);
     }
+
+    public RestaurantDataModel getRestaurantBySuggestionBasis(SuggestionBasisDataModel suggestionBasis) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //mit suggestionBasis umschreiben
+        Cursor cursor = db.rawQuery("select * from restaurant where restaurant_name=? order by random() limit 1",
+                new String[] {"Tony's Tacos"});
+        if(cursor.getCount() <= 0)
+            return null;
+
+        cursor.moveToFirst();
+        String name = cursor.getString(0);
+        Integer attributesId = cursor.getInt(1);
+        Integer addressId = cursor.getInt(2);
+        AddressDataModel address = MainActivity.AddressDB.getAddress(addressId);
+        RestaurantAttributesDataModel attributes = MainActivity.AttributesDB.getRestaurantAttributes(attributesId);
+
+        return new RestaurantDataModel(name, attributes, address);
+    }
 }

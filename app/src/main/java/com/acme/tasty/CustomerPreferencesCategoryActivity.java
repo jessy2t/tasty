@@ -2,13 +2,15 @@ package com.acme.tasty;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.acme.tasty.dataModels.CategoriesDataModel;
 
 public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
@@ -20,33 +22,45 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
     private CheckBox checkBox6;
     private CheckBox checkBox7;
 
-    private boolean [] status;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_praeferenzen_kategorie);
 
-        this.checkBox1 = (CheckBox) findViewById(R.id.checkBoxKat1);
-        this.checkBox2 = (CheckBox) findViewById(R.id.checkBoxKat2);
-        this.checkBox3 = (CheckBox) findViewById(R.id.checkBoxKat3);
-        this.checkBox4 = (CheckBox) findViewById(R.id.checkBoxKat4);
-        this.checkBox5 = (CheckBox) findViewById(R.id.checkBoxKat5);
-        this.checkBox6 = (CheckBox) findViewById(R.id.checkBoxKat6);
-        this.checkBox7 = (CheckBox) findViewById(R.id.checkBoxKat7);
+        Toolbar toolbar = findViewById(R.id.preferences_kategorie_toolbar);
+        setSupportActionBar(toolbar);
 
-        status = new boolean[7];
+        getCategoryPreferences();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    private void getCategoryPreferences(){
+        this.checkBox1 = findViewById(R.id.checkBoxKat1);
+        this.checkBox2 = findViewById(R.id.checkBoxKat2);
+        this.checkBox3 = findViewById(R.id.checkBoxKat3);
+        this.checkBox4 = findViewById(R.id.checkBoxKat4);
+        this.checkBox5 = findViewById(R.id.checkBoxKat5);
+        this.checkBox6 = findViewById(R.id.checkBoxKat6);
+        this.checkBox7 = findViewById(R.id.checkBoxKat7);
+
+        boolean[] status = new boolean[7];
         CategoriesDataModel categories = MainActivity.CategoriesDB.getCategories(100);
         if(categories == null)
             CustomerPreferencesActivity.categoryExists = false;
         else {
             CustomerPreferencesActivity.categoryExists = true;
-            Boolean indian = false;
-            Boolean mexican = false;
-            Boolean american = false;
-            Boolean chinese = false;
-            Boolean german = false;
-            Boolean italian = false;
+            boolean indian = false;
+            boolean mexican = false;
+            boolean american = false;
+            boolean chinese = false;
+            boolean german = false;
+            boolean italian = false;
 
             if(categories.Indian)
                 indian = true;
@@ -72,12 +86,7 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
             checkBox7.setChecked(italian);
         }
 
-        this.checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                checkAllCheckedChange(isChecked);
-            }
-        });
+        this.checkBox1.setOnCheckedChangeListener((buttonView, isChecked)-> checkAllCheckedChange(isChecked));
 
         if (checkBox2.isChecked()) {
             checkBox2.setChecked(true);
@@ -103,7 +112,7 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
             checkBox7.setChecked(true);
             status[6] = true;
         }
-        if (status[1] && status[2] && status[3] && status[4] && status[5] && status[6] == true){
+        if (status[1] && status[2] && status[3] && status[4] && status[5] && status[6]){
             checkBox1.setChecked(true);
         }
     }
@@ -119,12 +128,12 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
     }
 
     public void kategorie_speichern (View view){
-        Boolean indian = false;
-        Boolean mexican = false;
-        Boolean american = false;
-        Boolean chinese = false;
-        Boolean german = false;
-        Boolean italian = false;
+        boolean indian = false;
+        boolean mexican = false;
+        boolean american = false;
+        boolean chinese = false;
+        boolean german = false;
+        boolean italian = false;
 
         if (((CheckBox)findViewById(R.id.checkBoxKat1)).isChecked()){
             indian = true;
@@ -171,13 +180,22 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
 
         return MainActivity.CategoriesDB.insertData(mexican, indian, false, italian, german,
                 american, chinese);
-
     }
 
     private void navigateToPreferencesOverview(){
         Intent intent = new Intent(this, CustomerPreferencesActivity.class);
         Toast toast = Toast.makeText(getApplicationContext(), "Ihre Kategorie-Präferenzen wurden gespeichert.", Toast.LENGTH_LONG);
         toast.show();
+        startActivity(intent);
+    }
+
+    public void navigateToHome(MenuItem item){
+        Intent intent = new Intent(this, CustomerStartActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToPreferences(MenuItem item){
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
         startActivity(intent);
     }
 }

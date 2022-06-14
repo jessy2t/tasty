@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import com.acme.tasty.CustomerRecommendationActivity;
 import com.acme.tasty.MainActivity;
 import com.acme.tasty.R;
 import com.acme.tasty.RestaurantLoginActivity;
@@ -68,8 +69,9 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
     }
 
     private void setRestaurantData(View view) {
-        //String loginName = intent.getStringExtra(RestaurantLoginActivity.EXTRA_USERNAME);
-        RestaurantDataModel restaurant = MainActivity.RestaurantDB.getRestaurant("Tony's Tacos");
+        String restaurantSuggestion = getActivity().getIntent().getStringExtra(CustomerRecommendationActivity
+                .RESTAURANT_SUGGESTION);
+        RestaurantDataModel restaurant = MainActivity.RestaurantDB.getRestaurant(restaurantSuggestion);
 
         restaurantName.setText(restaurant.toString());
         restaurantStreet.setText(restaurant.Address.toString());
