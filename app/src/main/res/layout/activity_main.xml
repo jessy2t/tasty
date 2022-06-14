@@ -36,17 +36,17 @@
             app:layout_constraintTop_toBottomOf="@id/app_logo"
             android:layout_marginBottom="32dp"
             android:onClick="navigateToRestaurantLogin"/>
+
     <Button
-            android:id="@+id/customer_btn"
-            android:text="@string/customer_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/restaurant_btn"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_logo"
-            android:layout_marginBottom="32dp"
-            android:layout_marginStart="32dp"
-            android:onClick="navigateToCustomerStart"/>
+        android:id="@+id/customer_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:onClick="navigateToCustomerStart"
+        android:text="@string/customer_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/restaurant_btn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

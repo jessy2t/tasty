@@ -63,15 +63,16 @@
             android:layout_marginEnd="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="200dp">
+
         <Button
-                android:text="@string/reservation_delivery_label"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:id="@+id/reservation_delivery_btn"
-                app:layout_constraintTop_toTopOf="parent"
-                android:onClick="clickOnReservationOrDelivery"/>
+            android:id="@+id/reservation_delivery_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickOnReservationOrDelivery"
+            android:text="@string/reservation_delivery_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <Button
                 android:text="@string/new_recommendation_label"
                 android:layout_width="match_parent"

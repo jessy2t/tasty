@@ -17,6 +17,18 @@
             android:label="@string/title_activity_restaurant_login"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".SwipePreisrahmen"
+            android:exported="false" />
+        <activity
+            android:name=".SwipeBeschraenkungen"
+            android:exported="false" />
+        <activity
+            android:name=".SwipeEmpfehlungsart"
+            android:exported="false" />
+        <activity
+            android:name=".SwipeEssensort"
+            android:exported="false" />
+        <activity
             android:name=".CustomerRestaurantOverviewActivity"
             android:exported="true"
             android:label="@string/title_activity_customer_restaurantOverview"
