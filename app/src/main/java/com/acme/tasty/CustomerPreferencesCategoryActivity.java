@@ -176,7 +176,7 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
 
     private void navigateToPreferencesOverview(){
         Intent intent = new Intent(this, CustomerPreferencesActivity.class);
-        Toast toast = Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getApplicationContext(), "Ihre Kategorie-Präferenzen wurden gespeichert.", Toast.LENGTH_LONG);
         toast.show();
         startActivity(intent);
     }

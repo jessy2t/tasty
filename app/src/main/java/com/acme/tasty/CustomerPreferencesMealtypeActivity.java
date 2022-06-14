@@ -112,7 +112,7 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
 
     private void navigateToPreferencesOverview() {
         Intent intent = new Intent(this, CustomerPreferencesActivity.class);
-        Toast toast = Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(getApplicationContext(), "Ihre Ernährungsweise wurde gespeichert.", Toast.LENGTH_LONG);
         toast.show();
         startActivity(intent);
     }
