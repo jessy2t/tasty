@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tasty">
         <activity
-            android:name=".RestaurantRegistration3Acitivity"
+            android:name=".RestaurantRegistration2Acitivity"
             android:exported="false" />
         <activity
             android:name=".RestaurantLoginActivity"
@@ -39,7 +39,7 @@
             android:label="@string/title_activity_customer_recommendation"
             android:parentActivityName=".CustomerSwipeActivity" />
         <activity
-            android:name=".RestaurantRegistration2Activity"
+            android:name=".RestaurantRegistration1Activity"
             android:exported="true"
             android:label="@string/title_activity_restaurant_registration"
             android:parentActivityName=".RestaurantLoginActivity" />

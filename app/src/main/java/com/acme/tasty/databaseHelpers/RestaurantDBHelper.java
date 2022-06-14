@@ -24,6 +24,11 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
                 "attributes(attributes_id), foreign key(address_id) references address(address_id))");
         insertData("Tony's Tacos", 1, 1, db);
         insertData("Billy's Burger", 2, 2, db);
+        insertData("Hansi's Wurstbude", 3, 3, db);
+        insertData("Curry Murry", 3, 3, db);
+        insertData("Chinese Rises", 4, 4, db);
+        insertData("Indonesian Food", 5, 5, db);
+        insertData("Pizza Bellissima", 6, 6, db);
     }
 
     @Override
