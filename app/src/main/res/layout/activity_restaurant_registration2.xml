@@ -11,7 +11,7 @@
     tools:context=".RestaurantRegistration2Acitivity">
 
     <EditText
-        android:id="@+id/nameRestaurant"
+        android:id="@+id/inhaberVorname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameRestaurant" />
+        app:layout_constraintTop_toBottomOf="@+id/inhaberVorname" />
 
     <Button
         android:id="@+id/speichern"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/daten_zum_inhaber"
-        app:layout_constraintBottom_toTopOf="@+id/nameRestaurant"
+        app:layout_constraintBottom_toTopOf="@+id/inhaberVorname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -73,6 +73,21 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
     <EditText
+            android:id="@+id/username_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/prompt_username"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
         android:id="@+id/passwort"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -85,7 +100,7 @@
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/username_register" />
 
     <EditText
         android:id="@+id/passwort2"

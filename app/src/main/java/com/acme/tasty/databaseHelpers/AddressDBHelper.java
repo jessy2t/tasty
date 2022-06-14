@@ -8,10 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 import com.acme.tasty.dataModels.AddressDataModel;
 import com.acme.tasty.dataModels.CityDataModel;
-import com.acme.tasty.dataModels.RatingDataModel;
-import com.acme.tasty.dataModels.RestaurantDataModel;
-
-import java.util.ArrayList;
 
 public class AddressDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="address.db";
@@ -57,7 +53,7 @@ public class AddressDBHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public Boolean insertData(String street, Integer houseNumber, String zipCode) {
+    public Integer insertData(String street, Integer houseNumber, String zipCode) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -66,9 +62,9 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         values.put("zip_code", zipCode);
 
         long result = db.insert("address", null, values);
-        if(result == -1) return false;
+        if(result == -1) return 0;
         else
-            return true;
+            return (int) result;
     }
 
     public AddressDataModel getAddress(Integer addressId) {

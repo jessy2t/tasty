@@ -11,7 +11,7 @@
     tools:context=".RestaurantRegistration1Activity">
 
     <EditText
-        android:id="@+id/telefonnummerInhaber"
+        android:id="@+id/straße"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -114,26 +114,18 @@
                 tools:text="Vegan" />
 
             <CheckBox
-                android:id="@+id/checkBoxAsiatisch"
+                android:id="@+id/checkBoxIndisch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:text="@string/asiatisch"
-                tools:text="Asiatisch" />
+                android:text="@string/Indisch"
+                tools:text="Indisch" />
 
             <CheckBox
-                android:id="@+id/checkBoxJapanisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/japanisch"
-                tools:text="Japanisch" />
-
-            <CheckBox
-                android:id="@+id/checkBoxEuropäisch"
+                android:id="@+id/checkBoxIndonesisch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/europ_isch"
-                tools:text="Europäisch" />
+                tools:text="Indonesisch" />
 
             <CheckBox
                 android:id="@+id/checkBoxItalienisch"
@@ -143,11 +135,11 @@
                 tools:text="Italienisch" />
 
             <CheckBox
-                android:id="@+id/checkBoxGriechisch"
+                android:id="@+id/checkBoxDeutsch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/griechisch"
-                tools:text="Griechisch" />
+                android:text="@string/Deutsch"
+                tools:text="Deutsch" />
 
             <CheckBox
                 android:id="@+id/checkBoxMexikanisch"
@@ -155,6 +147,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mexikanisch"
                 tools:text="Mexikanisch" />
+
+            <CheckBox
+                android:id="@+id/checkBoxAmerikanisch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/praeferenzen_kategorie_amerikanisch"
+                tools:text="Amerikanisch" />
+
+            <CheckBox
+                android:id="@+id/checkBoxChinesisch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/praeferenzen_kategorie_chinesisch"
+                tools:text="Chinesisch" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

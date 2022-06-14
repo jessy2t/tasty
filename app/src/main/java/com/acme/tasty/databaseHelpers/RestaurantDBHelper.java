@@ -41,7 +41,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         db.execSQL("delete from restaurant");
     }
 
-    public Boolean insertData(String restaurantName, Integer attributesId, Integer addressId, SQLiteDatabase db) {
+    public long insertData(String restaurantName, Integer attributesId, Integer addressId, SQLiteDatabase db) {
         ContentValues values = new ContentValues();
 
         values.put("restaurant_name", restaurantName);
@@ -49,9 +49,9 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         values.put("address_id", addressId);
 
         long result = db.insert("restaurant", null, values);
-        if(result == -1) return false;
+        if(result == -1) return 0L;
         else
-            return true;
+            return result;
     }
 
     public Boolean insertData(String restaurantName, Integer attributesId, Integer addressId) {

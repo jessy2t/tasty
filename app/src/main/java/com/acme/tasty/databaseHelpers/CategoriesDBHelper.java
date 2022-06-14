@@ -114,4 +114,18 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
 
         return new CategoriesDataModel(mexican, indian, indonesian, italian, german, american, chinese);
     }
+
+    public Integer getId(Boolean mexican, Boolean indian, Boolean indonesian, Boolean italian, Boolean german,
+                         Boolean american, Boolean chinese) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from categories where mexican=? AND indian=? AND indonesian=? AND italian=? AND german=? AND american=? AND chinese=?",
+                new String[] {String.valueOf(mexican),String.valueOf(indian),String.valueOf(indonesian),String.valueOf(italian), String.valueOf(german),String.valueOf(american),String.valueOf(chinese)});
+        if(cursor.getCount() <= 0)
+            return null;
+
+        cursor.moveToFirst();
+        Integer id = cursor.getInt(0);
+
+        return id;
+    }
 }
