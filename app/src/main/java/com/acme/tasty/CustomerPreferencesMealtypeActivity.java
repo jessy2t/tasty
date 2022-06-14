@@ -2,6 +2,8 @@ package com.acme.tasty;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Checkable;
@@ -9,6 +11,8 @@ import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.acme.tasty.dataModels.DietDataModel;
 import com.acme.tasty.databaseHelpers.DietDBHelper;
 
@@ -20,35 +24,43 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
     private CheckBox checkBox5;
     private CheckBox checkBox6;
 
-    private boolean [] status;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_praeferenzen_ernaehrungsform);
 
+        Toolbar toolbar = findViewById(R.id.preferences_ernaehrungsform_toolbar);
+        setSupportActionBar(toolbar);
+
         getDietPreferences();
     }
 
-    private void getDietPreferences(){
-        this.checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
-        this.checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
-        this.checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
-        this.checkBox4 = (CheckBox) findViewById(R.id.checkBox4);
-        this.checkBox5 = (CheckBox) findViewById(R.id.checkBox5);
-        this.checkBox6 = (CheckBox) findViewById(R.id.checkBox6);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
 
-        status = new boolean[6];
+    private void getDietPreferences(){
+        this.checkBox1 = findViewById(R.id.checkBox1);
+        this.checkBox2 = findViewById(R.id.checkBox2);
+        this.checkBox3 = findViewById(R.id.checkBox3);
+        this.checkBox4 = findViewById(R.id.checkBox4);
+        this.checkBox5 = findViewById(R.id.checkBox5);
+        this.checkBox6 = findViewById(R.id.checkBox6);
+
+        boolean[] status = new boolean[6];
         DietDataModel diet = CustomerPreferencesActivity.DietDB.getDiet();
         if(diet == null)
             CustomerPreferencesActivity.dietExists = false;
         else {
             CustomerPreferencesActivity.dietExists = true;
-            Boolean vegetarisch = false;
-            Boolean vegan = false;
-            Boolean glutenfrei = false;
-            Boolean frutarisch = false;
-            Boolean laktosefrei = false;
+            boolean vegetarisch = false;
+            boolean vegan = false;
+            boolean glutenfrei = false;
+            boolean frutarisch = false;
+            boolean laktosefrei = false;
 
             if(diet.Vegetarian)
                 vegetarisch = true;
@@ -70,12 +82,7 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
             checkBox5.setChecked(frutarisch);
             checkBox6.setChecked(laktosefrei);
         }
-        this.checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                checkAllCheckedChange(isChecked);
-            }
-        });
+        this.checkBox1.setOnCheckedChangeListener((buttonView, isChecked) -> checkAllCheckedChange(isChecked));
 
         if (checkBox2.isChecked()) {
             checkBox2.setChecked(true);
@@ -112,11 +119,11 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
     }
 
     public void ernaehrungsweise_speichern (View view){
-        Boolean vegetarisch = false;
-        Boolean vegan = false;
-        Boolean glutenfrei = false;
-        Boolean frutarisch = false;
-        Boolean laktosefrei = false;
+        boolean vegetarisch = false;
+        boolean vegan = false;
+        boolean glutenfrei = false;
+        boolean frutarisch = false;
+        boolean laktosefrei = false;
 
         if (((CheckBox)findViewById(R.id.checkBox1)).isChecked()){
             vegetarisch = true;
@@ -164,6 +171,16 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CustomerPreferencesActivity.class);
         Toast toast = Toast.makeText(getApplicationContext(), "Ihre Ernährungsweise wurde gespeichert.", Toast.LENGTH_LONG);
         toast.show();
+        startActivity(intent);
+    }
+
+    public void navigateToHome(MenuItem item){
+        Intent intent = new Intent(this, CustomerStartActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToPreferences(MenuItem item){
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
         startActivity(intent);
     }
 }

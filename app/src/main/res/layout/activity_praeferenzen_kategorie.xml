@@ -7,11 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".CustomerPreferencesCategoryActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="20dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/preferences_kategorie_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
         android:id="@+id/titel_kategorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:text="@string/praeferenzen_kategorie"
         android:textSize="20sp"
         android:textStyle="bold"
