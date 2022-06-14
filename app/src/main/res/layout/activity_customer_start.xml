@@ -14,16 +14,16 @@
             tools:ignore="MissingConstraints"/>
 
     <Button
-            android:text="@string/recommendation_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/recommendation_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="200dp"
-            android:onClick="navigateToSwipeMechanism" />
+        android:id="@+id/recommendation_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:onClick="navigateToSwipeMechanism"
+        android:text="@string/recommendation_label"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
             android:layout_width="251dp"

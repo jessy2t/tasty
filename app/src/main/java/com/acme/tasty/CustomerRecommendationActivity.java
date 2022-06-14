@@ -51,7 +51,7 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
     }
 
     public void clickOnNewInput(View view) {
-        Intent intent = new Intent(this, CustomerSwipeActivity.class);
+        Intent intent = new Intent(this, SwipeEssensort.class);
         startActivity(intent);
     }
 

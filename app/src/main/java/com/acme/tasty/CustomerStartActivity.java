@@ -46,7 +46,7 @@ public class CustomerStartActivity extends AppCompatActivity {
     }
 
     public void navigateToSwipeMechanism(View view){
-        Intent intent = new Intent(this, CustomerSwipeActivity.class);
+        Intent intent = new Intent(this, SwipeEssensort.class);
         startActivity(intent);
     }
 
