@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.Checkable;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,15 @@ import com.acme.tasty.dataModels.DietDataModel;
 import com.acme.tasty.databaseHelpers.DietDBHelper;
 
 public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
+    private CheckBox checkBox1;
+    private CheckBox checkBox2;
+    private CheckBox checkBox3;
+    private CheckBox checkBox4;
+    private CheckBox checkBox5;
+    private CheckBox checkBox6;
+
+    private boolean [] status;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,18 +31,19 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
     }
 
     private void getDietPreferences(){
+        this.checkBox1 = (CheckBox) findViewById(R.id.checkBox1);
+        this.checkBox2 = (CheckBox) findViewById(R.id.checkBox2);
+        this.checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
+        this.checkBox4 = (CheckBox) findViewById(R.id.checkBox4);
+        this.checkBox5 = (CheckBox) findViewById(R.id.checkBox5);
+        this.checkBox6 = (CheckBox) findViewById(R.id.checkBox6);
+
+        status = new boolean[6];
         DietDataModel diet = CustomerPreferencesActivity.DietDB.getDiet();
         if(diet == null)
             CustomerPreferencesActivity.dietExists = false;
         else {
             CustomerPreferencesActivity.dietExists = true;
-            CheckBox allesCheckBox = findViewById(R.id.checkBox1);
-            CheckBox vegetarischCheckBox = findViewById(R.id.checkBox2);
-            CheckBox veganCheckBox = findViewById(R.id.checkBox3);
-            CheckBox glutenfreiCheckBox = findViewById(R.id.checkBox4);
-            CheckBox frutarischCheckBox = findViewById(R.id.checkBox5);
-            CheckBox laktosefreiCheckBox = findViewById(R.id.checkBox6);
-
             Boolean vegetarisch = false;
             Boolean vegan = false;
             Boolean glutenfrei = false;
@@ -51,14 +62,53 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
                 laktosefrei = true;
 
             if(vegetarisch && vegan && glutenfrei && frutarisch && laktosefrei)
-                allesCheckBox.setChecked(true);
+                checkBox1.setChecked(true);
 
-            vegetarischCheckBox.setChecked(vegetarisch);
-            veganCheckBox.setChecked(vegan);
-            glutenfreiCheckBox.setChecked(glutenfrei);
-            frutarischCheckBox.setChecked(frutarisch);
-            laktosefreiCheckBox.setChecked(laktosefrei);
+            checkBox2.setChecked(vegetarisch);
+            checkBox3.setChecked(vegan);
+            checkBox4.setChecked(glutenfrei);
+            checkBox5.setChecked(frutarisch);
+            checkBox6.setChecked(laktosefrei);
         }
+        this.checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                checkAllCheckedChange(isChecked);
+            }
+        });
+
+        if (checkBox2.isChecked()) {
+            checkBox2.setChecked(true);
+            status[1] = true;
+        }
+        if (checkBox3.isChecked()) {
+            checkBox3.setChecked(true);
+            status[2] = true;
+        }
+        if (checkBox4.isChecked()) {
+            checkBox4.setChecked(true);
+            status[3] = true;
+        }
+        if (checkBox5.isChecked()) {
+            checkBox5.setChecked(true);
+            status[4] = true;
+        }
+        if (checkBox6.isChecked()) {
+            checkBox6.setChecked(true);
+            status[5] = true;
+        }
+        if (status[1] && status[2] && status[3] && status[4] && status[5]){
+            checkBox1.setChecked(true);
+        }
+    }
+
+    private void checkAllCheckedChange(boolean isChecked)  {
+        this.checkBox1.setChecked(isChecked);
+        this.checkBox2.setChecked(isChecked);
+        this.checkBox3.setChecked(isChecked);
+        this.checkBox4.setChecked(isChecked);
+        this.checkBox5.setChecked(isChecked);
+        this.checkBox6.setChecked(isChecked);
     }
 
     public void ernaehrungsweise_speichern (View view){
