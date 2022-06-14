@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class SwipeEmpfehlungsart extends AppCompatActivity {
-
+    public static final String FOOD_OR_RESTAURANT_SUGGESTION = "com.acme.tasty.FOOD_OR_RESTAURANT_SUGGESTION";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,12 +15,20 @@ public class SwipeEmpfehlungsart extends AppCompatActivity {
     }
 
     public void navigateToSwipeBeschraenkungen_Restaurant(View view){
-        Intent intent = new Intent(this, SwipeBeschraenkungen.class);
-        startActivity(intent);
+        String deliveryOrReservation = getIntent().getStringExtra(SwipeEssensort.DELIVERY_OR_RESERVATION);
+
+        Intent nextIntent = new Intent(this, SwipeBeschraenkungen.class);
+        nextIntent.putExtra(SwipeEssensort.DELIVERY_OR_RESERVATION, deliveryOrReservation);
+        nextIntent.putExtra(FOOD_OR_RESTAURANT_SUGGESTION, "restaurant");
+        startActivity(nextIntent);
     }
 
     public void navigateToSwipeBeschraenkungen_Gericht(View view){
-        Intent intent = new Intent(this, SwipeBeschraenkungen.class);
-        startActivity(intent);
+        String deliveryOrReservation = getIntent().getStringExtra(SwipeEssensort.DELIVERY_OR_RESERVATION);
+
+        Intent nextIntent = new Intent(this, SwipeBeschraenkungen.class);
+        nextIntent.putExtra(SwipeEssensort.DELIVERY_OR_RESERVATION, deliveryOrReservation);
+        nextIntent.putExtra(FOOD_OR_RESTAURANT_SUGGESTION, "food");
+        startActivity(nextIntent);
     }
 }
