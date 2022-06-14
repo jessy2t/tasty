@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import com.acme.tasty.databaseHelpers.RestaurantAttributesDBHelper;
+
 import com.acme.tasty.databaseHelpers.RestaurantOwnerDBHelper;
 
 import java.util.Base64;
@@ -77,7 +77,7 @@ public class RestaurantLoginActivity extends AppCompatActivity {
     }
 
     public void navigateToRegistration(View view) {
-        Intent intent = new Intent(this, RestaurantRegistration2Activity.class);
+        Intent intent = new Intent(this, RestaurantRegistration1Activity.class);
         startActivity(intent);
     }
 }

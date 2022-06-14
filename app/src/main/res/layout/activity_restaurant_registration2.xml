@@ -8,167 +8,48 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".RestaurantRegistration2Activity">
+    tools:context=".RestaurantRegistration2Acitivity">
 
     <EditText
-        android:id="@+id/telefonnummerInhaber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/stra_e"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InhaberVorname" />
-
-    <EditText
-        android:id="@+id/InhaberVorname"
+        android:id="@+id/nameRestaurant"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/name_des_restaurants"
+        android:hint="@string/vorname"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/ort"
+        android:id="@+id/inhaberNachname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/ort"
+        android:hint="@string/nachname"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber4" />
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/ScrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toTopOf="@+id/speichern"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.585"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ort">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:orientation="vertical">
-
-            <CheckBox
-                android:id="@+id/checkBoxLieferServiceVorhanden"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lieferservice_vorhanden"
-                tools:text="Lieferservice vorhanden" />
-
-            <CheckBox
-                android:id="@+id/checkBoxReservierungMöglich"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/reservierung_m_glich"
-                tools:text="Reservierung möglich" />
-
-            <CheckBox
-                android:id="@+id/checkBoxReservierungNotwendig"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/reservierung_notwendig"
-                tools:text="Reservierung notwendig" />
-
-            <CheckBox
-                android:id="@+id/checkBoxInAppBezahlung"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/in_app_bezahlung_m_glich"
-                tools:text="In-App Bezahlung möglich" />
-
-            <CheckBox
-                android:id="@+id/checkBoxVegetarisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/vegetarisch"
-                tools:text="Vegetarisch" />
-
-            <CheckBox
-                android:id="@+id/checkBoxVegan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/vegan"
-                tools:text="Vegan" />
-
-            <CheckBox
-                android:id="@+id/checkBoxAsiatisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:text="@string/asiatisch"
-                tools:text="Asiatisch" />
-
-            <CheckBox
-                android:id="@+id/checkBoxJapanisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/japanisch"
-                tools:text="Japanisch" />
-
-            <CheckBox
-                android:id="@+id/checkBoxEuropäisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/europ_isch"
-                tools:text="Europäisch" />
-
-            <CheckBox
-                android:id="@+id/checkBoxItalienisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/italienisch"
-                tools:text="Italienisch" />
-
-            <CheckBox
-                android:id="@+id/checkBoxGriechisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/griechisch"
-                tools:text="Griechisch" />
-
-            <CheckBox
-                android:id="@+id/checkBoxMexikanisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/mexikanisch"
-                tools:text="Mexikanisch" />
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/nameRestaurant" />
 
     <Button
         android:id="@+id/speichern"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="@string/speichern_und_weiter"
+        android:text="@string/registrieren"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="navigateToRestaurantRegistration3"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <TextView
@@ -176,43 +57,80 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="@string/daten_zum_restaurant"
-        app:layout_constraintBottom_toTopOf="@+id/InhaberVorname"
-        app:layout_constraintStart_toStartOf="@+id/InhaberVorname" />
+        android:text="@string/daten_zum_inhaber"
+        app:layout_constraintBottom_toTopOf="@+id/nameRestaurant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextNumber4"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="11dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/plz"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/ScrollView"
-        app:layout_constraintEnd_toStartOf="@+id/ort"
+        android:layout_marginTop="30dp"
+        android:text="@string/anmeldedaten"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/telefonnummerInhaber" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
     <EditText
-        android:id="@+id/editTextNumber6"
+        android:id="@+id/passwort"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/hausnummer"
-        android:inputType="number"
+        android:hint="@string/passwort"
+        android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/telefonnummerInhaber"
-        app:layout_constraintTop_toBottomOf="@+id/InhaberVorname" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
+        android:id="@+id/passwort2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/passwort_wiederholen"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwort" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/e_mail"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/telefonnummer"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inhaberNachname" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
