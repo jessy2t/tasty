@@ -17,7 +17,6 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
     protected EditText mail;
     protected EditText userName;
     protected EditText password;
-    protected RestaurantOwnerDBHelper restaurantOwnerDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,7 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
         userName = findViewById(R.id.username_register);
         password = findViewById(R.id.passwort);
         //String username, String password, String prename, String surname, String phone, String mail
-        restaurantOwnerDBHelper.insertData(userName.getText().toString(),password.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),phone.getText().toString(),mail.getText().toString());
+        RestaurantLoginActivity.RestaurantOwnerDB.insertData(userName.getText().toString(),password.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),phone.getText().toString(),mail.getText().toString());
 
         Intent intent = new Intent(this, CustomerRestaurantOverviewActivity.class);
         startActivity(intent);

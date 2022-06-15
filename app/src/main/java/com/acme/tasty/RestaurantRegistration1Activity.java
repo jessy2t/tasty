@@ -36,11 +36,6 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
     protected CheckBox checkBoxMexikanisch;
     protected CheckBox checkBoxAmerikanisch;
     protected CheckBox checkBoxChinesisch;
-    private RestaurantAttributesDBHelper restaurantAttributesDBHelper;
-    private CategoriesDBHelper categoriesDBHelper;
-    private AddressDBHelper AddressDB;
-    private RestaurantDBHelper RestaurantDB;
-    private CityDBHelper CityDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,23 +62,19 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         checkBoxAmerikanisch = findViewById(R.id.checkBoxAmerikanisch);
         checkBoxChinesisch = findViewById(R.id.checkBoxChinesisch);
 
-        AddressDB = new AddressDBHelper(this);
-        CityDB = new CityDBHelper(this);
-        RestaurantDB = new RestaurantDBHelper(this);
-
         String zip = plz.getText().toString();
         String city = ort.getText().toString();
 
         String name = straße.getText().toString();
         Integer number = Integer.valueOf(hausnummer.getText().toString());
 
-        CityDB.insertData(zip, city);
+        MainActivity.CityDB.insertData(zip, city);
 
-        Integer addressId = AddressDB.insertData(name,number,zip);
+        Integer addressId = MainActivity.AddressDB.insertData(name,number,zip);
         if (addressId == 0)
             return;
 
-        Integer catId = categoriesDBHelper.getId(
+        Integer catId = MainActivity.CategoriesDB.getId(
                 checkBoxMexikanisch.isChecked(),
                 checkBoxIndisch.isChecked(),
                 checkBoxIndonesisch.isChecked(),
@@ -93,7 +84,7 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
                 checkBoxChinesisch.isChecked()
         );
 
-        Integer attributesId = restaurantAttributesDBHelper.getId(
+        Integer attributesId = MainActivity.AttributesDB.getId(
                 checkBoxLieferServiceVorhanden.isChecked(),
                 checkBoxReservierungMöglich.isChecked(),
                 checkBoxReservierungNotwendig.isChecked(),
@@ -103,7 +94,7 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
                 catId
         );
 
-        RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId);
+        MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId);
         Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
         startActivity(intent);
         finish();

@@ -24,7 +24,7 @@ public class RestaurantOwnerDBHelper extends SQLiteOpenHelper {
                 "password TEXT, prename TEXT, surname TEXT, phone NUMBER, mail TEXT," +
                 "foreign key (username) references restaurant(restaurant_name))");
         String encodedPassword = Base64.getEncoder().encodeToString(("tasty").getBytes());
-        insertData("Tony's Tacos", encodedPassword, "Tony", "Stark", "0762112345", "tonystacos@mail.de");
+        insertData("Tony's Tacos", encodedPassword, "Tony", "Stark", "0762112345", "tonystacos@mail.de", db);
     }
 
     @Override
@@ -35,6 +35,23 @@ public class RestaurantOwnerDBHelper extends SQLiteOpenHelper {
     public void clearData() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("delete from restaurant_owner");
+    }
+
+    public Boolean insertData(String username, String password, String prename, String surname, String phone,
+                              String mail, SQLiteDatabase db) {
+        ContentValues values = new ContentValues();
+
+        values.put("username", username);
+        values.put("password", password);
+        values.put("prename", prename);
+        values.put("surname", surname);
+        values.put("phone", phone);
+        values.put("mail", mail);
+
+        long result = db.insert("restaurant_owner", null, values);
+        if(result == -1) return false;
+        else
+            return true;
     }
 
     public Boolean insertData(String username, String password, String prename, String surname, String phone,
