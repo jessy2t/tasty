@@ -22,12 +22,12 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         db.execSQL("create table address(address_id INTEGER primary key, street TEXT," +
                 "house_number INTEGER, zip_code TEXT, foreign key (zip_code) references city (zip_code))");
         insertData("Schlemmerstraße", 25, "12345", db);
-        insertData("Burgerallee", 5, "76133", db);
-        insertData("Almanstraße", 23, "78315", db);
-        insertData("Bollywoodallee", 9, "22305", db);
-        insertData("Pekingallee", 29, "24654", db);
-        insertData("Jakartaweg", 3, "76354", db);
-        insertData("Am Gardasee", 07, "76137", db);
+        insertData("Burgerallee", 5, "12345", db);
+        insertData("Almanstraße", 23, "12345", db);
+        insertData("Bollywoodallee", 9, "12345", db);
+        insertData("Pekingallee", 29, "12345", db);
+        insertData("Jakartaweg", 3, "12345", db);
+        insertData("Am Gardasee", 07, "12345", db);
     }
 
     @Override

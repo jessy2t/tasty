@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +39,7 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
     TextView weekdayOpeningHoursView;
     TextView saturdayOpeningHoursView;
     TextView sundayOpeningHoursView;
+    ImageView restaurantImage;
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -52,6 +54,7 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
         weekdayOpeningHoursView = view.findViewById(R.id.mondayToFriday_opening_hours);
         saturdayOpeningHoursView = view.findViewById(R.id.saturday_opening_hours);
         sundayOpeningHoursView = view.findViewById(R.id.sunday_opening_hours);
+        restaurantImage = view.findViewById(R.id.restaurant_logo);
 
         setRestaurantData(view);
 
@@ -73,6 +76,7 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
                 .RESTAURANT_SUGGESTION);
         RestaurantDataModel restaurant = MainActivity.RestaurantDB.getRestaurant(restaurantSuggestion);
 
+        setRestaurantImage(restaurant.ImageName);
         restaurantName.setText(restaurant.toString());
         restaurantStreet.setText(restaurant.Address.toString());
         restaurantCity.setText(restaurant.Address.City.toString());
@@ -92,6 +96,35 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
 
         OpeningHoursDataModel sundayOpeningHours = OpeningHoursDB.getOpeningHours(3);
         sundayOpeningHoursView.setText(sundayOpeningHours.toString());
+    }
+
+    private void setRestaurantImage(String restaurantImageName) {
+        switch (restaurantImageName) {
+            case "taco":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.taco));
+                break;
+            case "burger":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.burger));
+                break;
+            case "sausage":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.sausage));
+                break;
+            case "curry":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.curry));
+                break;
+            case "rice":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.rice));
+                break;
+            case "indonesian":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.indonesian));
+                break;
+            case "pizza":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.pizza));
+                break;
+            default:
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.unknown_restaurant));
+                break;
+        }
     }
 
     private void disableButtons(View view) {
