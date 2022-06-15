@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,15 +13,14 @@ import com.acme.tasty.databaseHelpers.CategoriesDBHelper;
 import com.acme.tasty.databaseHelpers.CityDBHelper;
 import com.acme.tasty.databaseHelpers.RestaurantAttributesDBHelper;
 import com.acme.tasty.databaseHelpers.RestaurantDBHelper;
-import com.acme.tasty.databaseHelpers.RestaurantOwnerDBHelper;
 
 public class RestaurantRegistration1Activity extends AppCompatActivity {
 
     protected EditText nameRestaurant;
-    protected EditText straße;
+    protected EditText strasse;
     protected EditText ort;
     protected CheckBox checkBoxLieferServiceVorhanden;
-    protected CheckBox checkBoxReservierungMöglich;
+    protected CheckBox checkBoxReservierungMoeglich;
     protected CheckBox checkBoxReservierungNotwendig;
     protected CheckBox checkBoxInAppBezahlung;
     protected CheckBox checkBoxVegetarisch;
@@ -43,14 +41,14 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_registration1);
+        setContentView(R.layout.activity_restaurant_registration_1);
     }
     public void navigateToRestaurantRegistration2(View view){
         nameRestaurant = findViewById(R.id.nameRestaurant);
-        straße = findViewById(R.id.straße);
-        ort = findViewById(R.id.ort);
+        strasse = findViewById(R.id.straßeRestaurant);
+        ort = findViewById(R.id.plzRestaurant);
         checkBoxLieferServiceVorhanden = findViewById(R.id.checkBoxLieferServiceVorhanden);
-        checkBoxReservierungMöglich = findViewById(R.id.checkBoxReservierungMöglich);
+        checkBoxReservierungMoeglich = findViewById(R.id.checkBoxReservierungMöglich);
         checkBoxReservierungNotwendig = findViewById(R.id.checkBoxReservierungNotwendig);
         checkBoxInAppBezahlung = findViewById(R.id.checkBoxInAppBezahlung);
         checkBoxVegetarisch = findViewById(R.id.checkBoxVegetarisch);
@@ -62,19 +60,20 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         checkBoxMexikanisch = findViewById(R.id.checkBoxMexikanisch);
         checkBoxAmerikanisch = findViewById(R.id.checkBoxAmerikanisch);
         checkBoxChinesisch = findViewById(R.id.checkBoxChinesisch);
-
+ /*
         AddressDB = new AddressDBHelper(this);
         CityDB = new CityDBHelper(this);
         RestaurantDB = new RestaurantDBHelper(this);
-        //Ort und Straße sind zurzeit nur ein Feld deshalb müssen Sie mit leerzeichen getrennt eingegeben werden
-        //76133 Karlsruhe
-        //Hauptstraße 1
+
+        Ort und Straße sind zurzeit nur ein Feld deshalb müssen Sie mit leerzeichen getrennt eingegeben werden
+        76133 Karlsruhe
+        Hauptstraße 1
 
         String zip = ort.getText().toString().split(" ")[0];
         String city = ort.getText().toString().split(" ")[1];
 
-        String name = straße.getText().toString().split(" ")[0];
-        Integer number = Integer.valueOf(straße.getText().toString().split(" ")[1]);
+        String name = strasse.getText().toString().split(" ")[0];
+        Integer number = Integer.valueOf(strasse.getText().toString().split(" ")[1]);
 
         CityDB.insertData(zip, city);
 
@@ -94,7 +93,7 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
 
         Integer attributesId = restaurantAttributesDBHelper.getId(
                 checkBoxLieferServiceVorhanden.isChecked(),
-                checkBoxReservierungMöglich.isChecked(),
+                checkBoxReservierungMoeglich.isChecked(),
                 checkBoxReservierungNotwendig.isChecked(),
                 checkBoxInAppBezahlung.isChecked(),
                 checkBoxVegetarisch.isChecked(),
@@ -103,6 +102,8 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         );
 
         RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId);
+        */
+
         Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
         startActivity(intent);
         finish();

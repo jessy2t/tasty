@@ -22,20 +22,21 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_registration2);
+        setContentView(R.layout.activity_restaurant_registration_2);
     }
 
-    public void navigateToRestaurantView(View view){
+    public void navigateToRestaurantOverviewRegistration(View view){
         firstName = findViewById(R.id.inhaberVorname);
         lastName = findViewById(R.id.inhaberNachname);
-        phone = findViewById(R.id.editTextPhone);
-        mail = findViewById(R.id.editTextTextEmailAddress);
+        phone = findViewById(R.id.inhaberTelefon);
+        mail = findViewById(R.id.inhaberEmail);
         userName = findViewById(R.id.username_register);
         password = findViewById(R.id.passwort);
-        //String username, String password, String prename, String surname, String phone, String mail
-        restaurantOwnerDBHelper.insertData(userName.getText().toString(),password.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),phone.getText().toString(),mail.getText().toString());
 
-        Intent intent = new Intent(this, CustomerRestaurantOverviewActivity.class);
+        //String username, String password, String prename, String surname, String phone, String mail
+        // restaurantOwnerDBHelper.insertData(userName.getText().toString(),password.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),phone.getText().toString(),mail.getText().toString());
+
+        Intent intent = new Intent(this, RestaurantOverviewRegistration.class);
         startActivity(intent);
         finish();
     }
