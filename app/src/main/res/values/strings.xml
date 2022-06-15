@@ -136,4 +136,6 @@
     <string name="bike_icon">bike_icon</string>
     <string name="map">map</string>
     <string name="car_icon">car_icon</string>
+    <string name="japanisch">japanisch</string>
+    <string name="griechisch">griechisch</string>
 </resources>
