@@ -44,7 +44,8 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_registration1);
-
+    }
+    public void navigateToRestaurantRegistration2(View view){
         nameRestaurant = findViewById(R.id.nameRestaurant);
         straße = findViewById(R.id.straße);
         ort = findViewById(R.id.ort);
@@ -65,7 +66,6 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         AddressDB = new AddressDBHelper(this);
         CityDB = new CityDBHelper(this);
         RestaurantDB = new RestaurantDBHelper(this);
-
         //Ort und Straße sind zurzeit nur ein Feld deshalb müssen Sie mit leerzeichen getrennt eingegeben werden
         //76133 Karlsruhe
         //Hauptstraße 1
@@ -103,9 +103,6 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         );
 
         RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId);
-
-    }
-    public void navigateToRestaurantRegistration2(View view){
         Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
         startActivity(intent);
         finish();
