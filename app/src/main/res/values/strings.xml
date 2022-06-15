@@ -60,7 +60,7 @@
     <string name="startseite">Startseite</string>
     <string name="name_des_restaurants">Name des Restaurants</string>
     <string name="stra_e">Straße</string>
-    <string name="hausnummer">Nr.</string>
+    <string name="hausnummer">Hausnummer</string>
     <string name="ort">Ort</string>
     <string name="plz">PLZ</string>
     <string name="daten_zum_restaurant">Daten zum Restaurant</string>
@@ -130,10 +130,4 @@
     <string name="lowest_price">minimum</string>
     <string name="highest_price">maximum</string>
     <string name="between">to</string>
-    <string name="location_icon">location_icon</string>
-    <string name="restaurant_logo">restaurant_logo</string>
-    <string name="walk_icon">walk_icon</string>
-    <string name="bike_icon">bike_icon</string>
-    <string name="map">map</string>
-    <string name="car_icon">car_icon</string>
 </resources>

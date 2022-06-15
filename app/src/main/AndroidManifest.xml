@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.acme.tasty">
-
+          package="com.acme.tasty">
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +8,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tasty">
-        <activity
-            android:name=".RestaurantOverviewRegistration"
-            android:exported="false" />
         <activity
             android:name=".RestaurantRegistration2Acitivity"
             android:exported="false" />
@@ -38,6 +34,11 @@
             android:label="@string/title_activity_customer_restaurantOverview"
             android:parentActivityName=".CustomerRecommendationActivity" />
         <activity
+            android:name=".CustomerRecommendationActivity"
+            android:exported="true"
+            android:label="@string/title_activity_customer_recommendation"
+            android:parentActivityName=".CustomerSwipeActivity" />
+        <activity
             android:name=".RestaurantRegistration1Activity"
             android:exported="true"
             android:label="@string/title_activity_restaurant_registration"
@@ -48,23 +49,23 @@
             android:label="@string/title_activity_customer_start"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".CustomerPreferencesActivity"
-            android:exported="true"
-            android:label="@string/title_activity_customer_start"
-            android:parentActivityName=".MainActivity" />
+                android:name=".CustomerPreferencesActivity"
+                android:exported="true"
+                android:label="@string/title_activity_customer_start"
+                android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".CustomerPreferencesCategoryActivity"
             android:exported="true"
             android:label="@string/title_activity_customer_start"
-            android:parentActivityName=".CustomerPreferencesActivity" />
+            android:parentActivityName=".CustomerPreferencesActivity"/>
         <activity
             android:name=".CustomerPreferencesMealtypeActivity"
             android:exported="true"
             android:label="@string/title_activity_customer_start"
-            android:parentActivityName=".CustomerPreferencesActivity" />
+            android:parentActivityName=".CustomerPreferencesActivity"/>
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+                android:name=".MainActivity"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -72,5 +73,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
