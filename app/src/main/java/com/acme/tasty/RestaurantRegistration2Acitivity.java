@@ -22,7 +22,7 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_registration1);
+        setContentView(R.layout.activity_restaurant_registration2);
     }
 
     public void navigateToRestaurantView(View view){
