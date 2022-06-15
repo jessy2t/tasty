@@ -10,8 +10,33 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".RestaurantRegistration1Activity">
 
+    <TextView
+        android:id="@+id/datenRestaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/daten_zum_restaurant"
+        app:layout_constraintStart_toStartOf="@+id/nameRestaurant"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
-        android:id="@+id/strasseRestaurant"
+        android:id="@+id/nameRestaurant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/name_des_restaurants"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datenRestaurant" />
+
+    <EditText
+        android:id="@+id/straßeRestaurant"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -25,32 +50,52 @@
         app:layout_constraintTop_toBottomOf="@+id/nameRestaurant" />
 
     <EditText
-        android:id="@+id/nameRestaurant"
+        android:id="@+id/hausnummerRestaurant"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/name_des_restaurants"
-        android:inputType="textPersonName"
+        android:hint="@string/hausnummer"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/straßeRestaurant"
+        app:layout_constraintTop_toBottomOf="@+id/nameRestaurant" />
 
     <EditText
         android:id="@+id/ortRestaurant"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/ort"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/straßeRestaurant" />
+
+    <EditText
+        android:id="@+id/plzRestaurant"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/plz"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/plzRestaurant" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/ortRestaurant"
+        app:layout_constraintTop_toBottomOf="@+id/hausnummerRestaurant" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/ScrollView"
@@ -67,8 +112,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
             android:orientation="vertical">
 
             <CheckBox
@@ -79,7 +124,7 @@
                 tools:text="Lieferservice vorhanden" />
 
             <CheckBox
-                android:id="@+id/checkBoxReservierungMoeglich"
+                android:id="@+id/checkBoxReservierungMöglich"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/reservierung_m_glich"
@@ -114,26 +159,18 @@
                 tools:text="Vegan" />
 
             <CheckBox
-                android:id="@+id/checkBoxAsiatisch"
+                android:id="@+id/checkBoxIndisch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:text="@string/asiatisch"
-                tools:text="Asiatisch" />
+                android:text="@string/Indisch"
+                tools:text="Indisch" />
 
             <CheckBox
-                android:id="@+id/checkBoxJapanisch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/japanisch"
-                tools:text="Japanisch" />
-
-            <CheckBox
-                android:id="@+id/checkBoxEuropaeisch"
+                android:id="@+id/checkBoxIndonesisch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/europ_isch"
-                tools:text="Europäisch" />
+                tools:text="Indonesisch" />
 
             <CheckBox
                 android:id="@+id/checkBoxItalienisch"
@@ -143,11 +180,11 @@
                 tools:text="Italienisch" />
 
             <CheckBox
-                android:id="@+id/checkBoxGriechisch"
+                android:id="@+id/checkBoxDeutsch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/griechisch"
-                tools:text="Griechisch" />
+                android:text="@string/Deutsch"
+                tools:text="Deutsch" />
 
             <CheckBox
                 android:id="@+id/checkBoxMexikanisch"
@@ -155,6 +192,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mexikanisch"
                 tools:text="Mexikanisch" />
+
+            <CheckBox
+                android:id="@+id/checkBoxAmerikanisch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/praeferenzen_kategorie_amerikanisch"
+                tools:text="Amerikanisch" />
+
+            <CheckBox
+                android:id="@+id/checkBoxChinesisch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/praeferenzen_kategorie_chinesisch"
+                tools:text="Chinesisch" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -170,49 +221,5 @@
         app:layout_constraintStart_toStartOf="parent"
         android:onClick="navigateToRestaurantRegistration2"/>
 
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/daten_zum_restaurant"
-        app:layout_constraintBottom_toTopOf="@+id/nameRestaurant"
-        app:layout_constraintStart_toStartOf="@+id/nameRestaurant" />
-
-    <EditText
-        android:id="@+id/plzRestaurant"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="11dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/plz"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/ScrollView"
-        app:layout_constraintEnd_toStartOf="@+id/ortRestaurant"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/strasseRestaurant" />
-
-    <EditText
-        android:id="@+id/hausnummerRestaurant"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/hausnummer"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/strasseRestaurant"
-        app:layout_constraintTop_toBottomOf="@+id/nameRestaurant" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
