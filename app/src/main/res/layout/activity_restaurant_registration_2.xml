@@ -49,11 +49,12 @@
         android:text="@string/registrieren"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="navigateToRestaurantOverviewRegistration"/>
 
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/datenRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -73,6 +74,21 @@
         app:layout_constraintTop_toBottomOf="@+id/inhaberEmail" />
 
     <EditText
+            android:id="@+id/username_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:hint="@string/prompt_username"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textColorHint="#757575"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
         android:id="@+id/passwort"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -85,10 +101,10 @@
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/username_register" />
 
     <EditText
-        android:id="@+id/passwortWdh"
+        android:id="@+id/passwort2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -116,10 +132,10 @@
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inhaberTelefonnummer" />
+        app:layout_constraintTop_toBottomOf="@+id/inhaberTelefon" />
 
     <EditText
-        android:id="@+id/inhaberTelefonnummer"
+        android:id="@+id/inhaberTelefon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
