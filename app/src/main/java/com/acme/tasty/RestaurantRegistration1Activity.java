@@ -31,7 +31,7 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_registration_1);
+        setContentView(R.layout.activity_restaurant_registration1);
 
         nameRestaurant = findViewById(R.id.nameRestaurant);
         strasseRestaurant = findViewById(R.id.strasseRestaurant);
