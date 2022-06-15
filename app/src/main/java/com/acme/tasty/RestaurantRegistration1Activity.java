@@ -20,6 +20,8 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
 
     protected EditText nameRestaurant;
     protected EditText straße;
+    protected EditText hausnummer;
+    protected EditText plz;
     protected EditText ort;
     protected CheckBox checkBoxLieferServiceVorhanden;
     protected CheckBox checkBoxReservierungMöglich;
@@ -48,6 +50,8 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
     public void navigateToRestaurantRegistration2(View view){
         nameRestaurant = findViewById(R.id.nameRestaurant);
         straße = findViewById(R.id.straße);
+        hausnummer = findViewById(R.id.hausnummer);
+        plz = findViewById(R.id.PLZ);
         ort = findViewById(R.id.ort);
         checkBoxLieferServiceVorhanden = findViewById(R.id.checkBoxLieferServiceVorhanden);
         checkBoxReservierungMöglich = findViewById(R.id.checkBoxReservierungMöglich);
@@ -66,15 +70,12 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         AddressDB = new AddressDBHelper(this);
         CityDB = new CityDBHelper(this);
         RestaurantDB = new RestaurantDBHelper(this);
-        //Ort und Straße sind zurzeit nur ein Feld deshalb müssen Sie mit leerzeichen getrennt eingegeben werden
-        //76133 Karlsruhe
-        //Hauptstraße 1
 
-        String zip = ort.getText().toString().split(" ")[0];
-        String city = ort.getText().toString().split(" ")[1];
+        String zip = plz.getText().toString();
+        String city = ort.getText().toString();
 
-        String name = straße.getText().toString().split(" ")[0];
-        Integer number = Integer.valueOf(straße.getText().toString().split(" ")[1]);
+        String name = straße.getText().toString();
+        Integer number = Integer.valueOf(hausnummer.getText().toString());
 
         CityDB.insertData(zip, city);
 

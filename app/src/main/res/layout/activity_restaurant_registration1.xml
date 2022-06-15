@@ -50,7 +50,7 @@
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber4" />
+        app:layout_constraintTop_toTopOf="@+id/PLZ" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/ScrollView"
@@ -187,7 +187,7 @@
         app:layout_constraintStart_toStartOf="@+id/nameRestaurant" />
 
     <EditText
-        android:id="@+id/editTextNumber4"
+        android:id="@+id/PLZ"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -201,11 +201,11 @@
         android:textColorHint="#757575"
         app:layout_constraintBottom_toTopOf="@+id/ScrollView"
         app:layout_constraintEnd_toStartOf="@+id/ort"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/telefonnummerInhaber" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <EditText
-        android:id="@+id/editTextNumber6"
+        android:id="@+id/hausnummer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -218,7 +218,7 @@
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/telefonnummerInhaber"
+        app:layout_constraintStart_toEndOf="@+id/straße"
         app:layout_constraintTop_toBottomOf="@+id/nameRestaurant" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
