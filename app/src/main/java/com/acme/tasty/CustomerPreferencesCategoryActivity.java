@@ -49,7 +49,6 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
         this.checkBox6 = findViewById(R.id.checkBoxKat6);
         this.checkBox7 = findViewById(R.id.checkBoxKat7);
 
-        boolean[] status = new boolean[7];
         CategoriesDataModel categories = MainActivity.CategoriesDB.getCategories(100);
         if(categories == null)
             CustomerPreferencesActivity.categoryExists = false;
@@ -87,33 +86,49 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
         }
 
         this.checkBox1.setOnCheckedChangeListener((buttonView, isChecked)-> checkAllCheckedChange(isChecked));
+        this.checkBox2.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox2, isChecked));
+        this.checkBox3.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox3, isChecked));
+        this.checkBox4.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox4, isChecked));
+        this.checkBox5.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox5, isChecked));
+        this.checkBox6.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox6, isChecked));
+        this.checkBox7.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox7, isChecked));
+    }
 
-        if (checkBox2.isChecked()) {
-            checkBox2.setChecked(true);
-            status[1] = true;
+    private  void checkOneCheckedChange(CheckBox checkBox, boolean isChecked) {
+
+        if (isChecked == false) {
+            if (checkBox1.isChecked() == true) {
+                this.checkBox1.setChecked(false);
+                this.checkBox2.setChecked(true);
+                this.checkBox3.setChecked(true);
+                this.checkBox4.setChecked(true);
+                this.checkBox5.setChecked(true);
+                this.checkBox6.setChecked(true);
+                this.checkBox7.setChecked(true);
+            }
         }
-        if (checkBox3.isChecked()) {
-            checkBox3.setChecked(true);
-            status[2] = true;
+        if (checkBox.getId() == checkBox2.getId()){
+            this.checkBox2.setChecked(isChecked);
         }
-        if (checkBox4.isChecked()) {
-            checkBox4.setChecked(true);
-            status[3] = true;
+        if (checkBox.getId() == checkBox3.getId()){
+            this.checkBox3.setChecked(isChecked);
         }
-        if (checkBox5.isChecked()) {
-            checkBox5.setChecked(true);
-            status[4] = true;
+        if (checkBox.getId() == checkBox4.getId()){
+            this.checkBox4.setChecked(isChecked);
         }
-        if (checkBox6.isChecked()) {
-            checkBox6.setChecked(true);
-            status[5] = true;
+        if (checkBox.getId() == checkBox5.getId()){
+            this.checkBox5.setChecked(isChecked);
         }
-        if (checkBox7.isChecked()) {
-            checkBox7.setChecked(true);
-            status[6] = true;
+        if (checkBox.getId() == checkBox6.getId()){
+            this.checkBox6.setChecked(isChecked);
         }
-        if (status[1] && status[2] && status[3] && status[4] && status[5] && status[6]){
-            checkBox1.setChecked(true);
+        if (checkBox.getId() == checkBox7.getId()){
+            this.checkBox7.setChecked(isChecked);
+        }
+        if (isChecked & (checkBox2.isChecked() & (checkBox3.isChecked() & (checkBox4.isChecked() & (checkBox5.isChecked() & (checkBox6.isChecked() & (checkBox7.isChecked()))))))) {
+                    this.checkBox1.setChecked(true);
+                    Toast toast = Toast.makeText(getApplicationContext(), "Stimmt", Toast.LENGTH_LONG);
+                    toast.show();
         }
     }
 
