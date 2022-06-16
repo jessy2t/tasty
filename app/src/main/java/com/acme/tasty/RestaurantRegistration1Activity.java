@@ -68,7 +68,7 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
 
         String name = straße.getText().toString();
         Integer number = Integer.valueOf(hausnummer.getText().toString());
-        /*
+
         MainActivity.CityDB.insertData(zip, city);
 
         Integer addressId = MainActivity.AddressDB.insertData(name,number,zip);
@@ -96,7 +96,6 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         );
 
         MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId);
-        */
 
         Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
         startActivity(intent);

@@ -136,4 +136,5 @@
     <string name="walk_icon">walk_icon</string>
     <string name="car_icon">car_icon</string>
     <string name="map">map</string>
+    <string name="benutzername">Benutzername</string>
 </resources>

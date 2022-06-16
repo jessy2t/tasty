@@ -25,16 +25,16 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
     }
 
     public void navigateToRestaurantOverviewRegistration(View view){
-        /*
+
         firstName = findViewById(R.id.inhaberVorname);
         lastName = findViewById(R.id.inhaberNachname);
-        phone = findViewById(R.id.editTextPhone);
-        mail = findViewById(R.id.editTextTextEmailAddress);
+        phone = findViewById(R.id.inhaberTelefonnummer);
+        mail = findViewById(R.id.inhaberEmail);
         userName = findViewById(R.id.username_register);
         password = findViewById(R.id.passwort);
         //String username, String password, String prename, String surname, String phone, String mail
         RestaurantLoginActivity.RestaurantOwnerDB.insertData(userName.getText().toString(),password.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),phone.getText().toString(),mail.getText().toString());
-*/
+
         Intent intent = new Intent(this, RestaurantOverviewRegistration.class);
         startActivity(intent);
         finish();
