@@ -3,6 +3,7 @@ package com.acme.tasty;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -106,11 +107,15 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
             return;
         }
         if(TextUtils.isEmpty(ort.getText().toString())){
-            ort.setError("Bitte PLZ eintragen");
+            ort.setError("Bitte Ort eintragen");
             return;
         }
         if(TextUtils.isEmpty(plz.getText().toString())){
             plz.setError("Bitte PLZ eintragen");
+            return;
+        }
+        if(!plz.getText().toString().matches("^[0-9]{5}$")){
+            plz.setError("Bitte gültige Postleitzahl eintragen");
             return;
         }
 

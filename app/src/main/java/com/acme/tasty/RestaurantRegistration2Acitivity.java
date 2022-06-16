@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 
@@ -48,8 +49,12 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
             phone.setError("Bitte Telefonnummer eintragen");
             return;
         }
-        if(TextUtils.isEmpty(mail.getText().toString())){
+        if(TextUtils.isEmpty(mail.getText().toString())) {
             mail.setError("Bitte Email eintragen");
+            return;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(mail.getText().toString()).matches()){
+            mail.setError("Bitte gültige Emailadresse eintragen");
             return;
         }
         if(TextUtils.isEmpty(password.getText().toString())){
@@ -60,7 +65,7 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
             passwordWdh.setError("Bitte Passwort eintragen");
             return;
         }
-        if(password.getText().toString().equals(password.getText().toString())){
+        if(!(password.getText().toString().equals(passwordWdh.getText().toString()))){
             passwordWdh.setError("Passwörter müssen übereinstimmen");
             return;
         }
