@@ -43,12 +43,12 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_registration1);
     }
     public void navigateToRestaurantRegistration2(View view){
-        /*
+
         nameRestaurant = findViewById(R.id.nameRestaurant);
-        straße = findViewById(R.id.straße);
-        hausnummer = findViewById(R.id.hausnummer);
-        plz = findViewById(R.id.PLZ);
-        ort = findViewById(R.id.ort);
+        straße = findViewById(R.id.straßeRestaurant);
+        hausnummer = findViewById(R.id.hausnummerRestaurant);
+        plz = findViewById(R.id.plzRestaurant);
+        ort = findViewById(R.id.ortRestaurant);
         checkBoxLieferServiceVorhanden = findViewById(R.id.checkBoxLieferServiceVorhanden);
         checkBoxReservierungMöglich = findViewById(R.id.checkBoxReservierungMöglich);
         checkBoxReservierungNotwendig = findViewById(R.id.checkBoxReservierungNotwendig);
@@ -68,7 +68,7 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
 
         String name = straße.getText().toString();
         Integer number = Integer.valueOf(hausnummer.getText().toString());
-
+        /*
         MainActivity.CityDB.insertData(zip, city);
 
         Integer addressId = MainActivity.AddressDB.insertData(name,number,zip);
