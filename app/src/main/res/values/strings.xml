@@ -130,4 +130,10 @@
     <string name="lowest_price">minimum</string>
     <string name="highest_price">maximum</string>
     <string name="between">to</string>
+    <string name="restaurant_logo">restaurant_logo</string>
+    <string name="location_icon">location_icon</string>
+    <string name="bike_icon">bike_icon</string>
+    <string name="walk_icon">walk_icon</string>
+    <string name="car_icon">car_icon</string>
+    <string name="map">map</string>
 </resources>

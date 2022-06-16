@@ -43,6 +43,7 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_registration1);
     }
     public void navigateToRestaurantRegistration2(View view){
+        /*
         nameRestaurant = findViewById(R.id.nameRestaurant);
         straße = findViewById(R.id.straße);
         hausnummer = findViewById(R.id.hausnummer);
@@ -95,6 +96,8 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         );
 
         MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId);
+        */
+
         Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
         startActivity(intent);
         finish();

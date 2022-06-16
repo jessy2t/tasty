@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-            android:onClick="navigateToRestaurantView"
+        android:onClick="navigateToRestaurantOverviewRegistration"
         android:text="@string/registrieren"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,22 +71,7 @@
         android:text="@string/anmeldedaten"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
-
-    <EditText
-            android:id="@+id/username_register"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/prompt_username"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColorHint="#757575"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/inhaberEmail" />
 
     <EditText
         android:id="@+id/passwort"
@@ -101,10 +86,10 @@
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_register" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/passwort2"
+        android:id="@+id/passwortWdh"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -120,7 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/passwort" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/inhaberEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -132,10 +117,10 @@
         android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/inhaberTelefonnummer" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/inhaberTelefonnummer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
