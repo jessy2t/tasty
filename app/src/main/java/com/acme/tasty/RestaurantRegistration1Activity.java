@@ -2,7 +2,9 @@ package com.acme.tasty;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,11 +38,39 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
     protected CheckBox checkBoxMexikanisch;
     protected CheckBox checkBoxAmerikanisch;
     protected CheckBox checkBoxChinesisch;
+    private Button speichern;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_registration1);
+
+        speichern = findViewById(R.id.speichern);
+/*
+        speichern.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(TextUtils.isEmpty(nameRestaurant.getText().toString())){
+                    nameRestaurant.setError("Email Fehler");
+                    return;
+                }
+
+                if(TextUtils.isEmpty(straße.getText().toString())){
+                    straße.setError("Straße Fehler");
+                    return;
+                }
+                if(TextUtils.isEmpty(hausnummer.getText().toString())){
+                    hausnummer.setError("Email Fehler");
+                    return;
+                }
+                if(TextUtils.isEmpty(plz.getText().toString())){
+                    plz.setError("PLZ Fehler");
+                    return;
+                }
+            }
+        }); */
+
+
     }
     public void navigateToRestaurantRegistration2(View view){
 
@@ -62,6 +92,27 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         checkBoxMexikanisch = findViewById(R.id.checkBoxMexikanisch);
         checkBoxAmerikanisch = findViewById(R.id.checkBoxAmerikanisch);
         checkBoxChinesisch = findViewById(R.id.checkBoxChinesisch);
+
+        if(TextUtils.isEmpty(nameRestaurant.getText().toString())){
+            nameRestaurant.setError("Bitte Restaurantname eintragen");
+            return;
+        }
+        if(TextUtils.isEmpty(straße.getText().toString())){
+            straße.setError("Bitte Straße eintragen");
+            return;
+        }
+        if(TextUtils.isEmpty(hausnummer.getText().toString())){
+            hausnummer.setError("Bitte Hausnummer eintragen");
+            return;
+        }
+        if(TextUtils.isEmpty(ort.getText().toString())){
+            ort.setError("Bitte PLZ eintragen");
+            return;
+        }
+        if(TextUtils.isEmpty(plz.getText().toString())){
+            plz.setError("Bitte PLZ eintragen");
+            return;
+        }
 
         String zip = plz.getText().toString();
         String city = ort.getText().toString();
