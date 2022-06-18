@@ -1,5 +1,6 @@
 package com.acme.tasty;
 
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -71,10 +72,15 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
         }
 
         //String username, String password, String prename, String surname, String phone, String mail
-        RestaurantLoginActivity.RestaurantOwnerDB.insertData(userName.getText().toString(),password.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),phone.getText().toString(),mail.getText().toString());
-
-        Intent intent = new Intent(this, RestaurantOverviewRegistration.class);
-        startActivity(intent);
-        finish();
+        if(RestaurantLoginActivity.RestaurantOwnerDB.insertData(userName.getText().toString(),
+                password.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),
+                phone.getText().toString(),mail.getText().toString())){
+            Toast.makeText(this, "Registrierung erfolgreich", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, RestaurantOverviewRegistration.class);
+            startActivity(intent);
+            finish();
+        }
+        else
+            Toast.makeText(this, "Konto konnte nicht angelegt werden. Prüfe die Eingaben.", Toast.LENGTH_LONG).show();
     }
 }

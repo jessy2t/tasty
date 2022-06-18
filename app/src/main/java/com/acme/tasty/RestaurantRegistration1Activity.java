@@ -5,10 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -151,10 +148,15 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
                 catId
         );
 
-        MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId);
+        if(MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId)) {
+            Toast.makeText(this, "Restaurant gespeichert", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else
+            Toast.makeText(this, "Restaurant konnte nicht angelegt werden. Prüfe die Eingaben.", Toast.LENGTH_LONG).show();
 
-        Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
-        startActivity(intent);
-        finish();
+
     }
 }
