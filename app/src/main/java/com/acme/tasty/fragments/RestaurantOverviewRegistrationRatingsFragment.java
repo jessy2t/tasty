@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.acme.tasty.R;
+import com.acme.tasty.RestaurantLoginActivity;
 import com.acme.tasty.dataModels.RatingDataModel;
 import com.acme.tasty.databaseHelpers.RatingDBHelper;
 import com.google.android.material.chip.Chip;
@@ -47,7 +48,7 @@ public class RestaurantOverviewRegistrationRatingsFragment extends Fragment {
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        if(RatingDB.getRatingOrderedByNewest("Tony's Tacos").equals(new ArrayList<RatingDataModel>())) {
+        if(!"Tony's Tacos".equals(getActivity().getIntent().getStringExtra(RestaurantLoginActivity.RESTAURANT_USERNAME))) {
             return inflater.inflate(R.layout.fragment_restaurant_overview_no_ratings, container, false);
         }
         else {

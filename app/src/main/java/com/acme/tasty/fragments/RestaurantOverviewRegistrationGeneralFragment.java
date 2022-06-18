@@ -122,6 +122,10 @@ public class RestaurantOverviewRegistrationGeneralFragment extends Fragment {
         }
     }
 
+    private void setRestaurantImage(Nullable restaurantImageName) {
+        restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.unknown_restaurant));
+    }
+
     private void disableButtons(View view) {
         FloatingActionButton deliveryButton = view.findViewById(R.id.delivery_btn);
         deliveryButton.setEnabled(false);

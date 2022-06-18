@@ -128,6 +128,11 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         if (addressId == 0)
             return;
 
+        if(!MainActivity.CategoriesDB.insertData(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(),
+                checkBoxIndonesisch.isChecked(), checkBoxItalienisch.isChecked(), checkBoxDeutsch.isChecked(),
+                checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked()))
+            Toast.makeText(this, "Kategorien konnten nicht angelegt werden. Prüfe die Eingaben.", Toast.LENGTH_LONG).show();
+
         Integer catId = MainActivity.CategoriesDB.getId(
                 checkBoxMexikanisch.isChecked(),
                 checkBoxIndisch.isChecked(),
@@ -138,6 +143,9 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
                 checkBoxChinesisch.isChecked()
         );
 
+        if(!MainActivity.AttributesDB.insertData(checkBoxLieferServiceVorhanden.isChecked(), checkBoxReservierungMöglich.isChecked(),checkBoxReservierungNotwendig.isChecked(),checkBoxInAppBezahlung.isChecked(),checkBoxVegetarisch.isChecked(),checkBoxVegan.isChecked(),catId))
+            Toast.makeText(this, "Attribute konnten nicht angelegt werden. Prüfe die Eingaben.", Toast.LENGTH_LONG).show();
+
         Integer attributesId = MainActivity.AttributesDB.getId(
                 checkBoxLieferServiceVorhanden.isChecked(),
                 checkBoxReservierungMöglich.isChecked(),
@@ -147,8 +155,6 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
                 checkBoxVegan.isChecked(),
                 catId
         );
-        MainActivity.CategoriesDB.insertData(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(), checkBoxIndonesisch.isChecked(), checkBoxItalienisch.isChecked(), checkBoxDeutsch.isChecked(), checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked());
-        MainActivity.AttributesDB.insertData(checkBoxLieferServiceVorhanden.isChecked(), checkBoxReservierungMöglich.isChecked(),checkBoxReservierungNotwendig.isChecked(),checkBoxInAppBezahlung.isChecked(),checkBoxVegetarisch.isChecked(),checkBoxVegan.isChecked(),catId);
 
        if(MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId)) {
             Toast.makeText(this, "Restaurant gespeichert", Toast.LENGTH_LONG).show();

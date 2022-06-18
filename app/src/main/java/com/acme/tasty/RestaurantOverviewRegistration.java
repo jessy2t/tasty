@@ -100,4 +100,36 @@ public class RestaurantOverviewRegistration extends AppCompatActivity {
             return fragmentTitles.get(position);
         }
     }
+
+    public void clickOnReservationOrDelivery(View view) {
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        _popupWindow = PopupWindowService.getOrderConfirmationPopupWindow(inflater, view);
+    }
+
+    public void closePopUp(View view) {
+        PopupWindowService.closePopUp(_popupWindow, view);
+    }
+
+    public void sortByNewestDate(View view) {
+        ratingsFragment.sortByNewest();
+    }
+
+    public void sortByHighestRating(View view) {
+        ratingsFragment.sortByHighest();
+    }
+
+    public void sortByLowestRating(View view) {
+        ratingsFragment.sortByLowest();
+    }
+
+    /*public void navigateToHome(MenuItem item){
+        Intent intent = new Intent(this, CustomerStartActivity.class);
+        startActivity(intent);
+    }
+
+    public void navigateToPreferences(MenuItem item){
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
+        startActivity(intent);
+    }*/
 }
