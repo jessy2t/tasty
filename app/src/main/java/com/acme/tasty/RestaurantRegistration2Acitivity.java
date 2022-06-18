@@ -77,6 +77,7 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
                 phone.getText().toString(),mail.getText().toString())){
             Toast.makeText(this, "Registrierung erfolgreich", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, RestaurantOverviewRegistration.class);
+            intent.putExtra(RestaurantLoginActivity.RESTAURANT_USERNAME, userName.getText().toString());
             startActivity(intent);
             finish();
         }

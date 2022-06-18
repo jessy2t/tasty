@@ -3,7 +3,9 @@ package com.acme.tasty.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -13,12 +15,8 @@ import com.acme.tasty.CustomerRecommendationActivity;
 import com.acme.tasty.MainActivity;
 import com.acme.tasty.R;
 import com.acme.tasty.RestaurantLoginActivity;
-import com.acme.tasty.dataModels.AddressDataModel;
-import com.acme.tasty.dataModels.CityDataModel;
 import com.acme.tasty.dataModels.OpeningHoursDataModel;
 import com.acme.tasty.dataModels.RestaurantDataModel;
-import com.acme.tasty.databaseHelpers.AddressDBHelper;
-import com.acme.tasty.databaseHelpers.CityDBHelper;
 import com.acme.tasty.databaseHelpers.OpeningHoursDBHelper;
 import com.acme.tasty.databaseHelpers.RestaurantDBHelper;
 import com.google.android.material.chip.Chip;
@@ -29,7 +27,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 
-public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
+public class RestaurantOverviewRegistrationGeneralFragment extends Fragment {
     RestaurantDBHelper RestaurantDB;
     OpeningHoursDBHelper OpeningHoursDB;
     TextView restaurantName;
@@ -57,6 +55,7 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
         restaurantImage = view.findViewById(R.id.restaurant_logo);
 
         setRestaurantData(view);
+        disableButtons(view);
 
         return view;
     }
@@ -69,9 +68,8 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
     }
 
     private void setRestaurantData(View view) {
-        String restaurantSuggestion = getActivity().getIntent().getStringExtra(CustomerRecommendationActivity
-                .RESTAURANT_SUGGESTION);
-        RestaurantDataModel restaurant = MainActivity.RestaurantDB.getRestaurant(restaurantSuggestion);
+        String restaurantUsername = getActivity().getIntent().getStringExtra(RestaurantLoginActivity.RESTAURANT_USERNAME);
+        RestaurantDataModel restaurant = MainActivity.RestaurantDB.getRestaurant(restaurantUsername);
 
         setRestaurantImage(restaurant.ImageName);
         restaurantName.setText(restaurant.toString());
@@ -122,5 +120,12 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
                 restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.unknown_restaurant));
                 break;
         }
+    }
+
+    private void disableButtons(View view) {
+        FloatingActionButton deliveryButton = view.findViewById(R.id.delivery_btn);
+        deliveryButton.setEnabled(false);
+        FloatingActionButton reservationButton = view.findViewById(R.id.reservation_btn);
+        reservationButton.setEnabled(false);
     }
 }
