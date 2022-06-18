@@ -43,7 +43,6 @@ public class RestaurantOverviewRegistrationGeneralFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_customer_restaurant_overview_general, container, false);
-        Intent intent = getActivity().getIntent();
 
         restaurantName = view.findViewById(R.id.restaurant_name);
         restaurantStreet = view.findViewById(R.id.restaurant_address_streetNumber);

@@ -1,6 +1,8 @@
 package com.acme.tasty;
 
+import android.os.Build;
 import android.widget.Toast;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +13,8 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.acme.tasty.databaseHelpers.RestaurantOwnerDBHelper;
+
+import java.util.Base64;
 
 public class RestaurantRegistration2Acitivity extends AppCompatActivity {
 
@@ -26,15 +30,18 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_registration2);
+        userName = findViewById(R.id.username_register);
+        userName.setText(getIntent().getStringExtra(RestaurantLoginActivity.RESTAURANT_USERNAME));
+        userName.setEnabled(false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void navigateToRestaurantOverviewRegistration(View view){
 
         firstName = findViewById(R.id.inhaberVorname);
         lastName = findViewById(R.id.inhaberNachname);
         phone = findViewById(R.id.inhaberTelefonnummer);
         mail = findViewById(R.id.inhaberEmail);
-        userName = findViewById(R.id.username_register);
         password = findViewById(R.id.passwort);
         passwordWdh = findViewById(R.id.passwortWdh);
 
@@ -72,8 +79,9 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
         }
 
         //String username, String password, String prename, String surname, String phone, String mail
+        String passwordEncoded = Base64.getEncoder().encodeToString(password.getText().toString().getBytes());
         if(RestaurantLoginActivity.RestaurantOwnerDB.insertData(userName.getText().toString(),
-                password.getText().toString(),firstName.getText().toString(),lastName.getText().toString(),
+                passwordEncoded,firstName.getText().toString(),lastName.getText().toString(),
                 phone.getText().toString(),mail.getText().toString())){
             Toast.makeText(this, "Registrierung erfolgreich", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, RestaurantOverviewRegistration.class);

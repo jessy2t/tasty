@@ -67,6 +67,17 @@ public class AddressDBHelper extends SQLiteOpenHelper {
             return (int) result;
     }
 
+    public Integer getAddressId(String street, Integer houseNumber, String zipCode){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from address where street=? AND house_number=? AND zip_code=?",
+                new String[] {street, String.valueOf(houseNumber), zipCode});
+        if(cursor.getCount() <= 0)
+            return null;
+
+        cursor.moveToFirst();
+        return cursor.getInt(0);
+    }
+
     public AddressDataModel getAddress(Integer addressId) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from address where address_id=?",

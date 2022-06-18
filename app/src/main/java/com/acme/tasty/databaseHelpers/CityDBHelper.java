@@ -70,7 +70,7 @@ public class CityDBHelper extends SQLiteOpenHelper {
 
     public Boolean cityExists(String zip, String city) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from city where zip_code=? and city_name=?", new String[] {zip, city});
+        Cursor cursor = db.rawQuery("select * from city where zip_code=? or city_name=?", new String[] {zip, city});
         if(cursor.getCount() > 0) {
             return true;
         }

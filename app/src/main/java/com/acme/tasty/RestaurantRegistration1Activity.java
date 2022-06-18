@@ -3,18 +3,12 @@ package com.acme.tasty;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.acme.tasty.databaseHelpers.AddressDBHelper;
-import com.acme.tasty.databaseHelpers.CategoriesDBHelper;
-import com.acme.tasty.databaseHelpers.CityDBHelper;
-import com.acme.tasty.databaseHelpers.RestaurantAttributesDBHelper;
-import com.acme.tasty.databaseHelpers.RestaurantDBHelper;
-import com.acme.tasty.databaseHelpers.RestaurantOwnerDBHelper;
+import com.acme.tasty.dataModels.CityDataModel;
 
 public class RestaurantRegistration1Activity extends AppCompatActivity {
 
@@ -118,53 +112,59 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
 
         String zip = plz.getText().toString();
         String city = ort.getText().toString();
-
-        String name = straße.getText().toString();
+        String streetName = straße.getText().toString();
         Integer number = Integer.valueOf(hausnummer.getText().toString());
 
-        MainActivity.CityDB.insertData(zip, city);
+        if(MainActivity.CityDB.cityExists(zip, city)){
+            CityDataModel cityModel = MainActivity.CityDB.getCity(zip);
+            if(!cityModel.City.equals(city)) {
+                ort.setError("Bitte zur Postleitzahl gültigen Ort eingeben");
+                return;
+            }
+        }
+        else
+            MainActivity.CityDB.insertData(zip, city);
 
-        Integer addressId = MainActivity.AddressDB.insertData(name,number,zip);
-        if (addressId == 0)
-            return;
+        Integer addressId = MainActivity.AddressDB.getAddressId(streetName, number, zip);
+        if(addressId == null) {
+            addressId = MainActivity.AddressDB.insertData(streetName,number,zip);
+        }
 
-        if(!MainActivity.CategoriesDB.insertData(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(),
+        Integer catId = MainActivity.CategoriesDB.getId(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(),
                 checkBoxIndonesisch.isChecked(), checkBoxItalienisch.isChecked(), checkBoxDeutsch.isChecked(),
-                checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked()))
-            Toast.makeText(this, "Kategorien konnten nicht angelegt werden. Prüfe die Eingaben.", Toast.LENGTH_LONG).show();
+                checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked());
+        if(catId == null){
+            MainActivity.CategoriesDB.insertData(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(),
+                    checkBoxIndonesisch.isChecked(), checkBoxItalienisch.isChecked(), checkBoxDeutsch.isChecked(),
+                    checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked());
+            catId = MainActivity.CategoriesDB.getId(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(),
+                    checkBoxIndonesisch.isChecked(), checkBoxItalienisch.isChecked(), checkBoxDeutsch.isChecked(),
+                    checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked());
+        }
 
-        Integer catId = MainActivity.CategoriesDB.getId(
-                checkBoxMexikanisch.isChecked(),
-                checkBoxIndisch.isChecked(),
-                checkBoxIndonesisch.isChecked(),
-                checkBoxItalienisch.isChecked(),
-                checkBoxDeutsch.isChecked(),
-                checkBoxAmerikanisch.isChecked(),
-                checkBoxChinesisch.isChecked()
-        );
-
-        if(!MainActivity.AttributesDB.insertData(checkBoxLieferServiceVorhanden.isChecked(), checkBoxReservierungMöglich.isChecked(),checkBoxReservierungNotwendig.isChecked(),checkBoxInAppBezahlung.isChecked(),checkBoxVegetarisch.isChecked(),checkBoxVegan.isChecked(),catId))
-            Toast.makeText(this, "Attribute konnten nicht angelegt werden. Prüfe die Eingaben.", Toast.LENGTH_LONG).show();
-
-        Integer attributesId = MainActivity.AttributesDB.getId(
-                checkBoxLieferServiceVorhanden.isChecked(),
-                checkBoxReservierungMöglich.isChecked(),
-                checkBoxReservierungNotwendig.isChecked(),
-                checkBoxInAppBezahlung.isChecked(),
-                checkBoxVegetarisch.isChecked(),
-                checkBoxVegan.isChecked(),
-                catId
-        );
-
-       if(MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId)) {
+        Integer attributesId = MainActivity.AttributesDB.getId(checkBoxLieferServiceVorhanden.isChecked(),
+                checkBoxReservierungMöglich.isChecked(), checkBoxReservierungNotwendig.isChecked(),
+                checkBoxInAppBezahlung.isChecked(), checkBoxVegetarisch.isChecked(), checkBoxVegan.isChecked(),
+                catId);
+        if(attributesId == null) {
+            MainActivity.AttributesDB.insertData(checkBoxLieferServiceVorhanden.isChecked(),
+                    checkBoxReservierungMöglich.isChecked(),checkBoxReservierungNotwendig.isChecked(),
+                    checkBoxInAppBezahlung.isChecked(),checkBoxVegetarisch.isChecked(),checkBoxVegan.isChecked(),catId);
+            attributesId = MainActivity.AttributesDB.getId(checkBoxLieferServiceVorhanden.isChecked(),
+                    checkBoxReservierungMöglich.isChecked(), checkBoxReservierungNotwendig.isChecked(),
+                    checkBoxInAppBezahlung.isChecked(), checkBoxVegetarisch.isChecked(), checkBoxVegan.isChecked(),
+                    catId);
+        }
+        if(MainActivity.RestaurantDB.getRestaurant(nameRestaurant.getText().toString()) != null) {
+            nameRestaurant.setError("Restaurant ist bereits registriert");
+        }
+        else {
+            MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(), attributesId, addressId);
             Toast.makeText(this, "Restaurant gespeichert", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
+            intent.putExtra(RestaurantLoginActivity.RESTAURANT_USERNAME, nameRestaurant.getText().toString());
             startActivity(intent);
             finish();
         }
-        else
-            Toast.makeText(this, "Restaurant konnte nicht angelegt werden. Prüfe die Eingaben.", Toast.LENGTH_LONG).show();
-
-
     }
 }
