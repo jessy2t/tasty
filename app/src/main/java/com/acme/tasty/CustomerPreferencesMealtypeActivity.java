@@ -6,15 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.Checkable;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.acme.tasty.dataModels.DietDataModel;
-import com.acme.tasty.databaseHelpers.DietDBHelper;
 
 public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
     private CheckBox checkBox1;
@@ -91,35 +88,49 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
 
     private  void checkOneCheckedChange(CheckBox checkBox, boolean isChecked) {
 
-        if (isChecked == false) {
-            if (checkBox1.isChecked() == true) {
+        if (!isChecked) {
+            if (checkBox1.isChecked()) {
                 this.checkBox1.setChecked(false);
-                this.checkBox2.setChecked(true);
-                this.checkBox3.setChecked(true);
-                this.checkBox4.setChecked(true);
-                this.checkBox5.setChecked(true);
-                this.checkBox6.setChecked(true);
+
+                if (checkBox.getId() == checkBox2.getId()){
+                    this.checkBox2.setChecked(false);
+                    this.checkBox3.setChecked(true);
+                    this.checkBox4.setChecked(true);
+                    this.checkBox5.setChecked(true);
+                    this.checkBox6.setChecked(true);
+                }
+                if (checkBox.getId() == checkBox3.getId()){
+                    this.checkBox2.setChecked(true);
+                    this.checkBox3.setChecked(false);
+                    this.checkBox4.setChecked(true);
+                    this.checkBox5.setChecked(true);
+                    this.checkBox6.setChecked(true);
+                }
+                if (checkBox.getId() == checkBox4.getId()){
+                    this.checkBox2.setChecked(true);
+                    this.checkBox3.setChecked(true);
+                    this.checkBox4.setChecked(false);
+                    this.checkBox5.setChecked(true);
+                    this.checkBox6.setChecked(true);
+                }
+                if (checkBox.getId() == checkBox5.getId()){
+                    this.checkBox2.setChecked(true);
+                    this.checkBox3.setChecked(true);
+                    this.checkBox4.setChecked(true);
+                    this.checkBox5.setChecked(false);
+                    this.checkBox6.setChecked(true);
+                }
+                if (checkBox.getId() == checkBox6.getId()){
+                    this.checkBox2.setChecked(true);
+                    this.checkBox3.setChecked(true);
+                    this.checkBox4.setChecked(true);
+                    this.checkBox5.setChecked(true);
+                    this.checkBox6.setChecked(false);
+                }
             }
-        }
-        if (checkBox.getId() == checkBox2.getId()){
-            this.checkBox2.setChecked(isChecked);
-        }
-        if (checkBox.getId() == checkBox3.getId()){
-            this.checkBox3.setChecked(isChecked);
-        }
-        if (checkBox.getId() == checkBox4.getId()){
-            this.checkBox4.setChecked(isChecked);
-        }
-        if (checkBox.getId() == checkBox5.getId()){
-            this.checkBox5.setChecked(isChecked);
-        }
-        if (checkBox.getId() == checkBox6.getId()){
-            this.checkBox6.setChecked(isChecked);
-        }
-        if (isChecked & (checkBox2.isChecked() & (checkBox3.isChecked() & (checkBox4.isChecked() & (checkBox5.isChecked() & (checkBox6.isChecked())))))) {
+        }else if(checkBox2.isChecked() && checkBox3.isChecked() && checkBox4.isChecked()
+                && checkBox5.isChecked() && checkBox6.isChecked()) {
             this.checkBox1.setChecked(true);
-            Toast toast = Toast.makeText(getApplicationContext(), "Stimmt", Toast.LENGTH_LONG);
-            toast.show();
         }
     }
 
