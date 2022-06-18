@@ -25,6 +25,7 @@ import com.acme.tasty.databaseHelpers.RatingDBHelper;
 import com.acme.tasty.fragments.CustomerRestaurantOverviewGeneralFragment;
 import com.acme.tasty.fragments.CustomerRestaurantOverviewRatingsFragment;
 import com.acme.tasty.fragments.RestaurantOverviewRegistrationGeneralFragment;
+import com.acme.tasty.fragments.RestaurantOverviewRegistrationRatingsFragment;
 import com.acme.tasty.popup.PopupWindowService;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.tabs.TabLayout;
@@ -39,7 +40,7 @@ public class RestaurantOverviewRegistration extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private RestaurantOverviewRegistrationGeneralFragment generalFragment;
-    private CustomerRestaurantOverviewRatingsFragment ratingsFragment;
+    private RestaurantOverviewRegistrationRatingsFragment ratingsFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +52,7 @@ public class RestaurantOverviewRegistration extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pager);
         tabLayout = findViewById(R.id.tab_layout);
         generalFragment = new RestaurantOverviewRegistrationGeneralFragment();
-        ratingsFragment = new CustomerRestaurantOverviewRatingsFragment();
+        ratingsFragment = new RestaurantOverviewRegistrationRatingsFragment();
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
@@ -98,17 +99,5 @@ public class RestaurantOverviewRegistration extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return fragmentTitles.get(position);
         }
-    }
-
-    public void sortByNewestDate(View view) {
-        ratingsFragment.sortByNewest();
-    }
-
-    public void sortByHighestRating(View view) {
-        ratingsFragment.sortByHighest();
-    }
-
-    public void sortByLowestRating(View view) {
-        ratingsFragment.sortByLowest();
     }
 }

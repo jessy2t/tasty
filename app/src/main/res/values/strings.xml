@@ -47,6 +47,7 @@
     <string name="delivery_label">Lieferung</string>
     <string name="reservation_label">Reservierung</string>
     <string name="average_rating">3,5</string>
+    <string name="no_rating">0</string>
     <string name="sort_by_label">Sotieren nach</string>
     <string name="ratings_sort_by_newest_label">Neueste</string>
     <string name="ratings_sort_by_highest_label">Höchste</string>
