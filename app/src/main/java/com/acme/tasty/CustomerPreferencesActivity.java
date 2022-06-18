@@ -2,6 +2,7 @@ package com.acme.tasty;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,6 +29,8 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
     private Boolean priceRangeExists;
     public static Boolean dietExists;
     public static Boolean categoryExists;
+    private ArrayList<String> ernaehrungsform;
+    private ArrayList<String> kategorie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +67,8 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
     }
 
     public void populateListView(){
-        ArrayList<String> ernaehrungsform = new ArrayList<>();
-        ArrayList<String> kategorie = new ArrayList<>();
+        ernaehrungsform = new ArrayList<>();
+        kategorie = new ArrayList<>();
 
         DietDataModel diet = CustomerPreferencesActivity.DietDB.getDiet();
         if(diet == null)
@@ -102,22 +106,42 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
                 kategorie.add("deutsch");
             if (categories.Italian)
                 kategorie.add("italienisch");
+        }
+        makeListView();
+    }
 
-            ArrayAdapter<String> ernaehrungsformAdapter = new ArrayAdapter<>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    ernaehrungsform);
+    public void makeListView(){
+        //Adapter für ernaehrungsform
+        ArrayAdapter<String> ernaehrungsformAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                ernaehrungsform);
 
-            ArrayAdapter<String> kategorieAdapter = new ArrayAdapter<>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    kategorie);
+        ListView ernaehrungsformList = findViewById(R.id.praeferenzen_ernaehrungsweise_liste);
+        ernaehrungsformList.setAdapter(ernaehrungsformAdapter);
 
-            ListView ernaehrungsformList = findViewById(R.id.praeferenzen_ernaehrungsweise_liste);
-            ernaehrungsformList.setAdapter(ernaehrungsformAdapter);
+        //Adapter für kategorie
+        ArrayAdapter<String> kategorieAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_list_item_1,
+                kategorie);
+        ListView kategorieList = findViewById(R.id.praeferenzen_kategorie_liste);
+        kategorieList.setAdapter(kategorieAdapter);
 
-            ListView kategorieList = findViewById(R.id.praeferenzen_kategorie_liste);
-            kategorieList.setAdapter(kategorieAdapter);
+        setRightHeight(ernaehrungsformAdapter, ernaehrungsformList);
+        setRightHeight(kategorieAdapter, kategorieList);
+    }
+
+    public void setRightHeight(ArrayAdapter aa, ListView lv ){
+        int totalehight= 0;
+        for (int i = 0; i < aa.getCount(); i++) {
+            View listItemErnaehrungsform = aa.getView(i, null, lv);
+            listItemErnaehrungsform.measure(0, 0);
+            totalehight += listItemErnaehrungsform.getMeasuredHeight();
+            ViewGroup.LayoutParams paramse = lv.getLayoutParams();
+            paramse.height = totalehight + (lv.getDividerHeight() * (aa.getCount() - 1));
+            lv.setLayoutParams(paramse);
+            lv.requestLayout();
         }
     }
 
