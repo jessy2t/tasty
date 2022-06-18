@@ -147,8 +147,10 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
                 checkBoxVegan.isChecked(),
                 catId
         );
+        MainActivity.CategoriesDB.insertData(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(), checkBoxIndonesisch.isChecked(), checkBoxItalienisch.isChecked(), checkBoxDeutsch.isChecked(), checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked());
+        MainActivity.AttributesDB.insertData(checkBoxLieferServiceVorhanden.isChecked(), checkBoxReservierungMöglich.isChecked(),checkBoxReservierungNotwendig.isChecked(),checkBoxInAppBezahlung.isChecked(),checkBoxVegetarisch.isChecked(),checkBoxVegan.isChecked(),catId);
 
-        if(MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId)) {
+       if(MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(),attributesId,addressId)) {
             Toast.makeText(this, "Restaurant gespeichert", Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
             startActivity(intent);
