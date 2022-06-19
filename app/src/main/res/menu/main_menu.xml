@@ -5,18 +5,14 @@
     <item
             android:title="@string/startseite"
             android:icon="@drawable/ic_icons8_zuhause"
-            app:showAsAction="always"
-            android:onClick="navigateToHome" />
+            android:onClick="navigateToHome"
+            android:showAsAction="always" />
 
-    <item android:icon="@drawable/ic_baseline_account_circle_24" android:title="@string/sample_name"/>
-
-    <item android:title="@string/menu_item_1" android:icon="@drawable/user"
-            />
+    <item android:title="@string/menu_item_1" android:icon="@drawable/user" android:enabled="false"/>
     <item
         android:icon="@drawable/like"
         android:onClick="navigateToPreferences"
         android:title="@string/menu_item_2" />
-    <item android:title="@string/menu_item_3" android:icon="@drawable/creditcard"
-            />
+    <item android:title="@string/menu_item_3" android:icon="@drawable/creditcard" android:enabled="false"/>
 
 </menu>

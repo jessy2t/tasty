@@ -15,8 +15,7 @@ import com.acme.tasty.databaseHelpers.RestaurantOwnerDBHelper;
 import java.util.Base64;
 
 public class RestaurantLoginActivity extends AppCompatActivity {
-    public static final String EXTRA_USERNAME = "com.acme.tasty.RestaurantLoginActivity.Username";
-    public static final String EXTRA_IS_RESTAURANT_VIEW = "com.acme.tasty.RestaurantLoginActivity.IsRestaurantView";
+    public static final String RESTAURANT_USERNAME = "com.acme.tasty.RESTAURANT_USERNAME";
     private EditText usernameView;
     private EditText passwordView;
     private TextView validationMessageView;
@@ -68,9 +67,8 @@ public class RestaurantLoginActivity extends AppCompatActivity {
     }
 
     private void navigateToSignedInView(String restaurantName) {
-        Intent intent = new Intent(this, CustomerRestaurantOverviewActivity.class);
-        intent.putExtra(EXTRA_USERNAME, restaurantName);
-        intent.putExtra(EXTRA_IS_RESTAURANT_VIEW, true);
+        Intent intent = new Intent(this, RestaurantOverviewRegistration.class);
+        intent.putExtra(RESTAURANT_USERNAME, restaurantName);
 
         startActivity(intent);
         finish();

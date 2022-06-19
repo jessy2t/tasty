@@ -6,9 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
-import com.acme.tasty.dataModels.AddressDataModel;
 import com.acme.tasty.dataModels.CategoriesDataModel;
-import com.acme.tasty.dataModels.RestaurantDataModel;
 
 public class CategoriesDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="categories.db";
@@ -57,12 +55,31 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public Boolean insertData(Boolean mexican, Boolean indian, Boolean indonesian, Boolean italian, Boolean german,
-                              Boolean american, Boolean chinese) {
+    public Boolean insertPreferencesData(Boolean mexican, Boolean indian, Boolean indonesian, Boolean italian, Boolean german,
+                                         Boolean american, Boolean chinese) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put("categories_id", 100);
+        values.put("mexican", mexican);
+        values.put("indian", indian);
+        values.put("indonesian", indonesian);
+        values.put("italian", italian);
+        values.put("german", german);
+        values.put("american", american);
+        values.put("chinese", chinese);
+
+        long result = db.insert("categories", null, values);
+        if(result == -1) return false;
+        else
+            return true;
+    }
+
+    public Boolean insertData(Boolean mexican, Boolean indian, Boolean indonesian, Boolean italian, Boolean german,
+                                        Boolean american, Boolean chinese) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
         values.put("mexican", mexican);
         values.put("indian", indian);
         values.put("indonesian", indonesian);
@@ -113,5 +130,27 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         Boolean chinese = cursor.getInt(7) > 0;
 
         return new CategoriesDataModel(mexican, indian, indonesian, italian, german, american, chinese);
+    }
+
+    public Integer getId(Boolean mexican, Boolean indian, Boolean indonesian, Boolean italian, Boolean german,
+                         Boolean american, Boolean chinese) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from categories where mexican=? AND indian=? AND indonesian=? AND italian=? AND german=? AND american=? AND chinese=?",
+                new String[] {boolToIntString(mexican), boolToIntString(indian), boolToIntString(indonesian),
+                        boolToIntString(italian), boolToIntString(german), boolToIntString(american),
+                        boolToIntString(chinese)});
+        if(cursor.getCount() <= 0)
+            return null;
+
+        cursor.moveToFirst();
+        Integer id = cursor.getInt(0);
+
+        return id;
+    }
+
+    private String boolToIntString (Boolean bool) {
+        if(bool)
+            return "1";
+        return "0";
     }
 }

@@ -47,6 +47,7 @@
     <string name="delivery_label">Lieferung</string>
     <string name="reservation_label">Reservierung</string>
     <string name="average_rating">3,5</string>
+    <string name="no_rating">0</string>
     <string name="sort_by_label">Sotieren nach</string>
     <string name="ratings_sort_by_newest_label">Neueste</string>
     <string name="ratings_sort_by_highest_label">Höchste</string>
@@ -69,12 +70,12 @@
     <string name="reservierung_notwendig">Reservierung notwendig</string>
     <string name="vegetarisch">Vegetarisch</string>
     <string name="vegan">Vegan</string>
-    <string name="japanisch">Japanisch</string>
+    <string name="Indisch">Indisch</string>
     <string name="asiatisch">Asiatisch</string>
-    <string name="europ_isch">Europäisch</string>
+    <string name="europ_isch">Indonesisch</string>
     <string name="italienisch">Italienisch</string>
     <string name="in_app_bezahlung_m_glich">In-App Bezahlung möglich</string>
-    <string name="griechisch">Griechisch</string>
+    <string name="Deutsch">Deutsch</string>
     <string name="mexikanisch">Mexikanisch</string>
     <string name="speichern_und_weiter">Speichern und weiter</string>
     <string name="daten_zum_inhaber">Daten zum Inhaber</string>
@@ -130,4 +131,11 @@
     <string name="lowest_price">minimum</string>
     <string name="highest_price">maximum</string>
     <string name="between">to</string>
+    <string name="restaurant_logo">restaurant_logo</string>
+    <string name="location_icon">location_icon</string>
+    <string name="bike_icon">bike_icon</string>
+    <string name="walk_icon">walk_icon</string>
+    <string name="car_icon">car_icon</string>
+    <string name="map">map</string>
+    <string name="benutzername">Benutzername</string>
 </resources>

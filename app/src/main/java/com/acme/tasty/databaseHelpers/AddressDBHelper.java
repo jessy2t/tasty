@@ -8,10 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 import com.acme.tasty.dataModels.AddressDataModel;
 import com.acme.tasty.dataModels.CityDataModel;
-import com.acme.tasty.dataModels.RatingDataModel;
-import com.acme.tasty.dataModels.RestaurantDataModel;
-
-import java.util.ArrayList;
 
 public class AddressDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="address.db";
@@ -26,12 +22,12 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         db.execSQL("create table address(address_id INTEGER primary key, street TEXT," +
                 "house_number INTEGER, zip_code TEXT, foreign key (zip_code) references city (zip_code))");
         insertData("Schlemmerstraße", 25, "12345", db);
-        insertData("Burgerallee", 5, "76133", db);
-        insertData("Almanstraße", 23, "78315", db);
-        insertData("Bollywoodallee", 9, "22305", db);
-        insertData("Pekingallee", 29, "24654", db);
-        insertData("Jakartaweg", 3, "76354", db);
-        insertData("Am Gardasee", 07, "76137", db);
+        insertData("Burgerallee", 5, "12345", db);
+        insertData("Almanstraße", 23, "12345", db);
+        insertData("Bollywoodallee", 9, "12345", db);
+        insertData("Pekingallee", 29, "12345", db);
+        insertData("Jakartaweg", 3, "12345", db);
+        insertData("Am Gardasee", 07, "12345", db);
     }
 
     @Override
@@ -57,7 +53,7 @@ public class AddressDBHelper extends SQLiteOpenHelper {
             return true;
     }
 
-    public Boolean insertData(String street, Integer houseNumber, String zipCode) {
+    public Integer insertData(String street, Integer houseNumber, String zipCode) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -66,9 +62,20 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         values.put("zip_code", zipCode);
 
         long result = db.insert("address", null, values);
-        if(result == -1) return false;
+        if(result == -1) return 0;
         else
-            return true;
+            return (int) result;
+    }
+
+    public Integer getAddressId(String street, Integer houseNumber, String zipCode){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from address where street=? AND house_number=? AND zip_code=?",
+                new String[] {street, String.valueOf(houseNumber), zipCode});
+        if(cursor.getCount() <= 0)
+            return null;
+
+        cursor.moveToFirst();
+        return cursor.getInt(0);
     }
 
     public AddressDataModel getAddress(Integer addressId) {

@@ -216,7 +216,7 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
             return MainActivity.CategoriesDB.updateData(mexican, indian, false, italian, german,
                     american, chinese);
 
-        return MainActivity.CategoriesDB.insertData(mexican, indian, false, italian, german,
+        return MainActivity.CategoriesDB.insertPreferencesData(mexican, indian, false, italian, german,
                 american, chinese);
     }
 

@@ -20,15 +20,15 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table restaurant(restaurant_name TEXT primary key," +
-                "attributes_id INTEGER, address_id INTEGER, foreign key(attributes_id) references " +
+                "image_name TEXT, attributes_id INTEGER, address_id INTEGER, foreign key(attributes_id) references " +
                 "attributes(attributes_id), foreign key(address_id) references address(address_id))");
-        insertData("Tony's Tacos", 1, 1, db);
-        insertData("Billy's Burger", 2, 2, db);
-        insertData("Hansi's Wurstbude", 3, 3, db);
-        insertData("Curry Murry", 3, 3, db);
-        insertData("Chinese Rises", 4, 4, db);
-        insertData("Indonesian Food", 5, 5, db);
-        insertData("Pizza Bellissima", 6, 6, db);
+        insertData("Tony's Tacos", "taco", 1, 1, db);
+        insertData("Billy's Burger", "burger", 2, 2, db);
+        insertData("Hansi's Wurstbude", "sausage", 3, 3, db);
+        insertData("Curry Murry", "curry", 3, 3, db);
+        insertData("Chinese Rises", "rice", 4, 4, db);
+        insertData("Indonesian Food", "indonesian", 5, 5, db);
+        insertData("Pizza Bellissima", "pizza", 6, 6, db);
     }
 
     @Override
@@ -41,17 +41,19 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         db.execSQL("delete from restaurant");
     }
 
-    public Boolean insertData(String restaurantName, Integer attributesId, Integer addressId, SQLiteDatabase db) {
+    public long insertData(String restaurantName, String imageName, Integer attributesId, Integer addressId,
+                           SQLiteDatabase db) {
         ContentValues values = new ContentValues();
 
         values.put("restaurant_name", restaurantName);
+        values.put("image_name", imageName);
         values.put("attributes_id", attributesId);
         values.put("address_id", addressId);
 
         long result = db.insert("restaurant", null, values);
-        if(result == -1) return false;
+        if(result == -1) return 0L;
         else
-            return true;
+            return result;
     }
 
     public Boolean insertData(String restaurantName, Integer attributesId, Integer addressId) {
@@ -59,6 +61,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put("restaurant_name", restaurantName);
+        values.put("image_name", "unknown_restaurant");
         values.put("attributes_id", attributesId);
         values.put("address_id", addressId);
 
@@ -75,29 +78,31 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
             return null;
 
         cursor.moveToFirst();
-        Integer attributesId = cursor.getInt(1);
-        Integer addressId = cursor.getInt(2);
+        String restaurantImage = cursor.getString(1);
+        Integer attributesId = cursor.getInt(2);
+        Integer addressId = cursor.getInt(3);
         AddressDataModel address = MainActivity.AddressDB.getAddress(addressId);
         RestaurantAttributesDataModel attributes = MainActivity.AttributesDB.getRestaurantAttributes(attributesId);
 
-        return new RestaurantDataModel(name, attributes, address);
+        return new RestaurantDataModel(name, restaurantImage, attributes, address);
     }
 
     public RestaurantDataModel getRestaurantBySuggestionBasis(SuggestionBasisDataModel suggestionBasis) {
         SQLiteDatabase db = this.getWritableDatabase();
         //mit suggestionBasis umschreiben
         Cursor cursor = db.rawQuery("select * from restaurant where restaurant_name=? order by random() limit 1",
-                new String[] {"Tony's Tacos"});
+                new String[] {"Pizza Bellissima"});
         if(cursor.getCount() <= 0)
             return null;
 
         cursor.moveToFirst();
         String name = cursor.getString(0);
-        Integer attributesId = cursor.getInt(1);
-        Integer addressId = cursor.getInt(2);
+        String restaurantImage = cursor.getString(1);
+        Integer attributesId = cursor.getInt(2);
+        Integer addressId = cursor.getInt(3);
         AddressDataModel address = MainActivity.AddressDB.getAddress(addressId);
         RestaurantAttributesDataModel attributes = MainActivity.AttributesDB.getRestaurantAttributes(attributesId);
 
-        return new RestaurantDataModel(name, attributes, address);
+        return new RestaurantDataModel(name, restaurantImage, attributes, address);
     }
 }

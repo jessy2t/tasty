@@ -11,6 +11,8 @@ import com.acme.tasty.dataModels.CategoriesDataModel;
 import com.acme.tasty.dataModels.RestaurantAttributesDataModel;
 import com.acme.tasty.dataModels.RestaurantDataModel;
 
+import java.util.List;
+
 public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="restaurant_attributes.db";
     public Context Context;
@@ -109,5 +111,28 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
 
         return new RestaurantAttributesDataModel(hasDeliveryService, supportsReservation, reservationNecessary,
                 supportsInAppPayment, vegetarian, vegan, categories);
+    }
+
+    public Integer getId(Boolean has_delivery_services, Boolean supports_reservation, Boolean reservation_necessary,
+                                               Boolean supports_in_app_payment, Boolean vegetarian, Boolean vegan, Integer categories_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from attributes where has_delivery_service=? AND supports_reservation=? AND reservation_necessary=? AND supports_in_app_payment=? AND vegetarian=? AND vegan=? AND categories_id=?",
+                new String[] {boolToIntString(has_delivery_services), boolToIntString(supports_reservation),
+                        boolToIntString(reservation_necessary), boolToIntString(supports_in_app_payment),
+                        boolToIntString(vegetarian), boolToIntString(vegan), String.valueOf(categories_id)});
+
+        if(cursor.getCount() <= 0)
+            return null;
+
+        cursor.moveToFirst();
+        Integer id = cursor.getInt(0);
+
+        return id;
+    }
+
+    private String boolToIntString (Boolean bool) {
+        if(bool)
+            return "1";
+        return "0";
     }
 }

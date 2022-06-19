@@ -7,9 +7,11 @@ public class RestaurantDataModel {
     public String Name;
     public RestaurantAttributesDataModel Attributes;
     public AddressDataModel Address;
+    public String ImageName;
 
-    public RestaurantDataModel(String name, RestaurantAttributesDataModel attributes, AddressDataModel address) {
+    public RestaurantDataModel(String name, String imageName, RestaurantAttributesDataModel attributes, AddressDataModel address) {
         Name = name;
+        ImageName = imageName;
         Attributes = attributes;
         Address = address;
     }
