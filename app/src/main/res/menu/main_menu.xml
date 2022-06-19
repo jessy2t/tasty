@@ -6,7 +6,7 @@
             android:title="@string/startseite"
             android:icon="@drawable/ic_icons8_zuhause"
             android:onClick="navigateToHome"
-            android:showAsAction="always" />
+            app:showAsAction="always"/>
 
     <item android:title="@string/menu_item_1" android:icon="@drawable/user" android:enabled="false"/>
     <item
