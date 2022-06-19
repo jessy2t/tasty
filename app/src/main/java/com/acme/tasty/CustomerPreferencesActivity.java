@@ -1,8 +1,10 @@
 package com.acme.tasty;
 
+import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -166,6 +168,7 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
                     showValidationMessage("Fehler bei der Speicherung. Bitte kontaktieren Sie den Kundendienst.");
             }
         }
+        hideSoftKeyboard(v);
     }
 
     private void showValidationMessage(String message) {
@@ -198,5 +201,9 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
     public void navigateToPreferences(MenuItem item){
         Intent intent = new Intent(this, CustomerPreferencesActivity.class);
         startActivity(intent);
+    }
+    public void hideSoftKeyboard(View view){
+        InputMethodManager imm =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
