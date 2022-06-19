@@ -126,11 +126,11 @@
         <item>laktosefrei</item>
         <item>frutarisch</item>
     </string-array>
-    <string name="Edit">Edit</string>
-    <string name="Save">Save</string>
+    <string name="Edit">Bearbeiten</string>
+    <string name="Save">Speichern</string>
     <string name="lowest_price">minimum</string>
     <string name="highest_price">maximum</string>
-    <string name="between">to</string>
+    <string name="between">bis</string>
     <string name="restaurant_logo">restaurant_logo</string>
     <string name="location_icon">location_icon</string>
     <string name="bike_icon">bike_icon</string>
