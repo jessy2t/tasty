@@ -81,15 +81,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp">
+
             <TextView
-                    android:id="@+id/restaurant_distance_label"
-                    android:text="@string/restaurant_distance_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/text_normal"
-                    android:textColor="@color/green_700"/>
+                android:id="@+id/restaurant_distance_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/restaurant_distance_label"
+                android:textColor="@color/green_700"
+                android:textSize="@dimen/text_normal"
+                android:textStyle="bold" />
             <LinearLayout
                     android:id="@+id/restaurant_distance_icon_layout"
                     android:orientation="vertical"

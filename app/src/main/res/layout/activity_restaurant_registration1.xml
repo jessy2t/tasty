@@ -21,6 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="@string/daten_zum_restaurant"
+        android:textColor="@color/green_700"
+        android:textSize="@dimen/text_headline"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/nameRestaurant"
         app:layout_constraintTop_toTopOf="parent" />
 

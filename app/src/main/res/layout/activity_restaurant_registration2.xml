@@ -15,13 +15,14 @@
     <EditText
         android:id="@+id/inhaberVorname"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="96dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/vorname"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="@dimen/text_subtitel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,9 +63,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/daten_zum_inhaber"
+        android:textColor="@color/green_700"
+        android:textSize="@dimen/text_headline"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/inhaberVorname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/inhaberVorname" />
 
     <TextView
         android:id="@+id/textView6"
