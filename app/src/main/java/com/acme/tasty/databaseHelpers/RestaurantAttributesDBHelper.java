@@ -27,7 +27,7 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
                 "supports_reservation BOOLEAN, reservation_necessary BOOLEAN, supports_in_app_payment BOOLEAN," +
                 "vegetarian BOOLEAN, vegan BOOLEAN, categories_id INTEGER, foreign key(categories_id) references " +
                 "categories(categories_id))");
-        insertData(true, true, true, false,
+        Boolean test = insertData(true, true, true, false,
                 true, true, 1, db);
         insertData(true, true, true, false,
                 true, true, 2, db);
@@ -45,7 +45,7 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists restaurant_owner");
+        db.execSQL("drop table if exists attributes");
     }
 
     public void clearData() {

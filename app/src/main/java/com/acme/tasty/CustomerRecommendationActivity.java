@@ -83,7 +83,7 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
 
     private void setRestaurantImage(String restaurantName) {
         switch (restaurantName) {
-            case "Tony's Taco":
+            case "Tony's Tacos":
                 restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.taco));
                 break;
             case "Billy's Burger":
