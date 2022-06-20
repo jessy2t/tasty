@@ -19,6 +19,7 @@
         android:layout_marginTop="96dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="@string/vorname"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textSize="@dimen/text_normal"
@@ -26,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    
+
     <EditText
         android:id="@+id/inhaberNachname"
         android:layout_width="0dp"
