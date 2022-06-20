@@ -45,6 +45,8 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
 
     private String getRestaurantFromSuggestionBasis() {
         SuggestionBasisDataModel suggestionBasis = SwipePreisrahmen.SuggestionBasisDB.getLastInsertedSuggestionBasis();
+        if(suggestionBasis.FoodOrRestaurantSuggestion.equals("restaurant"))
+            findViewById(R.id.meal_suggestion).setVisibility(View.GONE);
         return MainActivity.RestaurantDB.getRestaurantBySuggestionBasis(suggestionBasis).Name;
     }
 
