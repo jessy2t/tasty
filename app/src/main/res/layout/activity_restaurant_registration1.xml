@@ -21,6 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="@string/daten_zum_restaurant"
+        android:textColor="@color/green_700"
+        android:textSize="@dimen/text_headline"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/nameRestaurant"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -218,10 +221,11 @@
     <Button
         android:id="@+id/speichern"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
         android:onClick="navigateToRestaurantRegistration2"
         android:text="@string/speichern_und_weiter"
+        android:textSize="@dimen/text_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
