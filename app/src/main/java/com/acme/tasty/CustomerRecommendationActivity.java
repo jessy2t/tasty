@@ -17,6 +17,7 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
     private PopupWindow _popupWindow;
     private Toolbar mToolbar;
     private String restaurantName;
+    private ImageView restaurantImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,7 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
 
+        restaurantImage = findViewById(R.id.restaurant_image);
         generateNewRecommendation(null);
     }
 
@@ -38,6 +40,7 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
     public void generateNewRecommendation(View view) {
         restaurantName = getRestaurantFromSuggestionBasis();
         ((TextView)findViewById(R.id.restaurant_suggestion)).setText(restaurantName);
+        setRestaurantImage(restaurantName);
     }
 
     private String getRestaurantFromSuggestionBasis() {
@@ -74,5 +77,34 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
     public void navigateToHome(MenuItem item){
         Intent intent = new Intent(this, CustomerStartActivity.class);
         startActivity(intent);
+    }
+
+    private void setRestaurantImage(String restaurantName) {
+        switch (restaurantName) {
+            case "Tony's Taco":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.taco));
+                break;
+            case "Billy's Burger":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.burger));
+                break;
+            case "Hansi's Wurstbude":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.sausage));
+                break;
+            case "Curry Murry":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.curry));
+                break;
+            case "Chinese Rises":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.rice));
+                break;
+            case "Indonesian Food":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.indonesian));
+                break;
+            case "Pizza Bellissima":
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.pizza));
+                break;
+            default:
+                restaurantImage.setImageDrawable(getResources().getDrawable(R.drawable.unknown_restaurant));
+                break;
+        }
     }
 }
