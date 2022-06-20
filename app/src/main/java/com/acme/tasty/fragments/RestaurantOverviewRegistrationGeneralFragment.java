@@ -2,6 +2,7 @@ package com.acme.tasty.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,7 @@ public class RestaurantOverviewRegistrationGeneralFragment extends Fragment {
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_customer_restaurant_overview_general, container, false);
+        View view = inflater.inflate(R.layout.fragment_restaurant_overview_general, container, false);
 
         restaurantName = view.findViewById(R.id.restaurant_name);
         restaurantStreet = view.findViewById(R.id.restaurant_address_streetNumber);
@@ -79,6 +80,8 @@ public class RestaurantOverviewRegistrationGeneralFragment extends Fragment {
         for (String attribute : restaurantAttributes) {
             Chip chip = new Chip(getActivity());
             chip.setText(attribute);
+            chip.setTextSize(12);
+            chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             chipGroup.addView(chip);
         }
 
