@@ -14,14 +14,14 @@
 
     <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             app:srcCompat="@drawable/tasty_logo"
             android:id="@+id/tasty_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp" android:layout_marginTop="100dp"/>
     <EditText
             android:id="@+id/username"
             android:layout_width="0dp"
@@ -29,6 +29,7 @@
             android:layout_marginTop="50dp"
             android:hint="@string/prompt_username"
             android:inputType="text"
+            android:textSize="@dimen/text_normal"
             android:selectAllOnFocus="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:hint="@string/prompt_password"
+            android:textSize="@dimen/text_normal"
             android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
@@ -53,6 +55,7 @@
             android:layout_height="wrap_content"
             android:text="Validierungsnachricht"
             android:textColor="#FF0000"
+            android:textSize="@dimen/text_normal"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,17 +64,19 @@
     <Button
             android:id="@+id/login"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="50dp"
             android:text="@string/action_sign_in"
+            android:textSize="@dimen/text_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password"
             android:onClick="validateLoginCredentials"/>
     <Button
             android:text="@string/register_label"
+            android:textSize="@dimen/text_button"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/registration_btn"
