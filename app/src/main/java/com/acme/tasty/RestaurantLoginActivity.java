@@ -1,9 +1,11 @@
 package com.acme.tasty;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,5 +79,10 @@ public class RestaurantLoginActivity extends AppCompatActivity {
     public void navigateToRegistration(View view) {
         Intent intent = new Intent(this, RestaurantRegistration1Activity.class);
         startActivity(intent);
+    }
+
+    public void hideSoftKeyboard(View view){
+        InputMethodManager imm =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
