@@ -23,6 +23,7 @@
 
     <TextView
             android:text="@string/suggestion_title"
+            android:textSize="@dimen/text_headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +31,6 @@
             android:id="@+id/suggestion_title"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="100dp"
-            android:textSize="@dimen/text_headline"
             android:textStyle="bold"
             android:textColor="@color/green_700"/>
     <androidx.constraintlayout.widget.ConstraintLayout
