@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="@string/praeferenzen_ernaehrungsweise"
-        android:textSize="20sp"
+        android:textSize="@dimen/text_headline"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,11 +35,12 @@
     <Button
         android:id="@+id/ernaehrungsweise_speichern"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/buttonheight"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="90dp"
         android:text="@string/Save"
+        android:textSize="@dimen/text_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +53,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
         android:text="@string/praeferenzen_ernaehrungsweise_alles"
+        android:textSize="@dimen/text_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titel_ernaehrungform" />
 
@@ -61,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="@string/praeferenzen_ernaehrungsweise_vegetarisch"
+        android:textSize="@dimen/text_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkBox1" />
 
@@ -70,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="@string/praeferenzen_ernaehrungsweise_vegan"
+        android:textSize="@dimen/text_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkBox2" />
 
@@ -79,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="@string/praeferenzen_ernaehrungsweise_glutenfrei"
+        android:textSize="@dimen/text_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkBox3" />
 
@@ -88,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="@string/praeferenzen_ernaehrungsweise_frutarisch"
+        android:textSize="@dimen/text_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkBox4" />
 
@@ -97,8 +103,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="@string/praeferenzen_ernaehrungsweise_laktosefrei"
+        android:textSize="@dimen/text_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/checkBox5" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
