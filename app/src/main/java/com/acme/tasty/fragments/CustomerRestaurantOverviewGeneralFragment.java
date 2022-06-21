@@ -6,8 +6,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.annotation.*;
 import androidx.fragment.app.Fragment;
 import com.acme.tasty.CustomerRecommendationActivity;
 import com.acme.tasty.MainActivity;
@@ -82,6 +81,8 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
         for (String attribute : restaurantAttributes) {
             Chip chip = new Chip(getActivity());
             chip.setText(attribute);
+            chip.setTextSize(12);
+            chip.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             chipGroup.addView(chip);
         }
 

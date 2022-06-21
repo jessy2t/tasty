@@ -34,6 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/restaurant_name"
+                android:textColor="@color/green_700"
+                android:textSize="@dimen/text_subtitel"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -83,13 +85,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp">
+
             <TextView
                 android:id="@+id/restaurant_distance_label"
-                android:text="@string/restaurant_distance_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:textStyle="bold"/>
+                android:text="@string/restaurant_distance_label"
+                android:textColor="@color/green_700"
+                android:textSize="@dimen/text_normal"
+                android:textStyle="bold" />
             <LinearLayout
                 android:id="@+id/restaurant_distance_icon_layout"
                 android:orientation="vertical"
@@ -172,13 +177,16 @@
         android:layout_marginTop="15dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp">
+
         <TextView
-            android:text="@string/restaurant_opening_hours_label"
+            android:id="@+id/restaurant_opening_hours_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/restaurant_opening_hours_label"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:text="@string/restaurant_opening_hours_label"
+            android:textColor="@color/green_700"
+            android:textSize="@dimen/text_normal"
+            android:textStyle="bold" />
         <LinearLayout
             android:id="@+id/weekday_layout"
             android:orientation="vertical"

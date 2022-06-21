@@ -64,12 +64,12 @@ public class RestaurantOverviewRegistration extends AppCompatActivity {
         tabLayout.getTabAt(1).setText("Bewertungen");
     }
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu_restaurant, menu);
         return true;
-    }*/
+    }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {
         private List<Fragment> fragments = new ArrayList<>();
@@ -107,6 +107,10 @@ public class RestaurantOverviewRegistration extends AppCompatActivity {
         _popupWindow = PopupWindowService.getOrderConfirmationPopupWindow(inflater, view);
     }
 
+    public void navigateToLogIn(MenuItem item){
+        Intent intent = new Intent(this, RestaurantLoginActivity.class);
+        startActivity(intent);
+    }
     public void closePopUp(View view) {
         PopupWindowService.closePopUp(_popupWindow, view);
     }

@@ -24,7 +24,10 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/average_ratingBar"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="@dimen/text_subtitel"
+                    android:textStyle="bold"
+                    android:textColor="@color/green_700"/>
             <RatingBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -47,7 +50,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/sort_by_label"
                 android:layout_toEndOf="@id/rating_layout"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textSize="@dimen/text_subtitel"
+                android:textColor="@color/green_700"/>
         <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,21 +63,21 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/sort_by_newest"
                     android:text="@string/ratings_sort_by_newest_label"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_normal"
                     android:onClick="sortByNewestDate"/>
             <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/sort_by_highest"
                     android:text="@string/ratings_sort_by_highest_label"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_normal"
                     android:onClick="sortByHighestRating"/>
             <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/sort_by_lowest"
                     android:text="@string/ratings_sort_by_lowest_label"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_normal"
                     android:onClick="sortByLowestRating"/>
         </com.google.android.material.chip.ChipGroup>
     </RelativeLayout>
@@ -89,7 +94,9 @@
                 android:id="@+id/no_ratings"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="50dp"/>
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="50dp"
+                android:textSize="@dimen/text_normal"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

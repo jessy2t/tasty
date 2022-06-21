@@ -26,7 +26,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="@string/customer_order_confirmation_title"
-                android:textSize="18sp"
+                android:textSize="@dimen/text_subtitel"
+                android:textColor="@color/green_700"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,12 +44,13 @@
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/text_normal"
                 app:layout_constraintTop_toBottomOf="@id/order_confirmation_title" />
 
             <Button
                 android:id="@+id/ok_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:onClick="closePopUp"
@@ -56,6 +58,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                android:textSize="@dimen/text_button"
                 app:layout_constraintTop_toBottomOf="@+id/order_confirmation_text" />
 
             <ImageView

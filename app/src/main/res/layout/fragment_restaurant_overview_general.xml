@@ -81,15 +81,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp">
+
             <TextView
-                    android:id="@+id/restaurant_distance_label"
-                    android:text="@string/restaurant_distance_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/text_normal"
-                    android:textColor="@color/green_700"/>
+                android:id="@+id/restaurant_distance_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/restaurant_distance_label"
+                android:textColor="@color/green_700"
+                android:textSize="@dimen/text_normal"
+                android:textStyle="bold" />
             <LinearLayout
                     android:id="@+id/restaurant_distance_icon_layout"
                     android:orientation="vertical"
@@ -242,7 +243,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:id="@+id/delivery_btn"
-                app:backgroundTint="@color/green_500"
+                app:backgroundTint="#e5e5e5"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -262,7 +263,7 @@
                 android:focusable="true"
                 android:id="@+id/reservation_btn"
                 android:layout_weight="0.5"
-                app:backgroundTint="@color/green_500"
+                app:backgroundTint="#e5e5e5"
                 android:layout_marginBottom="15dp"
                 android:onClick="clickOnReservationOrDelivery"/>
         <TextView

@@ -2,8 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:onClick="hideSoftKeyboard"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -16,6 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="@string/daten_zum_restaurant"
+        android:textColor="@color/green_700"
+        android:textSize="@dimen/text_headline"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/nameRestaurant"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,6 +35,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/name_des_restaurants"
+        android:textSize="@dimen/text_normal"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -43,6 +52,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/stra_e"
+        android:textSize="@dimen/text_normal"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -58,6 +68,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/hausnummer"
+        android:textSize="@dimen/text_normal"
         android:inputType="number"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -74,6 +85,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/ort"
+        android:textSize="@dimen/text_normal"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -89,6 +101,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/plz"
+        android:textSize="@dimen/text_normal"
         android:inputType="number"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -121,6 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/lieferservice_vorhanden"
+                android:textSize="@dimen/text_normal"
                 tools:text="Lieferservice vorhanden" />
 
             <CheckBox
@@ -128,6 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/reservierung_m_glich"
+                android:textSize="@dimen/text_normal"
                 tools:text="Reservierung möglich" />
 
             <CheckBox
@@ -135,6 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/reservierung_notwendig"
+                android:textSize="@dimen/text_normal"
                 tools:text="Reservierung notwendig" />
 
             <CheckBox
@@ -142,6 +158,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/in_app_bezahlung_m_glich"
+                android:textSize="@dimen/text_normal"
                 tools:text="In-App Bezahlung möglich" />
 
             <CheckBox
@@ -149,6 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/vegetarisch"
+                android:textSize="@dimen/text_normal"
                 tools:text="Vegetarisch" />
 
             <CheckBox
@@ -156,6 +174,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/vegan"
+                android:textSize="@dimen/text_normal"
                 tools:text="Vegan" />
 
             <CheckBox
@@ -163,6 +182,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Indisch"
+                android:textSize="@dimen/text_normal"
                 tools:text="Indisch" />
 
             <CheckBox
@@ -170,6 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/europ_isch"
+                android:textSize="@dimen/text_normal"
                 tools:text="Indonesisch" />
 
             <CheckBox
@@ -177,6 +198,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/italienisch"
+                android:textSize="@dimen/text_normal"
                 tools:text="Italienisch" />
 
             <CheckBox
@@ -184,6 +206,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/Deutsch"
+                android:textSize="@dimen/text_normal"
                 tools:text="Deutsch" />
 
             <CheckBox
@@ -191,6 +214,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/mexikanisch"
+                android:textSize="@dimen/text_normal"
                 tools:text="Mexikanisch" />
 
             <CheckBox
@@ -198,6 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/praeferenzen_kategorie_amerikanisch"
+                android:textSize="@dimen/text_normal"
                 tools:text="Amerikanisch" />
 
             <CheckBox
@@ -205,6 +230,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/praeferenzen_kategorie_chinesisch"
+                android:textSize="@dimen/text_normal"
                 tools:text="Chinesisch" />
 
         </LinearLayout>
@@ -212,14 +238,15 @@
 
     <Button
         android:id="@+id/speichern"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
+        android:onClick="navigateToRestaurantRegistration2"
         android:text="@string/speichern_und_weiter"
+        android:textSize="@dimen/text_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="navigateToRestaurantRegistration2"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

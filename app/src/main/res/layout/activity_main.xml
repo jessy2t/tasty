@@ -11,42 +11,72 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:ignore="MissingConstraints"/>
+
     <ImageView
-            android:id="@+id/app_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:contentDescription="@string/logo_description"
-            app:srcCompat="@drawable/tasty_logo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@id/restaurant_btn"
-            android:layout_marginBottom="96dp"/>
+        android:id="@+id/app_logo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/logo_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tasty_logo" />
+
     <Button
-            android:id="@+id/restaurant_btn"
-            android:text="@string/restaurant_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/customer_btn"
-            app:layout_constraintTop_toBottomOf="@id/app_logo"
-            android:layout_marginBottom="32dp"
-            android:onClick="navigateToRestaurantLogin"/>
+        android:id="@+id/restaurant_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
+        android:onClick="navigateToRestaurantLogin"
+        android:text="&quot;ich habe ein \n Restaurant&quot;"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/customer_btn" />
 
     <Button
         android:id="@+id/customer_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="200dp"
         android:onClick="navigateToCustomerStart"
-        android:text="@string/customer_label"
+        android:text="&quot;ich möchte \n essen&quot;"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/restaurant_btn"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_logo" />
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageButton
+        android:id="@+id/customer_logo_btn"
+        android:layout_width="148dp"
+        android:layout_height="141dp"
+        android:adjustViewBounds="false"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/Deutsch"
+        android:cropToPadding="false"
+        android:onClick="navigateToCustomerStart"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/customer_btn"
+        app:layout_constraintEnd_toEndOf="@+id/customer_btn"
+        app:layout_constraintStart_toStartOf="@+id/customer_btn"
+        app:srcCompat="@drawable/bestellender_logo" />
+
+    <ImageButton
+        android:id="@+id/restaurant_logo_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/Deutsch"
+        android:onClick="navigateToRestaurantLogin"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/restaurant_btn"
+        app:layout_constraintEnd_toEndOf="@+id/restaurant_btn"
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintStart_toStartOf="@+id/restaurant_btn"
+        app:layout_constraintTop_toTopOf="@+id/customer_logo_btn"
+        app:srcCompat="@drawable/restaurantbesitzer_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

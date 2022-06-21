@@ -1,9 +1,11 @@
 package com.acme.tasty;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -84,6 +86,8 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         checkBoxMexikanisch = findViewById(R.id.checkBoxMexikanisch);
         checkBoxAmerikanisch = findViewById(R.id.checkBoxAmerikanisch);
         checkBoxChinesisch = findViewById(R.id.checkBoxChinesisch);
+
+
 
         if(TextUtils.isEmpty(nameRestaurant.getText().toString())){
             nameRestaurant.setError("Bitte Restaurantname eintragen");
@@ -166,5 +170,10 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+    }
+
+    public void hideSoftKeyboard(View view){
+        InputMethodManager imm =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

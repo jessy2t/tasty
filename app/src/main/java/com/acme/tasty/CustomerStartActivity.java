@@ -13,15 +13,17 @@ import com.acme.tasty.databaseHelpers.*;
 
 public class CustomerStartActivity extends AppCompatActivity {
 
-    private Toolbar mToolbar;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_start);
 
-        //mToolbar = findViewById(R.id.main_toolbar);
-        //setSupportActionBar(mToolbar);
+        toolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+
+
     }
 
     public void navigateToHome(MenuItem item){
@@ -29,11 +31,16 @@ public class CustomerStartActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void navigateToPreferences(MenuItem item){
+        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (menu instanceof MenuBuilder) {
+       /* if (menu instanceof MenuBuilder) {
             ((MenuBuilder) menu).setOptionalIconsVisible(true);
-        }
+        }*/
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;

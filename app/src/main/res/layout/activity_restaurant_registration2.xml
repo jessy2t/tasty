@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="hideSoftKeyboard"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -20,8 +22,9 @@
         android:hint="@string/vorname"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="@dimen/text_normal"
+        android:textColorHint="#757575"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,6 +36,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/nachname"
+        android:textSize="@dimen/text_normal"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -43,11 +47,12 @@
 
     <Button
         android:id="@+id/speichernUndWeiter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
         android:onClick="navigateToRestaurantOverviewRegistration"
         android:text="@string/registrieren"
+        android:textSize="@dimen/text_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -59,9 +64,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/daten_zum_inhaber"
+        android:textColor="@color/green_700"
+        android:textSize="@dimen/text_headline"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/inhaberVorname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/inhaberVorname" />
 
     <TextView
         android:id="@+id/textView6"
@@ -69,8 +76,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/anmeldedaten"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/green_700"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_headline"
+        app:layout_constraintStart_toStartOf="@+id/inhaberVorname"
         app:layout_constraintTop_toBottomOf="@+id/inhaberEmail" />
 
     <EditText
@@ -81,6 +90,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/passwort"
+        android:textSize="@dimen/text_normal"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -96,6 +106,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/passwort_wiederholen"
+        android:textSize="@dimen/text_normal"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -112,6 +123,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/e_mail"
+        android:textSize="@dimen/text_normal"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -127,6 +139,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/benutzername"
+        android:textSize="@dimen/text_normal"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColorHint="#757575"
@@ -143,6 +156,7 @@
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/telefonnummer"
+        android:textSize="@dimen/text_normal"
         android:inputType="phone"
         android:minHeight="48dp"
         android:textColorHint="#757575"

@@ -29,6 +29,44 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         insertData("Chinese Rises", "rice", 4, 4, db);
         insertData("Indonesian Food", "indonesian", 5, 5, db);
         insertData("Pizza Bellissima", "pizza", 6, 6, db);
+
+        db.execSQL("create table attributes(attributes_id INTEGER primary key, has_delivery_service BOOLEAN," +
+                "supports_reservation BOOLEAN, reservation_necessary BOOLEAN, supports_in_app_payment BOOLEAN," +
+                "vegetarian BOOLEAN, vegan BOOLEAN, categories_id INTEGER, foreign key(categories_id) references " +
+                "categories(categories_id))");
+        Boolean test = insertData(true, true, true, false,
+                true, true, 1, db);
+        insertData(true, true, true, false,
+                true, true, 2, db);
+        insertData(false, true, true, false,
+                true, false, 6, db);
+        insertData(true, false, true, false,
+                true, true, 3, db);
+        insertData(false, false, true, false,
+                true, true, 7, db);
+        insertData(true, true, true, false,
+                true, true, 4, db);
+        insertData(true, true, true, false,
+                true, true, 5, db);
+    }
+
+    public Boolean insertData(Boolean has_delivery_services, Boolean supports_reservation, Boolean reservation_necessary,
+                              Boolean supports_in_app_payment, Boolean vegetarian, Boolean vegan, Integer categories_id,
+                              SQLiteDatabase db) {
+        ContentValues values = new ContentValues();
+
+        values.put("has_delivery_service", has_delivery_services);
+        values.put("supports_reservation", supports_reservation);
+        values.put("reservation_necessary", reservation_necessary);
+        values.put("supports_in_app_payment", supports_in_app_payment);
+        values.put("vegetarian", vegetarian);
+        values.put("vegan", vegan);
+        values.put("categories_id", categories_id);
+
+        long result = db.insert("attributes", null, values);
+        if(result == -1) return false;
+        else
+            return true;
     }
 
     @Override
@@ -51,7 +89,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         values.put("address_id", addressId);
 
         long result = db.insert("restaurant", null, values);
-        if(result == -1) return 0L;
+        if(result == -1) return 0;
         else
             return result;
     }
@@ -88,10 +126,13 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
     }
 
     public RestaurantDataModel getRestaurantBySuggestionBasis(SuggestionBasisDataModel suggestionBasis) {
+        String SQLQuery = configureSQLQuery(suggestionBasis.DeliveryOrReservation, suggestionBasis.DietPreference);
         SQLiteDatabase db = this.getWritableDatabase();
         //mit suggestionBasis umschreiben
-        Cursor cursor = db.rawQuery("select * from restaurant where restaurant_name=? order by random() limit 1",
-                new String[] {"Pizza Bellissima"});
+        Cursor cursor = db.rawQuery(SQLQuery, null);
+        /*Cursor cursor = db.rawQuery("select * from restaurant join attributes on " +
+                        "restaurant.attributes_id=attributes.attributes_id where restaurant_name=? order by random() limit 1",
+                new String[] {"Pizza Bellissima"});*/
         if(cursor.getCount() <= 0)
             return null;
 
@@ -104,5 +145,32 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         RestaurantAttributesDataModel attributes = MainActivity.AttributesDB.getRestaurantAttributes(attributesId);
 
         return new RestaurantDataModel(name, restaurantImage, attributes, address);
+    }
+
+    private String configureSQLQuery(String deliveryOrReservation, String dietPreference) {
+        String SQLQuery = "select restaurant.* from restaurant join attributes on restaurant.attributes_id=" +
+                "attributes.attributes_id where ";
+
+        switch (deliveryOrReservation){
+            case "delivery":
+                SQLQuery += "attributes.has_delivery_service=1 ";
+                break;
+            default:
+                SQLQuery += "attributes.supports_reservation=1 ";
+                break;
+        }
+
+        switch (dietPreference){
+            case "vegan":
+                SQLQuery += "and attributes.vegan=1 ";
+                break;
+            case "vegetarian":
+                SQLQuery += "and attributes.vegetarian=1 ";
+                break;
+            default:
+                break;
+        }
+
+        return SQLQuery+="order by random() limit 1";
     }
 }

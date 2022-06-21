@@ -24,7 +24,10 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/average_ratingBar"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="@dimen/text_subtitel"
+                    android:textStyle="bold"
+                    android:textColor="@color/green_700"/>
             <RatingBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -37,7 +40,7 @@
                     android:numStars="5"
                     android:rating="3.3"
                     android:stepSize="0.1"
-                    android:progressTint="#FFFFEB3B"
+                    android:progressTint="#94cc88"
                     android:secondaryProgressTint="#e5e5e5"
             />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -47,7 +50,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/sort_by_label"
                 android:layout_toEndOf="@id/rating_layout"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textSize="@dimen/text_subtitel"
+                android:textColor="@color/green_700"/>
         <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,21 +63,21 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/sort_by_newest"
                     android:text="@string/ratings_sort_by_newest_label"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_normal"
                     android:onClick="sortByNewestDate"/>
             <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/sort_by_highest"
                     android:text="@string/ratings_sort_by_highest_label"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_normal"
                     android:onClick="sortByHighestRating"/>
             <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/sort_by_lowest"
                     android:text="@string/ratings_sort_by_lowest_label"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/text_normal"
                     android:onClick="sortByLowestRating"/>
         </com.google.android.material.chip.ChipGroup>
     </RelativeLayout>
@@ -98,16 +103,16 @@
                         android:numStars="5"
                         android:rating="5"
                         android:stepSize="0.1"
-                        android:progressTint="#FFFFEB3B"
+                        android:progressTint="#94cc88"
                         android:secondaryProgressTint="#e5e5e5"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/date_1"
                         android:layout_below="@id/ratingBar_1"
-                        android:layout_toLeftOf="@id/rating_content_1"
-                        android:text="2022-06-21"
-                        android:textSize="13dp"
+                        android:layout_toStartOf="@id/rating_content_1"
+                        android:text="@string/date"
+                        android:textSize="@dimen/text_normal"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"/>
                 <TextView
@@ -117,14 +122,17 @@
                         android:id="@+id/rating_title_1"
                         android:layout_toEndOf="@id/ratingBar_1"
                         android:layout_marginBottom="5dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_normal"
+                />
                 <TextView
                         android:text="@string/rating_content_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/rating_content_1"
                         android:layout_toEndOf="@id/ratingBar_1"
-                        android:layout_below="@id/rating_title_1"/>
+                        android:layout_below="@id/rating_title_1"
+                        android:textSize="@dimen/text_normal"/>
             </RelativeLayout>
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -141,18 +149,18 @@
                         android:numStars="5"
                         android:rating="2"
                         android:stepSize="0.1"
-                        android:progressTint="#FFFFEB3B"
+                        android:progressTint="#94cc88"
                         android:secondaryProgressTint="#e5e5e5"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/date_2"
                         android:layout_below="@id/ratingBar_2"
-                        android:layout_toLeftOf="@id/rating_content_2"
-                        android:text="2022-06-21"
-                        android:textSize="13dp"
+                        android:layout_toStartOf="@id/rating_content_2"
+                        android:text="@string/date"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="15dp"/>
+                        android:layout_marginEnd="15dp"
+                        android:textSize="@dimen/text_normal"/>
                 <TextView
                         android:text="@string/rating_title_2"
                         android:layout_width="match_parent"
@@ -160,14 +168,16 @@
                         android:id="@+id/rating_title_2"
                         android:layout_toEndOf="@id/ratingBar_2"
                         android:layout_marginBottom="5dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_normal"/>
                 <TextView
                         android:text="@string/rating_content_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/rating_content_2"
                         android:layout_toEndOf="@id/ratingBar_2"
-                        android:layout_below="@id/rating_title_2"/>
+                        android:layout_below="@id/rating_title_2"
+                        android:textSize="@dimen/text_normal"/>
             </RelativeLayout>
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -184,18 +194,18 @@
                         android:numStars="5"
                         android:rating="3"
                         android:stepSize="0.1"
-                        android:progressTint="#FFFFEB3B"
+                        android:progressTint="#94cc88"
                         android:secondaryProgressTint="#e5e5e5"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/date_3"
                         android:layout_below="@id/ratingBar_3"
-                        android:layout_toLeftOf="@id/rating_content_3"
-                        android:text="2022-06-21"
-                        android:textSize="13dp"
+                        android:layout_toStartOf="@id/rating_content_3"
+                        android:text="@string/date"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="15dp"/>
+                        android:layout_marginEnd="15dp"
+                        android:textSize="@dimen/text_normal"/>
                 <TextView
                         android:text="@string/rating_title_3"
                         android:layout_width="match_parent"
@@ -203,14 +213,16 @@
                         android:id="@+id/rating_title_3"
                         android:layout_toEndOf="@id/ratingBar_3"
                         android:layout_marginBottom="5dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_normal"/>
                 <TextView
                         android:text="@string/rating_content_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/rating_content_3"
                         android:layout_toEndOf="@id/ratingBar_3"
-                        android:layout_below="@id/rating_title_3"/>
+                        android:layout_below="@id/rating_title_3"
+                        android:textSize="@dimen/text_normal"/>
             </RelativeLayout>
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -227,16 +239,16 @@
                         android:numStars="5"
                         android:rating="3.5"
                         android:stepSize="0.1"
-                        android:progressTint="#FFFFEB3B"
+                        android:progressTint="#94cc88"
                         android:secondaryProgressTint="#e5e5e5"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/date_4"
                         android:layout_below="@id/ratingBar_4"
-                        android:layout_toLeftOf="@id/rating_content_4"
-                        android:text="2022-06-21"
-                        android:textSize="13dp"
+                        android:layout_toStartOf="@id/rating_content_4"
+                        android:text="@string/date"
+                        android:textSize="@dimen/text_normal"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="15dp"/>
                 <TextView
@@ -246,14 +258,16 @@
                         android:id="@+id/rating_title_4"
                         android:layout_toEndOf="@id/ratingBar_4"
                         android:layout_marginBottom="5dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_normal"/>
                 <TextView
                         android:text="@string/rating_content_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/rating_content_4"
                         android:layout_toEndOf="@id/ratingBar_4"
-                        android:layout_below="@id/rating_title_4"/>
+                        android:layout_below="@id/rating_title_4"
+                        android:textSize="@dimen/text_normal"/>
             </RelativeLayout>
             <RelativeLayout
                     android:layout_width="match_parent"
@@ -270,18 +284,18 @@
                         android:numStars="5"
                         android:rating="2"
                         android:stepSize="0.1"
-                        android:progressTint="#FFFFEB3B"
+                        android:progressTint="#94cc88"
                         android:secondaryProgressTint="#e5e5e5"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/date_5"
                         android:layout_below="@id/ratingBar_5"
-                        android:layout_toLeftOf="@id/rating_content_5"
-                        android:text="2022-06-21"
-                        android:textSize="13dp"
+                        android:layout_toStartOf="@id/rating_content_5"
+                        android:text="@string/date"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="15dp"/>
+                        android:layout_marginEnd="15dp"
+                        android:textSize="@dimen/text_normal"/>
                 <TextView
                         android:text="@string/rating_title_2"
                         android:layout_width="match_parent"
@@ -289,14 +303,16 @@
                         android:id="@+id/rating_title_5"
                         android:layout_toEndOf="@id/ratingBar_5"
                         android:layout_marginBottom="5dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_normal"/>
                 <TextView
                         android:text="@string/rating_content_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/rating_content_5"
                         android:layout_toEndOf="@id/ratingBar_5"
-                        android:layout_below="@id/rating_title_5"/>
+                        android:layout_below="@id/rating_title_5"
+                        android:textSize="@dimen/text_normal"/>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
