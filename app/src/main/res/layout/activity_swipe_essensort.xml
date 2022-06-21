@@ -33,13 +33,20 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
     <FrameLayout
-        android:layout_width="196dp"
+        android:layout_width="match_parent"
         android:layout_height="642dp"
         android:layout_marginStart="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_weight = "2">
 
         <ImageButton
             android:id="@+id/imageButton18"
@@ -71,19 +78,20 @@
     </FrameLayout>
 
     <FrameLayout
-        android:layout_width="196dp"
+        android:layout_width="match_parent"
         android:layout_height="642dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_weight = "2">
 
         <ImageButton
             android:id="@+id/imageButton19"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:onClick="navigateToSwipeEmpfehlungsart_Restaurant"
-            app:srcCompat="@drawable/restaurant" />
+            app:srcCompat="@drawable/restaurant"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -107,4 +115,5 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
