@@ -206,4 +206,13 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
         InputMethodManager imm =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
+    @Override
+    public void onBackPressed()
+
+
+    {
+        Intent intent = new Intent(this, CustomerRecommendationActivity.class);
+        startActivity(intent);
+    }
 }
