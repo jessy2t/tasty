@@ -34,9 +34,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
-        android:layout_width="194dp"
-        android:layout_height="643dp"
+        android:layout_width="196dp"
+        android:layout_height="642dp"
         android:layout_marginStart="1dp"
+        android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -53,7 +54,7 @@
 
             <TextView
                 android:id="@+id/textView19"
-                android:layout_width="192dp"
+                android:layout_width="194dp"
                 android:layout_height="@dimen/buttonheight"
                 android:background="@color/white"
                 android:gravity="center"
@@ -71,7 +72,7 @@
 
     <FrameLayout
         android:layout_width="196dp"
-        android:layout_height="641dp"
+        android:layout_height="642dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
