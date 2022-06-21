@@ -7,9 +7,11 @@
     tools:context=".SwipeEmpfehlungsart">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_empfehlungsart"
         android:layout_width="395dp"
         android:layout_height="113dp"
         android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         android:layout_marginBottom="643dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,77 +33,88 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <FrameLayout
-        android:layout_width="196dp"
-        android:layout_height="644dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/constraint_empfehlungsart">
 
-        <ImageButton
-            android:id="@+id/imageButton6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="navigateToSwipeBeschraenkungen_Restaurant"
-            app:srcCompat="@drawable/restaurant_whal" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="644dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_weight = "2">
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="194dp"
-                android:layout_height="@dimen/buttonheight"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="Restaurant"
-                android:textAlignment="center"
-                android:textColor="@color/green_700"
-                android:textSize="@dimen/text_button"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+            <ImageButton
+                android:id="@+id/imageButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="navigateToSwipeBeschraenkungen_Restaurant"
+                app:srcCompat="@drawable/restaurant_whal" />
 
-    <FrameLayout
-        android:layout_width="196dp"
-        android:layout_height="644dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/imageButton8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="navigateToSwipeBeschraenkungen_Gericht"
-            app:srcCompat="@drawable/gericht_wahl" />
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="194dp"
+                    android:layout_height="@dimen/buttonheight"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Restaurant"
+                    android:textAlignment="center"
+                    android:textColor="@color/green_700"
+                    android:textSize="@dimen/text_button"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="644dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_weight = "2">
 
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="194dp"
-                android:layout_height="@dimen/buttonheight"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="Gericht"
-                android:textAlignment="center"
-                android:textColor="@color/green_700"
-                android:textSize="@dimen/text_button"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </FrameLayout>
+            <ImageButton
+                android:id="@+id/imageButton8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="navigateToSwipeBeschraenkungen_Gericht"
+                app:srcCompat="@drawable/gericht_wahl" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="194dp"
+                    android:layout_height="@dimen/buttonheight"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:text="Gericht"
+                    android:textAlignment="center"
+                    android:textColor="@color/green_700"
+                    android:textSize="@dimen/text_button"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
