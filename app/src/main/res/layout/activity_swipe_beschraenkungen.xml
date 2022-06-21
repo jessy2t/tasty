@@ -55,8 +55,9 @@
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="194dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/buttonheight"
                 android:background="@color/white"
+                android:gravity="center"
                 android:text="Vegetarisch"
                 android:textAlignment="center"
                 android:textAllCaps="false"
@@ -97,8 +98,9 @@
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="192dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/buttonheight"
                 android:background="@color/white"
+                android:gravity="center"
                 android:text="Vegan"
                 android:textAlignment="center"
                 android:textColor="@color/green_700"
@@ -135,8 +137,9 @@
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="389dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/buttonheight"
                 android:background="@color/white"
+                android:gravity="center"
                 android:text="Fleisch"
                 android:textAlignment="center"
                 android:textColor="@color/green_700"

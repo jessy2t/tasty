@@ -52,8 +52,9 @@
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="194dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/buttonheight"
                 android:background="@color/white"
+                android:gravity="center"
                 android:text="Restaurant"
                 android:textAlignment="center"
                 android:textColor="@color/green_700"
@@ -88,8 +89,9 @@
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="192dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/buttonheight"
                 android:background="@color/white"
+                android:gravity="center"
                 android:text="Gericht"
                 android:textAlignment="center"
                 android:textColor="@color/green_700"
