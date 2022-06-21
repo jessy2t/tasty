@@ -212,7 +212,7 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
 
 
     {
-        Intent intent = new Intent(this, CustomerRecommendationActivity.class);
+        Intent intent = new Intent(this, CustomerStartActivity.class);
         startActivity(intent);
     }
 }
