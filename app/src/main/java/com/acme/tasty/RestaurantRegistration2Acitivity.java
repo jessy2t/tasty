@@ -28,6 +28,7 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
     protected EditText password;
     protected EditText passwordWdh;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
