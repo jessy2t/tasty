@@ -40,8 +40,7 @@
         <activity
             android:name=".CustomerRecommendationActivity"
             android:exported="true"
-            android:label="@string/title_activity_customer_recommendation"
-            android:parentActivityName=".CustomerSwipeActivity" />
+            android:label="@string/title_activity_customer_recommendation" />
         <activity
             android:name=".RestaurantRegistration1Activity"
             android:exported="true"
