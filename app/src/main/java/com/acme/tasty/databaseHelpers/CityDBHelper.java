@@ -45,9 +45,7 @@ public class CityDBHelper extends SQLiteOpenHelper {
         values.put("city_name", city);
 
         long result = db.insert("city", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean insertData(String zip, String city) {
@@ -63,20 +61,16 @@ public class CityDBHelper extends SQLiteOpenHelper {
         values.put("city_name", city);
 
         long result = db.insert("city", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean cityExists(String zip, String city) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from city where zip_code=? or city_name=?", new String[] {zip, city});
-        if(cursor.getCount() > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        boolean cityExists = cursor.getCount() > 0;
+        cursor.close();
+
+        return cityExists;
     }
 
     public CityDataModel getCity(String zip) {
@@ -88,6 +82,7 @@ public class CityDBHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         String zipCode = cursor.getString(0);
         String cityName = cursor.getString(1);
+        cursor.close();
 
         return new CityDataModel(zipCode, cityName);
     }

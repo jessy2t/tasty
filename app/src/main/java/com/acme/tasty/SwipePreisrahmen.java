@@ -1,10 +1,9 @@
 package com.acme.tasty;
 
+import android.annotation.SuppressLint;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
@@ -14,8 +13,11 @@ import com.acme.tasty.databaseHelpers.PriceRangeDBHelper;
 import com.acme.tasty.databaseHelpers.SuggestionBasisDBHelper;
 
 public class SwipePreisrahmen extends AppCompatActivity {
+    @SuppressLint("StaticFieldLeak")
     public static SuggestionBasisDBHelper SuggestionBasisDB;
+    @SuppressLint("StaticFieldLeak")
     public static DietDBHelper DietDB;
+    @SuppressLint("StaticFieldLeak")
     public static PriceRangeDBHelper PriceRangeDB;
     private SeekBar seekBar;
     @Override
@@ -23,24 +25,20 @@ public class SwipePreisrahmen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_preisrahmen);
 
-        seekBar = (SeekBar)findViewById(R.id.seekbar);
-        final TextView seekBarValue = (TextView)findViewById(R.id.seekbarvalue);
+        seekBar = findViewById(R.id.seekbar);
+        final TextView seekBarValue = findViewById(R.id.seekbarvalue);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                seekBarValue.setText(String.valueOf(progress) + " €");
+                seekBarValue.setText(progress + " €");
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
     }
 

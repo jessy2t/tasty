@@ -53,7 +53,18 @@ public class CustomerRestaurantOverviewRatingsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_customer_restaurant_overview_ratings, container, false);
+        getUIElements(view);
+        sortByNewest();
+        return view;
+    }
 
+    @Override
+    public void onAttach(@NonNull @NotNull Context context) {
+        super.onAttach(context);
+        RatingDB = new RatingDBHelper(getActivity());
+    }
+
+    private void getUIElements(View view) {
         newestChip = view.findViewById(R.id.sort_by_newest);
         highestChip = view.findViewById(R.id.sort_by_highest);
         lowestChip = view.findViewById(R.id.sort_by_lowest);
@@ -75,15 +86,6 @@ public class CustomerRestaurantOverviewRatingsFragment extends Fragment {
         ratingTitle5 = view.findViewById(R.id.rating_title_5);
         ratingBar5 = view.findViewById(R.id.ratingBar_5);
         ratingDate5 = view.findViewById(R.id.date_5);
-        sortByNewest();
-
-        return view;
-    }
-
-    @Override
-    public void onAttach(@NonNull @NotNull Context context) {
-        super.onAttach(context);
-        RatingDB = new RatingDBHelper(getActivity());
     }
 
     public void sortByNewest() {

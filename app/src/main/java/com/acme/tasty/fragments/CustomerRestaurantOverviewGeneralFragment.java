@@ -1,7 +1,6 @@
 package com.acme.tasty.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.ImageView;
@@ -11,21 +10,16 @@ import androidx.fragment.app.Fragment;
 import com.acme.tasty.CustomerRecommendationActivity;
 import com.acme.tasty.MainActivity;
 import com.acme.tasty.R;
-import com.acme.tasty.RestaurantLoginActivity;
-import com.acme.tasty.dataModels.AddressDataModel;
-import com.acme.tasty.dataModels.CityDataModel;
 import com.acme.tasty.dataModels.OpeningHoursDataModel;
 import com.acme.tasty.dataModels.RestaurantDataModel;
-import com.acme.tasty.databaseHelpers.AddressDBHelper;
-import com.acme.tasty.databaseHelpers.CityDBHelper;
 import com.acme.tasty.databaseHelpers.OpeningHoursDBHelper;
 import com.acme.tasty.databaseHelpers.RestaurantDBHelper;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
@@ -44,19 +38,8 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_customer_restaurant_overview_general, container, false);
-        Intent intent = getActivity().getIntent();
-
-        restaurantName = view.findViewById(R.id.restaurant_name);
-        restaurantStreet = view.findViewById(R.id.restaurant_address_streetNumber);
-        restaurantCity = view.findViewById(R.id.restaurant_address_zipCodeCity);
-        chipGroup = view.findViewById(R.id.chip_group);
-        weekdayOpeningHoursView = view.findViewById(R.id.mondayToFriday_opening_hours);
-        saturdayOpeningHoursView = view.findViewById(R.id.saturday_opening_hours);
-        sundayOpeningHoursView = view.findViewById(R.id.sunday_opening_hours);
-        restaurantImage = view.findViewById(R.id.restaurant_logo);
-
-        setRestaurantData(view);
-
+        getUIElements(view);
+        setRestaurantData();
         return view;
     }
 
@@ -67,8 +50,18 @@ public class CustomerRestaurantOverviewGeneralFragment extends Fragment {
         OpeningHoursDB = new OpeningHoursDBHelper(getActivity());
     }
 
-    private void setRestaurantData(View view) {
-        String restaurantSuggestion = getActivity().getIntent().getStringExtra(CustomerRecommendationActivity
+    private void getUIElements(View view) {
+        restaurantName = view.findViewById(R.id.restaurant_name);
+        restaurantStreet = view.findViewById(R.id.restaurant_address_streetNumber);
+        restaurantCity = view.findViewById(R.id.restaurant_address_zipCodeCity);
+        chipGroup = view.findViewById(R.id.chip_group);
+        weekdayOpeningHoursView = view.findViewById(R.id.mondayToFriday_opening_hours);
+        saturdayOpeningHoursView = view.findViewById(R.id.saturday_opening_hours);
+        sundayOpeningHoursView = view.findViewById(R.id.sunday_opening_hours);
+        restaurantImage = view.findViewById(R.id.restaurant_logo);
+    }
+    private void setRestaurantData() {
+        String restaurantSuggestion = Objects.requireNonNull(getActivity()).getIntent().getStringExtra(CustomerRecommendationActivity
                 .RESTAURANT_SUGGESTION);
         RestaurantDataModel restaurant = MainActivity.RestaurantDB.getRestaurant(restaurantSuggestion);
 

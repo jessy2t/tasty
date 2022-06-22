@@ -15,7 +15,6 @@ import com.acme.tasty.popup.PopupWindowService;
 public class CustomerRecommendationActivity extends AppCompatActivity {
     public static final String RESTAURANT_SUGGESTION = "com.acme.tasty.RESTAURANT_SUGGESTION";
     private PopupWindow _popupWindow;
-    private Toolbar mToolbar;
     private String restaurantName;
     private ImageView restaurantImage;
     @Override
@@ -23,7 +22,7 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_recommendation);
 
-        mToolbar = findViewById(R.id.main_toolbar);
+        Toolbar mToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolbar);
 
         restaurantImage = findViewById(R.id.restaurant_image);
@@ -57,8 +56,7 @@ public class CustomerRecommendationActivity extends AppCompatActivity {
     }
 
     public void clickOnReservationOrDelivery(View view) {
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         _popupWindow = PopupWindowService.getOrderConfirmationPopupWindow(inflater, view);
     }
 

@@ -3,8 +3,6 @@ package com.acme.tasty.dataModels;
 import androidx.annotation.NonNull;
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.Time;
-
 public class OpeningHoursDataModel {
     public String Weekday;
     public String StartTime;

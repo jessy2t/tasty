@@ -14,8 +14,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 
-import com.acme.tasty.databaseHelpers.RestaurantOwnerDBHelper;
-
 import java.util.Base64;
 
 public class RestaurantRegistration2Acitivity extends AppCompatActivity {
@@ -36,10 +34,6 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
         userName = findViewById(R.id.username_register);
         userName.setText(getIntent().getStringExtra(RestaurantLoginActivity.RESTAURANT_USERNAME));
         userName.setEnabled(false);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void navigateToRestaurantOverviewRegistration(View view){
 
         firstName = findViewById(R.id.inhaberVorname);
         lastName = findViewById(R.id.inhaberNachname);
@@ -47,41 +41,13 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
         mail = findViewById(R.id.inhaberEmail);
         password = findViewById(R.id.passwort);
         passwordWdh = findViewById(R.id.passwortWdh);
+    }
 
-        if(TextUtils.isEmpty(firstName.getText().toString())){
-            firstName.setError("Bitte Vornamen eintragen");
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void navigateToRestaurantOverviewRegistration(View view){
+        if(!inputFieldsAreOk())
             return;
-        }
-        if(TextUtils.isEmpty(lastName.getText().toString())){
-            lastName.setError("Bitte Nachnamen eintragen");
-            return;
-        }
-        if(TextUtils.isEmpty(phone.getText().toString())){
-            phone.setError("Bitte Telefonnummer eintragen");
-            return;
-        }
-        if(TextUtils.isEmpty(mail.getText().toString())) {
-            mail.setError("Bitte Email eintragen");
-            return;
-        }
-        if(!Patterns.EMAIL_ADDRESS.matcher(mail.getText().toString()).matches()){
-            mail.setError("Bitte gültige Emailadresse eintragen");
-            return;
-        }
-        if(TextUtils.isEmpty(password.getText().toString())){
-            password.setError("Bitte Passwort eintragen");
-            return;
-        }
-        if(TextUtils.isEmpty(passwordWdh.getText().toString())){
-            passwordWdh.setError("Bitte Passwort eintragen");
-            return;
-        }
-        if(!(password.getText().toString().equals(passwordWdh.getText().toString()))){
-            passwordWdh.setError("Passwörter müssen übereinstimmen");
-            return;
-        }
 
-        //String username, String password, String prename, String surname, String phone, String mail
         String passwordEncoded = Base64.getEncoder().encodeToString(password.getText().toString().getBytes());
         if(RestaurantLoginActivity.RestaurantOwnerDB.insertData(userName.getText().toString(),
                 passwordEncoded,firstName.getText().toString(),lastName.getText().toString(),
@@ -94,6 +60,44 @@ public class RestaurantRegistration2Acitivity extends AppCompatActivity {
         }
         else
             Toast.makeText(this, "Konto konnte nicht angelegt werden. Prüfe die Eingaben.", Toast.LENGTH_LONG).show();
+    }
+
+    private Boolean inputFieldsAreOk() {
+        boolean result = true;
+        if(TextUtils.isEmpty(firstName.getText().toString())){
+            firstName.setError("Bitte Vornamen eintragen");
+            result = false;
+        }
+        if(TextUtils.isEmpty(lastName.getText().toString())){
+            lastName.setError("Bitte Nachnamen eintragen");
+            result = false;
+        }
+        if(TextUtils.isEmpty(phone.getText().toString())){
+            phone.setError("Bitte Telefonnummer eintragen");
+            result = false;
+        }
+        if(TextUtils.isEmpty(mail.getText().toString())) {
+            mail.setError("Bitte Email eintragen");
+            result = false;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(mail.getText().toString()).matches()){
+            mail.setError("Bitte gültige Emailadresse eintragen");
+            result = false;
+        }
+        if(TextUtils.isEmpty(password.getText().toString())){
+            password.setError("Bitte Passwort eintragen");
+            result = false;
+        }
+        if(TextUtils.isEmpty(passwordWdh.getText().toString())){
+            passwordWdh.setError("Bitte Passwort eintragen");
+            result = false;
+        }
+        if(!(password.getText().toString().equals(passwordWdh.getText().toString()))){
+            passwordWdh.setError("Passwörter müssen übereinstimmen");
+            result = false;
+        }
+
+        return result;
     }
 
     public void hideSoftKeyboard(View view){

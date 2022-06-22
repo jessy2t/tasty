@@ -50,9 +50,7 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         values.put("chinese", chinese);
 
         long result = db.insert("categories", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean insertPreferencesData(Boolean mexican, Boolean indian, Boolean indonesian, Boolean italian, Boolean german,
@@ -70,9 +68,7 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         values.put("chinese", chinese);
 
         long result = db.insert("categories", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean insertData(Boolean mexican, Boolean indian, Boolean indonesian, Boolean italian, Boolean german,
@@ -89,9 +85,7 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         values.put("chinese", chinese);
 
         long result = db.insert("categories", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean updateData(Boolean mexican, Boolean indian, Boolean indonesian, Boolean italian, Boolean german,
@@ -107,10 +101,8 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         values.put("american", american);
         values.put("chinese", chinese);
 
-        Integer result = db.update("categories", values, "categories_id=100", null);
-        if(result == 0) return false;
-        else
-            return true;
+        int result = db.update("categories", values, "categories_id=100", null);
+        return result != 0;
     }
 
     public CategoriesDataModel getCategories(Integer categoriesId) {
@@ -128,6 +120,7 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
         Boolean german = cursor.getInt(5) > 0;
         Boolean american = cursor.getInt(6) > 0;
         Boolean chinese = cursor.getInt(7) > 0;
+        cursor.close();
 
         return new CategoriesDataModel(mexican, indian, indonesian, italian, german, american, chinese);
     }
@@ -144,6 +137,7 @@ public class CategoriesDBHelper extends SQLiteOpenHelper {
 
         cursor.moveToFirst();
         Integer id = cursor.getInt(0);
+        cursor.close();
 
         return id;
     }

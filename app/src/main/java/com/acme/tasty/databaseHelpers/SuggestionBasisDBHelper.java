@@ -14,10 +14,9 @@ import com.acme.tasty.dataModels.SuggestionBasisDataModel;
 
 public class SuggestionBasisDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="suggestion_basis.db";
-    private Context Context;
+
     public SuggestionBasisDBHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
-        Context = context;
     }
 
     @Override
@@ -57,9 +56,7 @@ public class SuggestionBasisDBHelper extends SQLiteOpenHelper {
         values.put("fixed_price_range_id", 1);
 
         long result = db.insert("suggestion_basis", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public SuggestionBasisDataModel getSuggestionBasis(Integer suggestionBasisId) {
@@ -76,6 +73,8 @@ public class SuggestionBasisDBHelper extends SQLiteOpenHelper {
         Integer minPrice = cursor.getInt(4);
         Integer maxPrice = cursor.getInt(5);
         Integer categoriesId = cursor.getInt(6);
+        cursor.close();
+
         CategoriesDataModel categories = MainActivity.CategoriesDB.getCategories(categoriesId);
         DietDataModel fixedDiet = CustomerPreferencesActivity.DietDB.getDiet();
         PriceRangeDataModel fixedPriceRange = CustomerPreferencesActivity.PriceRangeDB.getPriceRange();
@@ -97,6 +96,8 @@ public class SuggestionBasisDBHelper extends SQLiteOpenHelper {
         Integer minPrice = cursor.getInt(4);
         Integer maxPrice = cursor.getInt(5);
         Integer categoriesId = cursor.getInt(6);
+        cursor.close();
+
         CategoriesDataModel categories = MainActivity.CategoriesDB.getCategories(categoriesId);
         DietDataModel fixedDiet = SwipePreisrahmen.DietDB.getDiet();
         PriceRangeDataModel fixedPriceRange = SwipePreisrahmen.PriceRangeDB.getPriceRange();

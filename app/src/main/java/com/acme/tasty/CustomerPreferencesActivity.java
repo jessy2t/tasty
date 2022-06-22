@@ -1,5 +1,6 @@
 package com.acme.tasty;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +14,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,7 +26,9 @@ import com.acme.tasty.databaseHelpers.PriceRangeDBHelper;
 import java.util.ArrayList;
 
 public class CustomerPreferencesActivity extends AppCompatActivity {
+    @SuppressLint("StaticFieldLeak")
     public static PriceRangeDBHelper PriceRangeDB;
+    @SuppressLint("StaticFieldLeak")
     public static DietDBHelper DietDB;
     private Boolean priceRangeExists;
     public static Boolean dietExists;
@@ -70,8 +72,13 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
 
     public void populateListView(){
         ernaehrungsform = new ArrayList<>();
+        addDietPreferences();
         kategorie = new ArrayList<>();
+        addCategories();
+        makeListView();
+    }
 
+    private void addDietPreferences() {
         DietDataModel diet = CustomerPreferencesActivity.DietDB.getDiet();
         if(diet == null)
             CustomerPreferencesActivity.dietExists = false;
@@ -89,7 +96,9 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
             if (diet.Lactosefree)
                 ernaehrungsform.add("laktosefrei");
         }
+    }
 
+    private void addCategories() {
         CategoriesDataModel categories = MainActivity.CategoriesDB.getCategories(100);
         if(categories == null)
             CustomerPreferencesActivity.categoryExists = false;
@@ -109,7 +118,6 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
             if (categories.Italian)
                 kategorie.add("italienisch");
         }
-        makeListView();
     }
 
     public void makeListView(){
@@ -134,7 +142,7 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
         setRightHeight(kategorieAdapter, kategorieList);
     }
 
-    public void setRightHeight(ArrayAdapter aa, ListView lv ){
+    public void setRightHeight(ArrayAdapter<?> aa, ListView lv ){
         int totalehight= 0;
         for (int i = 0; i < aa.getCount(); i++) {
             View listItemErnaehrungsform = aa.getView(i, null, lv);
@@ -148,21 +156,23 @@ public class CustomerPreferencesActivity extends AppCompatActivity {
     }
 
     public void saveToPreferencesPrice(View v){
-        String minPriceStringValue = ((EditText)findViewById(R.id.lowerNumber)).getText().toString();
-        String maxPriceStringValue = ((EditText)findViewById(R.id.higherNumber)).getText().toString();
+        EditText minPriceView = findViewById(R.id.lowerNumber);
+        EditText maxPriceView = findViewById(R.id.higherNumber);
+        String minPriceStringValue = minPriceView.getText().toString();
+        String maxPriceStringValue = maxPriceView.getText().toString();
 
         if(minPriceStringValue.isEmpty() || maxPriceStringValue.isEmpty())
-            showValidationMessage("Geben Sie einen gültigen Mindest- und Höchstpreis an.");
+            minPriceView.setError("Geben Sie einen gültigen Mindest- und Höchstpreis an.");
 
         else {
             Integer minPriceIntValue = Integer.valueOf(minPriceStringValue);
             Integer maxPriceIntValue = Integer.valueOf(maxPriceStringValue);
             if(minPriceIntValue >= maxPriceIntValue)
-                showValidationMessage("Der Mindestpreis muss kleiner als der Höchstpreis sein.");
+                minPriceView.setError("Der Mindestpreis muss kleiner als der Höchstpreis sein.");
 
             else {
-                Boolean successfullInsertOrUpdate = insertOrUpdatePriceRangeDB(minPriceIntValue, maxPriceIntValue);
-                if(successfullInsertOrUpdate)
+                Boolean successfulInsertOrUpdate = insertOrUpdatePriceRangeDB(minPriceIntValue, maxPriceIntValue);
+                if(successfulInsertOrUpdate)
                     showValidationMessage("Ihre Preispräferenzen wurden gespeichert.");
                 else
                     showValidationMessage("Fehler bei der Speicherung. Bitte kontaktieren Sie den Kundendienst.");

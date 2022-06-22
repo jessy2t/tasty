@@ -1,8 +1,6 @@
 package com.acme.tasty.fragments;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.acme.tasty.CustomerRecommendationActivity;
 import com.acme.tasty.MainActivity;
 import com.acme.tasty.R;
 import com.acme.tasty.RestaurantLoginActivity;
@@ -54,7 +51,7 @@ public class RestaurantOverviewRegistrationGeneralFragment extends Fragment {
         sundayOpeningHoursView = view.findViewById(R.id.sunday_opening_hours);
         restaurantImage = view.findViewById(R.id.restaurant_logo);
 
-        setRestaurantData(view);
+        setRestaurantData();
         disableButtons(view);
 
         return view;
@@ -67,7 +64,7 @@ public class RestaurantOverviewRegistrationGeneralFragment extends Fragment {
         OpeningHoursDB = new OpeningHoursDBHelper(getActivity());
     }
 
-    private void setRestaurantData(View view) {
+    private void setRestaurantData() {
         String restaurantUsername = getActivity().getIntent().getStringExtra(RestaurantLoginActivity.RESTAURANT_USERNAME);
         RestaurantDataModel restaurant = MainActivity.RestaurantDB.getRestaurant(restaurantUsername);
 

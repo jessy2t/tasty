@@ -1,53 +1,34 @@
 package com.acme.tasty;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
-import android.view.Menu;
 import android.view.View;
-import android.widget.CheckBox;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.appcompat.widget.Toolbar;
 import com.acme.tasty.databaseHelpers.*;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("StaticFieldLeak")
     public static AddressDBHelper AddressDB;
+    @SuppressLint("StaticFieldLeak")
     public static RestaurantAttributesDBHelper AttributesDB;
-    private Toolbar mToolbar;
     public static CityDBHelper CityDB;
     public static CategoriesDBHelper CategoriesDB;
+    @SuppressLint("StaticFieldLeak")
     public static RestaurantDBHelper RestaurantDB;
+    @SuppressLint("StaticFieldLeak")
     public static OpeningHoursDBHelper OpeningHoursDB;
+    @SuppressLint("StaticFieldLeak")
     public static RatingDBHelper RatingDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        //mToolbar = findViewById(R.id.main_toolbar);
-        //setSupportActionBar(mToolbar);
-
         createDatabasesConnection();
-    }
-
-    public void navigateToRestaurantLogin(View view){
-        Intent intent = new Intent(this, RestaurantLoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    public void navigateToCustomerStart(View view){
-        Intent intent = new Intent(this, CustomerStartActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     private void createDatabasesConnection() {
@@ -60,8 +41,15 @@ public class MainActivity extends AppCompatActivity {
         RatingDB = new RatingDBHelper(this);
     }
 
-    public void navigateToCustomerPreferences(View view){
-        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
+    public void navigateToRestaurantLogin(View view){
+        Intent intent = new Intent(this, RestaurantLoginActivity.class);
         startActivity(intent);
+        finish();
+    }
+
+    public void navigateToCustomerStart(View view){
+        Intent intent = new Intent(this, CustomerStartActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

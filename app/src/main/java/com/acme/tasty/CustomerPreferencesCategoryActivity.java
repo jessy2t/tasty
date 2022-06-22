@@ -30,7 +30,16 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.preferences_kategorie_toolbar);
         setSupportActionBar(toolbar);
 
+        getUIElements();
         getCategoryPreferences();
+
+        this.checkBox1.setOnCheckedChangeListener((buttonView, isChecked)-> checkAllCheckedChange(isChecked));
+        this.checkBox2.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox2, isChecked));
+        this.checkBox3.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox3, isChecked));
+        this.checkBox4.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox4, isChecked));
+        this.checkBox5.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox5, isChecked));
+        this.checkBox6.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox6, isChecked));
+        this.checkBox7.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox7, isChecked));
     }
 
     @Override
@@ -41,14 +50,6 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
     }
 
     private void getCategoryPreferences(){
-        this.checkBox1 = findViewById(R.id.checkBoxKat1);
-        this.checkBox2 = findViewById(R.id.checkBoxKat2);
-        this.checkBox3 = findViewById(R.id.checkBoxKat3);
-        this.checkBox4 = findViewById(R.id.checkBoxKat4);
-        this.checkBox5 = findViewById(R.id.checkBoxKat5);
-        this.checkBox6 = findViewById(R.id.checkBoxKat6);
-        this.checkBox7 = findViewById(R.id.checkBoxKat7);
-
         CategoriesDataModel categories = MainActivity.CategoriesDB.getCategories(100);
         if(categories == null)
             CustomerPreferencesActivity.categoryExists = false;
@@ -84,17 +85,19 @@ public class CustomerPreferencesCategoryActivity extends AppCompatActivity {
             checkBox6.setChecked(german);
             checkBox7.setChecked(italian);
         }
-
-        this.checkBox1.setOnCheckedChangeListener((buttonView, isChecked)-> checkAllCheckedChange(isChecked));
-        this.checkBox2.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox2, isChecked));
-        this.checkBox3.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox3, isChecked));
-        this.checkBox4.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox4, isChecked));
-        this.checkBox5.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox5, isChecked));
-        this.checkBox6.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox6, isChecked));
-        this.checkBox7.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox7, isChecked));
     }
 
-    private  void checkOneCheckedChange(CheckBox checkBox, boolean isChecked) {
+    private void getUIElements() {
+        this.checkBox1 = findViewById(R.id.checkBoxKat1);
+        this.checkBox2 = findViewById(R.id.checkBoxKat2);
+        this.checkBox3 = findViewById(R.id.checkBoxKat3);
+        this.checkBox4 = findViewById(R.id.checkBoxKat4);
+        this.checkBox5 = findViewById(R.id.checkBoxKat5);
+        this.checkBox6 = findViewById(R.id.checkBoxKat6);
+        this.checkBox7 = findViewById(R.id.checkBoxKat7);
+    }
+
+    private void checkOneCheckedChange(CheckBox checkBox, boolean isChecked) {
 
         if (!isChecked) {
             if (checkBox1.isChecked()) {

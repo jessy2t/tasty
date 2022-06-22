@@ -11,7 +11,7 @@ import com.acme.tasty.dataModels.CityDataModel;
 
 public class AddressDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="address.db";
-    private Context Context;
+    private final Context Context;
     public AddressDBHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
         Context = context;
@@ -27,7 +27,7 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         insertData("Bollywoodallee", 9, "12345", db);
         insertData("Pekingallee", 29, "12345", db);
         insertData("Jakartaweg", 3, "12345", db);
-        insertData("Am Gardasee", 07, "12345", db);
+        insertData("Am Gardasee", 7, "12345", db);
     }
 
     @Override
@@ -48,9 +48,7 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         values.put("zip_code", zipCode);
 
         long result = db.insert("address", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Integer insertData(String street, Integer houseNumber, String zipCode) {
@@ -75,7 +73,9 @@ public class AddressDBHelper extends SQLiteOpenHelper {
             return null;
 
         cursor.moveToFirst();
-        return cursor.getInt(0);
+        Integer adressId = cursor.getInt(0);
+        cursor.close();
+        return adressId;
     }
 
     public AddressDataModel getAddress(Integer addressId) {
@@ -89,6 +89,7 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         String street = cursor.getString(1);
         Integer houseNumber = cursor.getInt(2);
         String zipCode = cursor.getString(3);
+        cursor.close();
         CityDataModel city = new CityDBHelper(Context).getCity(zipCode);
 
         return new AddressDataModel(street, houseNumber, city);

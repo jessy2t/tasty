@@ -24,7 +24,7 @@ public class RestaurantAttributesDataModel {
     }
 
     public ArrayList<String> getAttributes() {
-        ArrayList<String> result = Categories.addCategories(new ArrayList());
+        ArrayList<String> result = Categories.addCategories(new ArrayList<>());
 
         if(Vegetarian)
             result.add("Vegetarisch");

@@ -1,5 +1,6 @@
 package com.acme.tasty.popup;
 
+import android.annotation.SuppressLint;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,7 @@ import com.acme.tasty.R;
 
 public class PopupWindowService extends AppCompatActivity {
     public static PopupWindow getOrderConfirmationPopupWindow(LayoutInflater inflater, View view) {
-        View popupView = inflater.inflate(R.layout.pop_up_order, null);
+        @SuppressLint("InflateParams") View popupView = inflater.inflate(R.layout.pop_up_order, null);
 
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;

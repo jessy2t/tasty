@@ -11,10 +11,9 @@ import com.acme.tasty.dataModels.*;
 
 public class RestaurantDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="restaurant.db";
-    private Context Context;
+
     public RestaurantDBHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
-        Context = context;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
                 "supports_reservation BOOLEAN, reservation_necessary BOOLEAN, supports_in_app_payment BOOLEAN," +
                 "vegetarian BOOLEAN, vegan BOOLEAN, categories_id INTEGER, foreign key(categories_id) references " +
                 "categories(categories_id))");
-        Boolean test = insertData(true, true, true, false,
+        insertData(true, true, true, false,
                 true, true, 1, db);
         insertData(true, true, true, false,
                 true, true, 2, db);
@@ -64,9 +63,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         values.put("categories_id", categories_id);
 
         long result = db.insert("attributes", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     @Override
@@ -104,9 +101,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         values.put("address_id", addressId);
 
         long result = db.insert("restaurant", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public RestaurantDataModel getRestaurant(String name) {
@@ -119,6 +114,8 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         String restaurantImage = cursor.getString(1);
         Integer attributesId = cursor.getInt(2);
         Integer addressId = cursor.getInt(3);
+        cursor.close();
+
         AddressDataModel address = MainActivity.AddressDB.getAddress(addressId);
         RestaurantAttributesDataModel attributes = MainActivity.AttributesDB.getRestaurantAttributes(attributesId);
 
@@ -128,11 +125,7 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
     public RestaurantDataModel getRestaurantBySuggestionBasis(SuggestionBasisDataModel suggestionBasis) {
         String SQLQuery = configureSQLQuery(suggestionBasis.DeliveryOrReservation, suggestionBasis.DietPreference);
         SQLiteDatabase db = this.getWritableDatabase();
-        //mit suggestionBasis umschreiben
         Cursor cursor = db.rawQuery(SQLQuery, null);
-        /*Cursor cursor = db.rawQuery("select * from restaurant join attributes on " +
-                        "restaurant.attributes_id=attributes.attributes_id where restaurant_name=? order by random() limit 1",
-                new String[] {"Pizza Bellissima"});*/
         if(cursor.getCount() <= 0)
             return null;
 
@@ -141,6 +134,8 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         String restaurantImage = cursor.getString(1);
         Integer attributesId = cursor.getInt(2);
         Integer addressId = cursor.getInt(3);
+        cursor.close();
+
         AddressDataModel address = MainActivity.AddressDB.getAddress(addressId);
         RestaurantAttributesDataModel attributes = MainActivity.AttributesDB.getRestaurantAttributes(attributesId);
 
@@ -151,13 +146,10 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         String SQLQuery = "select restaurant.* from restaurant join attributes on restaurant.attributes_id=" +
                 "attributes.attributes_id where ";
 
-        switch (deliveryOrReservation){
-            case "delivery":
-                SQLQuery += "attributes.has_delivery_service=1 ";
-                break;
-            default:
-                SQLQuery += "attributes.supports_reservation=1 ";
-                break;
+        if ("delivery".equals(deliveryOrReservation)) {
+            SQLQuery += "attributes.has_delivery_service=1 ";
+        } else {
+            SQLQuery += "attributes.supports_reservation=1 ";
         }
 
         switch (dietPreference){
@@ -171,6 +163,6 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
                 break;
         }
 
-        return SQLQuery+="order by random() limit 1";
+        return SQLQuery + "order by random() limit 1";
     }
 }

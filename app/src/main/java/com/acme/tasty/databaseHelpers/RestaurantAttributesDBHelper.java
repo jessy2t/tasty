@@ -6,12 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
-import com.acme.tasty.dataModels.AddressDataModel;
 import com.acme.tasty.dataModels.CategoriesDataModel;
 import com.acme.tasty.dataModels.RestaurantAttributesDataModel;
-import com.acme.tasty.dataModels.RestaurantDataModel;
-
-import java.util.List;
 
 public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="restaurant_attributes.db";
@@ -27,7 +23,7 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
                 "supports_reservation BOOLEAN, reservation_necessary BOOLEAN, supports_in_app_payment BOOLEAN," +
                 "vegetarian BOOLEAN, vegan BOOLEAN, categories_id INTEGER, foreign key(categories_id) references " +
                 "categories(categories_id))");
-        Boolean test = insertData(true, true, true, false,
+        insertData(true, true, true, false,
                 true, true, 1, db);
         insertData(true, true, true, false,
                 true, true, 2, db);
@@ -67,9 +63,7 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
         values.put("categories_id", categories_id);
 
         long result = db.insert("attributes", null, values);
-        if(result == 1) return false;
-        else
-            return true;
+        return result != 1;
     }
 
     public Boolean insertData(Boolean has_delivery_services, Boolean supports_reservation, Boolean reservation_necessary,
@@ -86,9 +80,7 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
         values.put("categories_id", categories_id);
 
         long result = db.insert("attributes", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public RestaurantAttributesDataModel getRestaurantAttributes(Integer attributesId) {
@@ -106,6 +98,7 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
         Boolean vegetarian = cursor.getInt(5) > 0;
         Boolean vegan = cursor.getInt(6) > 0;
         Integer categoriesId = cursor.getInt(7);
+        cursor.close();
 
         CategoriesDataModel categories = new CategoriesDBHelper(Context).getCategories(categoriesId);
 
@@ -126,6 +119,7 @@ public class RestaurantAttributesDBHelper extends SQLiteOpenHelper {
 
         cursor.moveToFirst();
         Integer id = cursor.getInt(0);
+        cursor.close();
 
         return id;
     }

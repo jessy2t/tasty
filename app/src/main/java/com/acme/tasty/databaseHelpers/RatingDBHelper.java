@@ -6,17 +6,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
-import com.acme.tasty.dataModels.AddressDataModel;
-import com.acme.tasty.dataModels.CityDataModel;
 import com.acme.tasty.dataModels.RatingDataModel;
 import com.acme.tasty.dataModels.RestaurantDataModel;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class RatingDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="rating.db";
-    private Context Context;
+    private final Context Context;
     public RatingDBHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
         Context = context;
@@ -65,21 +62,19 @@ public class RatingDBHelper extends SQLiteOpenHelper {
         values.put("restaurant", restaurant);
 
         long result = db.insert("rating", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public ArrayList<RatingDataModel> getRatingOrderedByNewest(String restaurantName) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from rating where restaurant=? order by review_date DESC",
                 new String[] {restaurantName});
-        Integer count = cursor.getCount();
+        int count = cursor.getCount();
         if(count <= 0)
             return null;
 
         cursor.moveToFirst();
-        ArrayList result = new ArrayList();
+        ArrayList<RatingDataModel> result = new ArrayList<>();
         do {
             Float rating = cursor.getFloat(1);
             String reviewTitle = cursor.getString(2);
@@ -90,6 +85,7 @@ public class RatingDBHelper extends SQLiteOpenHelper {
             result.add(new RatingDataModel(rating, reviewTitle, reviewDescription, reviewDate, restaurant));
 
         } while (cursor.moveToNext());
+        cursor.close();
 
         return result;
     }
@@ -98,12 +94,12 @@ public class RatingDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from rating where restaurant=? order by rating DESC",
                 new String[] {restaurantName});
-        Integer count = cursor.getCount();
+        int count = cursor.getCount();
         if(count <= 0)
             return null;
 
         cursor.moveToFirst();
-        ArrayList result = new ArrayList();
+        ArrayList<RatingDataModel> result = new ArrayList<>();
         do {
             Float rating = cursor.getFloat(1);
             String reviewTitle = cursor.getString(2);
@@ -114,6 +110,7 @@ public class RatingDBHelper extends SQLiteOpenHelper {
             result.add(new RatingDataModel(rating, reviewTitle, reviewDescription, reviewDate, restaurant));
 
         } while (cursor.moveToNext());
+        cursor.close();
 
         return result;
     }
@@ -122,12 +119,12 @@ public class RatingDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from rating where restaurant=? order by rating ASC",
                 new String[] {restaurantName});
-        Integer count = cursor.getCount();
+        int count = cursor.getCount();
         if(count <= 0)
             return null;
 
         cursor.moveToFirst();
-        ArrayList result = new ArrayList();
+        ArrayList<RatingDataModel> result = new ArrayList<>();
         do {
             Float rating = cursor.getFloat(1);
             String reviewTitle = cursor.getString(2);
@@ -138,6 +135,7 @@ public class RatingDBHelper extends SQLiteOpenHelper {
             result.add(new RatingDataModel(rating, reviewTitle, reviewDescription, reviewDate, restaurant));
 
         } while (cursor.moveToNext());
+        cursor.close();
 
         return result;
     }

@@ -6,18 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
-import com.acme.tasty.dataModels.AddressDataModel;
-import com.acme.tasty.dataModels.CityDataModel;
 import com.acme.tasty.dataModels.OpeningHoursDataModel;
-
-import java.sql.Time;
 
 public class OpeningHoursDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="opening_hours.db";
-    private Context Context;
+
     public OpeningHoursDBHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
-        Context = context;
     }
 
     @Override
@@ -47,9 +42,7 @@ public class OpeningHoursDBHelper extends SQLiteOpenHelper {
         values.put("end_time", endTime);
 
         long result = db.insert("opening_hours", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public OpeningHoursDataModel getOpeningHours(Integer openingHoursId) {
@@ -63,6 +56,7 @@ public class OpeningHoursDBHelper extends SQLiteOpenHelper {
         String weekday = cursor.getString(1);
         String startTime = cursor.getString(2);
         String endTime = cursor.getString(3);
+        cursor.close();
 
         return new OpeningHoursDataModel(weekday, startTime, endTime);
     }

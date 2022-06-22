@@ -18,21 +18,19 @@ import java.util.Base64;
 
 public class RestaurantLoginActivity extends AppCompatActivity {
     public static final String RESTAURANT_USERNAME = "com.acme.tasty.RESTAURANT_USERNAME";
+    public static RestaurantOwnerDBHelper RestaurantOwnerDB;
     private EditText usernameView;
     private EditText passwordView;
-    private TextView validationMessageView;
-    public static RestaurantOwnerDBHelper RestaurantOwnerDB;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_login);
-        usernameView = findViewById(R.id.username);
-        passwordView = findViewById(R.id.password);
-        validationMessageView = findViewById(R.id.validation_message);
 
         RestaurantOwnerDB = new RestaurantOwnerDBHelper(this);
+        usernameView = findViewById(R.id.username);
+        passwordView = findViewById(R.id.password);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -41,34 +39,28 @@ public class RestaurantLoginActivity extends AppCompatActivity {
         String passwordString = passwordView.getText().toString();
 
         if (usernameString.isEmpty() || passwordString.isEmpty()) {
-            showFailedLoginValidationMessage("Bitte geben Sie ein gültiges Restaurant und Passwort ein.");
+            usernameView.setError("Bitte geben Sie ein gültiges Restaurant und Passwort ein.");
             return;
         }
 
         Boolean checkUser = RestaurantOwnerDB.checkUsername(usernameString);
-        if (!checkUser)
-            showFailedLoginValidationMessage("Unbekanntes Restaurant. Bitte achten Sie auf Groß- und Kleinschreibung.");
-
-        else {
-            String passwordEncoded = Base64.getEncoder().encodeToString(passwordString.getBytes());
-            if (!RestaurantOwnerDB.checkUsernamePassword(usernameString, passwordEncoded)) {
-                showFailedLoginValidationMessage("Passwort ungültig.");
-            }
-            else {
-                validationMessageView.setVisibility(View.INVISIBLE);
-                Toast.makeText(RestaurantLoginActivity.this, "Willkommen "+usernameString+"!", Toast.LENGTH_LONG).show();
-                navigateToSignedInView(usernameString);
-            }
+        if (!checkUser) {
+            usernameView.setError("Unbekanntes Restaurant. Bitte achten Sie auf Groß- und Kleinschreibung.");
+            return;
         }
-    }
 
-    private void showFailedLoginValidationMessage(String message) {
-        validationMessageView.setVisibility(View.VISIBLE);
-        validationMessageView.setText(message);
-        Toast.makeText(RestaurantLoginActivity.this, "Anmeldung fehlgeschlagen", Toast.LENGTH_LONG).show();
+        String passwordEncoded = Base64.getEncoder().encodeToString(passwordString.getBytes());
+        Boolean checkCredentials = RestaurantOwnerDB.checkUsernamePassword(usernameString, passwordEncoded);
+        if (!checkCredentials) {
+            passwordView.setError("Passwort ungültig.");
+            return;
+        }
+
+        navigateToSignedInView(usernameString);
     }
 
     private void navigateToSignedInView(String restaurantName) {
+        Toast.makeText(RestaurantLoginActivity.this, "Willkommen "+restaurantName+"!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(this, RestaurantOverviewRegistration.class);
         intent.putExtra(RESTAURANT_USERNAME, restaurantName);
 

@@ -22,7 +22,7 @@ public class CategoriesDataModel {
         Chinese = chinese;
     }
 
-    public ArrayList<String> addCategories(ArrayList list) {
+    public ArrayList<String> addCategories(ArrayList<String> list) {
         if(Mexican)
             list.add("Mexikanisch");
         if(Indian)

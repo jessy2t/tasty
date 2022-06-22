@@ -15,12 +15,12 @@ import com.acme.tasty.dataModels.CityDataModel;
 public class RestaurantRegistration1Activity extends AppCompatActivity {
 
     protected EditText nameRestaurant;
-    protected EditText straße;
+    protected EditText strasse;
     protected EditText hausnummer;
     protected EditText plz;
     protected EditText ort;
     protected CheckBox checkBoxLieferServiceVorhanden;
-    protected CheckBox checkBoxReservierungMöglich;
+    protected CheckBox checkBoxReservierungMoeglich;
     protected CheckBox checkBoxReservierungNotwendig;
     protected CheckBox checkBoxInAppBezahlung;
     protected CheckBox checkBoxVegetarisch;
@@ -32,49 +32,46 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
     protected CheckBox checkBoxMexikanisch;
     protected CheckBox checkBoxAmerikanisch;
     protected CheckBox checkBoxChinesisch;
-    private Button speichern;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_registration1);
-
-        speichern = findViewById(R.id.speichern);
-/*
-        speichern.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(TextUtils.isEmpty(nameRestaurant.getText().toString())){
-                    nameRestaurant.setError("Email Fehler");
-                    return;
-                }
-
-                if(TextUtils.isEmpty(straße.getText().toString())){
-                    straße.setError("Straße Fehler");
-                    return;
-                }
-                if(TextUtils.isEmpty(hausnummer.getText().toString())){
-                    hausnummer.setError("Email Fehler");
-                    return;
-                }
-                if(TextUtils.isEmpty(plz.getText().toString())){
-                    plz.setError("PLZ Fehler");
-                    return;
-                }
-            }
-        }); */
-
-
+        getUIElements();
     }
     public void navigateToRestaurantRegistration2(View view){
+        String zip = plz.getText().toString();
+        if(inputFieldsAreEmpty(zip))
+            return;
 
+        String streetName = strasse.getText().toString();
+        Integer houseNumber = Integer.valueOf(hausnummer.getText().toString());
+        Integer addressId = getAddressId(streetName, houseNumber, zip);
+        Integer categoriesId = getCategoriesId();
+        Integer attributesId = getAttributesId(categoriesId);
+        String restaurantNameAsString = nameRestaurant.getText().toString();
+
+        if(MainActivity.RestaurantDB.getRestaurant(restaurantNameAsString) != null) {
+            nameRestaurant.setError("Restaurant ist bereits registriert");
+        }
+        else {
+            MainActivity.RestaurantDB.insertData(restaurantNameAsString, attributesId, addressId);
+            Toast.makeText(this, "Restaurant gespeichert", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
+            intent.putExtra(RestaurantLoginActivity.RESTAURANT_USERNAME, nameRestaurant.getText().toString());
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    private void getUIElements() {
         nameRestaurant = findViewById(R.id.nameRestaurant);
-        straße = findViewById(R.id.straßeRestaurant);
+        strasse = findViewById(R.id.straßeRestaurant);
         hausnummer = findViewById(R.id.hausnummerRestaurant);
         plz = findViewById(R.id.plzRestaurant);
         ort = findViewById(R.id.ortRestaurant);
         checkBoxLieferServiceVorhanden = findViewById(R.id.checkBoxLieferServiceVorhanden);
-        checkBoxReservierungMöglich = findViewById(R.id.checkBoxReservierungMöglich);
+        checkBoxReservierungMoeglich = findViewById(R.id.checkBoxReservierungMöglich);
         checkBoxReservierungNotwendig = findViewById(R.id.checkBoxReservierungNotwendig);
         checkBoxInAppBezahlung = findViewById(R.id.checkBoxInAppBezahlung);
         checkBoxVegetarisch = findViewById(R.id.checkBoxVegetarisch);
@@ -86,58 +83,64 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
         checkBoxMexikanisch = findViewById(R.id.checkBoxMexikanisch);
         checkBoxAmerikanisch = findViewById(R.id.checkBoxAmerikanisch);
         checkBoxChinesisch = findViewById(R.id.checkBoxChinesisch);
+    }
 
-
-
+    private Boolean inputFieldsAreEmpty(String zip) {
+        boolean result = false;
         if(TextUtils.isEmpty(nameRestaurant.getText().toString())){
             nameRestaurant.setError("Bitte Restaurantname eintragen");
-            return;
+            result = true;
         }
-        if(TextUtils.isEmpty(straße.getText().toString())){
-            straße.setError("Bitte Straße eintragen");
-            return;
+        if(TextUtils.isEmpty(strasse.getText().toString())){
+            strasse.setError("Bitte Straße eintragen");
+            result = true;
         }
         if(TextUtils.isEmpty(hausnummer.getText().toString())){
             hausnummer.setError("Bitte Hausnummer eintragen");
-            return;
+            result = true;
         }
         if(TextUtils.isEmpty(ort.getText().toString())){
             ort.setError("Bitte Ort eintragen");
-            return;
+            result = true;
         }
         if(TextUtils.isEmpty(plz.getText().toString())){
             plz.setError("Bitte PLZ eintragen");
-            return;
+            result = true;
         }
-        if(!plz.getText().toString().matches("^[0-9]{5}$")){
+        if(!plz.getText().toString().matches("^\\d{5}$")){
             plz.setError("Bitte gültige Postleitzahl eintragen");
-            return;
+            result = true;
         }
 
-        String zip = plz.getText().toString();
         String city = ort.getText().toString();
-        String streetName = straße.getText().toString();
-        Integer number = Integer.valueOf(hausnummer.getText().toString());
-
-        if(MainActivity.CityDB.cityExists(zip, city)){
+        if(MainActivity.CityDB.cityExists(zip, city)) {
             CityDataModel cityModel = MainActivity.CityDB.getCity(zip);
             if(!cityModel.City.equals(city)) {
                 ort.setError("Bitte zur Postleitzahl gültigen Ort eingeben");
-                return;
+                result = true;
             }
         }
         else
             MainActivity.CityDB.insertData(zip, city);
 
-        Integer addressId = MainActivity.AddressDB.getAddressId(streetName, number, zip);
-        if(addressId == null) {
-            addressId = MainActivity.AddressDB.insertData(streetName,number,zip);
-        }
+        return result;
+    }
 
-        Integer catId = MainActivity.CategoriesDB.getId(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(),
-                checkBoxIndonesisch.isChecked(), checkBoxItalienisch.isChecked(), checkBoxDeutsch.isChecked(),
-                checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked());
-        if(catId == null){
+    private Integer getAddressId(String streetName, Integer houseNumber, String zip) {
+        Integer addressId = MainActivity.AddressDB.getAddressId(streetName, houseNumber, zip);
+        if(addressId == null) {
+            addressId = MainActivity.AddressDB.insertData(streetName,houseNumber,zip);
+        }
+        return addressId;
+    }
+
+    private Integer getCategoriesId() {
+        Integer catId = MainActivity.CategoriesDB
+                .getId(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(), checkBoxIndonesisch.isChecked(),
+                        checkBoxItalienisch.isChecked(), checkBoxDeutsch.isChecked(), checkBoxAmerikanisch.isChecked(),
+                        checkBoxChinesisch.isChecked());
+
+        if(catId == null) {
             MainActivity.CategoriesDB.insertData(checkBoxMexikanisch.isChecked(), checkBoxIndisch.isChecked(),
                     checkBoxIndonesisch.isChecked(), checkBoxItalienisch.isChecked(), checkBoxDeutsch.isChecked(),
                     checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked());
@@ -146,30 +149,24 @@ public class RestaurantRegistration1Activity extends AppCompatActivity {
                     checkBoxAmerikanisch.isChecked(), checkBoxChinesisch.isChecked());
         }
 
+        return catId;
+    }
+
+    private Integer getAttributesId(Integer categoriesId) {
         Integer attributesId = MainActivity.AttributesDB.getId(checkBoxLieferServiceVorhanden.isChecked(),
-                checkBoxReservierungMöglich.isChecked(), checkBoxReservierungNotwendig.isChecked(),
+                checkBoxReservierungMoeglich.isChecked(), checkBoxReservierungNotwendig.isChecked(),
                 checkBoxInAppBezahlung.isChecked(), checkBoxVegetarisch.isChecked(), checkBoxVegan.isChecked(),
-                catId);
+                categoriesId);
         if(attributesId == null) {
             MainActivity.AttributesDB.insertData(checkBoxLieferServiceVorhanden.isChecked(),
-                    checkBoxReservierungMöglich.isChecked(),checkBoxReservierungNotwendig.isChecked(),
-                    checkBoxInAppBezahlung.isChecked(),checkBoxVegetarisch.isChecked(),checkBoxVegan.isChecked(),catId);
+                    checkBoxReservierungMoeglich.isChecked(), checkBoxReservierungNotwendig.isChecked(),
+                    checkBoxInAppBezahlung.isChecked(), checkBoxVegetarisch.isChecked(), checkBoxVegan.isChecked(), categoriesId);
             attributesId = MainActivity.AttributesDB.getId(checkBoxLieferServiceVorhanden.isChecked(),
-                    checkBoxReservierungMöglich.isChecked(), checkBoxReservierungNotwendig.isChecked(),
+                    checkBoxReservierungMoeglich.isChecked(), checkBoxReservierungNotwendig.isChecked(),
                     checkBoxInAppBezahlung.isChecked(), checkBoxVegetarisch.isChecked(), checkBoxVegan.isChecked(),
-                    catId);
+                    categoriesId);
         }
-        if(MainActivity.RestaurantDB.getRestaurant(nameRestaurant.getText().toString()) != null) {
-            nameRestaurant.setError("Restaurant ist bereits registriert");
-        }
-        else {
-            MainActivity.RestaurantDB.insertData(nameRestaurant.getText().toString(), attributesId, addressId);
-            Toast.makeText(this, "Restaurant gespeichert", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(this, RestaurantRegistration2Acitivity.class);
-            intent.putExtra(RestaurantLoginActivity.RESTAURANT_USERNAME, nameRestaurant.getText().toString());
-            startActivity(intent);
-            finish();
-        }
+        return attributesId;
     }
 
     public void hideSoftKeyboard(View view){

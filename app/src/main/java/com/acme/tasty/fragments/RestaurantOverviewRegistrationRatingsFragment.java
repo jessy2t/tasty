@@ -20,6 +20,7 @@ import com.google.android.material.chip.Chip;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RestaurantOverviewRegistrationRatingsFragment extends Fragment {
     RatingDBHelper RatingDB;
@@ -48,35 +49,14 @@ public class RestaurantOverviewRegistrationRatingsFragment extends Fragment {
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        if(!"Tony's Tacos".equals(getActivity().getIntent().getStringExtra(RestaurantLoginActivity.RESTAURANT_USERNAME))) {
+        if(!"Tony's Tacos".equals(Objects.requireNonNull(getActivity()).getIntent().getStringExtra(RestaurantLoginActivity.RESTAURANT_USERNAME))) {
             return inflater.inflate(R.layout.fragment_restaurant_overview_no_ratings, container, false);
         }
+
         else {
             View view = inflater.inflate(R.layout.fragment_customer_restaurant_overview_ratings, container, false);
-
-            newestChip = view.findViewById(R.id.sort_by_newest);
-            highestChip = view.findViewById(R.id.sort_by_highest);
-            lowestChip = view.findViewById(R.id.sort_by_lowest);
-
-            averageRating = view.findViewById(R.id.average_rating);
-            averageRatingBar = view.findViewById(R.id.average_ratingBar);
-            ratingTitle1 = view.findViewById(R.id.rating_title_1);
-            ratingBar1 = view.findViewById(R.id.ratingBar_1);
-            ratingDate1 = view.findViewById(R.id.date_1);
-            ratingTitle2 = view.findViewById(R.id.rating_title_2);
-            ratingBar2 = view.findViewById(R.id.ratingBar_2);
-            ratingDate2 = view.findViewById(R.id.date_2);
-            ratingTitle3 = view.findViewById(R.id.rating_title_3);
-            ratingBar3 = view.findViewById(R.id.ratingBar_3);
-            ratingDate3 = view.findViewById(R.id.date_3);
-            ratingTitle4 = view.findViewById(R.id.rating_title_4);
-            ratingBar4 = view.findViewById(R.id.ratingBar_4);
-            ratingDate4 = view.findViewById(R.id.date_4);
-            ratingTitle5 = view.findViewById(R.id.rating_title_5);
-            ratingBar5 = view.findViewById(R.id.ratingBar_5);
-            ratingDate5 = view.findViewById(R.id.date_5);
+            getUIElements(view);
             sortByNewest();
-
             return view;
         }
     }
@@ -85,6 +65,30 @@ public class RestaurantOverviewRegistrationRatingsFragment extends Fragment {
     public void onAttach(@NonNull @NotNull Context context) {
         super.onAttach(context);
         RatingDB = new RatingDBHelper(getActivity());
+    }
+
+    private void getUIElements(View view) {
+        newestChip = view.findViewById(R.id.sort_by_newest);
+        highestChip = view.findViewById(R.id.sort_by_highest);
+        lowestChip = view.findViewById(R.id.sort_by_lowest);
+
+        averageRating = view.findViewById(R.id.average_rating);
+        averageRatingBar = view.findViewById(R.id.average_ratingBar);
+        ratingTitle1 = view.findViewById(R.id.rating_title_1);
+        ratingBar1 = view.findViewById(R.id.ratingBar_1);
+        ratingDate1 = view.findViewById(R.id.date_1);
+        ratingTitle2 = view.findViewById(R.id.rating_title_2);
+        ratingBar2 = view.findViewById(R.id.ratingBar_2);
+        ratingDate2 = view.findViewById(R.id.date_2);
+        ratingTitle3 = view.findViewById(R.id.rating_title_3);
+        ratingBar3 = view.findViewById(R.id.ratingBar_3);
+        ratingDate3 = view.findViewById(R.id.date_3);
+        ratingTitle4 = view.findViewById(R.id.rating_title_4);
+        ratingBar4 = view.findViewById(R.id.ratingBar_4);
+        ratingDate4 = view.findViewById(R.id.date_4);
+        ratingTitle5 = view.findViewById(R.id.rating_title_5);
+        ratingBar5 = view.findViewById(R.id.ratingBar_5);
+        ratingDate5 = view.findViewById(R.id.date_5);
     }
 
     public void sortByNewest() {
@@ -123,7 +127,7 @@ public class RestaurantOverviewRegistrationRatingsFragment extends Fragment {
     }
 
     private void setRatingsData(ArrayList<RatingDataModel> ratings) {
-        Float averageRatingValue = Float.valueOf(0);
+        Float averageRatingValue = (float) 0;
         for (RatingDataModel rating : ratings) {
             averageRatingValue += rating.Rating;
         }

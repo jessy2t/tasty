@@ -49,9 +49,7 @@ public class RestaurantOwnerDBHelper extends SQLiteOpenHelper {
         values.put("mail", mail);
 
         long result = db.insert("restaurant_owner", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean insertData(String username, String password, String prename, String surname, String phone,
@@ -67,30 +65,24 @@ public class RestaurantOwnerDBHelper extends SQLiteOpenHelper {
         values.put("mail", mail);
 
         long result = db.insert("restaurant_owner", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean checkUsername(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from restaurant_owner where username=?", new String[] {username});
-        if(cursor.getCount() > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        boolean userExists = cursor.getCount() > 0;
+        cursor.close();
+
+        return userExists;
     }
 
     public Boolean checkUsernamePassword(String username, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from restaurant_owner where username=? and password=?", new String[] {username, password});
-        if(cursor.getCount() > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        boolean credentialsExists = cursor.getCount() > 0;
+        cursor.close();
+
+        return credentialsExists;
     }
 }

@@ -6,16 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
-import com.acme.tasty.dataModels.AddressDataModel;
-import com.acme.tasty.dataModels.CityDataModel;
 import com.acme.tasty.dataModels.DietDataModel;
 
 public class DietDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="diet.db";
-    private Context Context;
+
     public DietDBHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
-        Context = context;
     }
 
     @Override
@@ -48,9 +45,7 @@ public class DietDBHelper extends SQLiteOpenHelper {
         values.put("fruitarian", fruitarian);
 
         long result = db.insert("diet", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean updateData(Boolean vegetarian, Boolean vegan, Boolean carnivore, Boolean glutenfree,
@@ -65,10 +60,8 @@ public class DietDBHelper extends SQLiteOpenHelper {
         values.put("lactosefree", lactosefree);
         values.put("fruitarian", fruitarian);
 
-        Integer result = db.update("diet", values, "diet_id=1", null);
-        if(result == 0) return false;
-        else
-            return true;
+        int result = db.update("diet", values, "diet_id=1", null);
+        return result != 0;
     }
 
     public DietDataModel getDiet() {
@@ -85,6 +78,7 @@ public class DietDBHelper extends SQLiteOpenHelper {
         Boolean glutenfree = cursor.getInt(4) > 0;
         Boolean lactosefree = cursor.getInt(5) > 0;
         Boolean fruitarian = cursor.getInt(6) > 0;
+        cursor.close();
 
         return new DietDataModel(vegetarian, vegan, carnivore, glutenfree, lactosefree, fruitarian);
     }

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.acme.tasty.databaseHelpers.SuggestionBasisDBHelper;
 
 public class SwipeEssensort extends AppCompatActivity {
     public static final String DELIVERY_OR_RESERVATION = "com.acme.tasty.DELIVERY_OR_RESERVATION";

@@ -63,22 +63,19 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/sort_by_newest"
                     android:text="@string/ratings_sort_by_newest_label"
-                    android:textSize="@dimen/text_normal"
-                    android:onClick="sortByNewestDate"/>
+                    android:textSize="@dimen/text_normal"/>
             <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/sort_by_highest"
                     android:text="@string/ratings_sort_by_highest_label"
-                    android:textSize="@dimen/text_normal"
-                    android:onClick="sortByHighestRating"/>
+                    android:textSize="@dimen/text_normal"/>
             <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/sort_by_lowest"
                     android:text="@string/ratings_sort_by_lowest_label"
-                    android:textSize="@dimen/text_normal"
-                    android:onClick="sortByLowestRating"/>
+                    android:textSize="@dimen/text_normal"/>
         </com.google.android.material.chip.ChipGroup>
     </RelativeLayout>
     <androidx.constraintlayout.widget.ConstraintLayout

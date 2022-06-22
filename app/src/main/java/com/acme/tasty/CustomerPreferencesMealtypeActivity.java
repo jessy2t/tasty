@@ -29,7 +29,15 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.preferences_ernaehrungsform_toolbar);
         setSupportActionBar(toolbar);
 
+        getUIElements();
         getDietPreferences();
+
+        this.checkBox1.setOnCheckedChangeListener((buttonView, isChecked) -> checkAllCheckedChange(isChecked));
+        this.checkBox2.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox2, isChecked));
+        this.checkBox3.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox3, isChecked));
+        this.checkBox4.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox4, isChecked));
+        this.checkBox5.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox5, isChecked));
+        this.checkBox6.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox6, isChecked));
     }
 
     @Override
@@ -39,14 +47,16 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
         return true;
     }
 
-    private void getDietPreferences(){
+    private void getUIElements() {
         this.checkBox1 = findViewById(R.id.checkBox1);
         this.checkBox2 = findViewById(R.id.checkBox2);
         this.checkBox3 = findViewById(R.id.checkBox3);
         this.checkBox4 = findViewById(R.id.checkBox4);
         this.checkBox5 = findViewById(R.id.checkBox5);
         this.checkBox6 = findViewById(R.id.checkBox6);
+    }
 
+    private void getDietPreferences(){
         DietDataModel diet = CustomerPreferencesActivity.DietDB.getDiet();
         if(diet == null)
             CustomerPreferencesActivity.dietExists = false;
@@ -78,12 +88,6 @@ public class CustomerPreferencesMealtypeActivity extends AppCompatActivity {
             checkBox5.setChecked(frutarisch);
             checkBox6.setChecked(laktosefrei);
         }
-        this.checkBox1.setOnCheckedChangeListener((buttonView, isChecked) -> checkAllCheckedChange(isChecked));
-        this.checkBox2.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox2, isChecked));
-        this.checkBox3.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox3, isChecked));
-        this.checkBox4.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox4, isChecked));
-        this.checkBox5.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox5, isChecked));
-        this.checkBox6.setOnCheckedChangeListener((buttonView, isChecked)-> checkOneCheckedChange(checkBox6, isChecked));
     }
 
     private  void checkOneCheckedChange(CheckBox checkBox, boolean isChecked) {

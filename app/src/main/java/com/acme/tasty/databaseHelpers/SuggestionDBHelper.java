@@ -6,20 +6,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
-import com.acme.tasty.CustomerStartActivity;
 import com.acme.tasty.MainActivity;
 import com.acme.tasty.SwipePreisrahmen;
-import com.acme.tasty.dataModels.PriceRangeDataModel;
 import com.acme.tasty.dataModels.RestaurantDataModel;
 import com.acme.tasty.dataModels.SuggestionBasisDataModel;
 import com.acme.tasty.dataModels.SuggestionDataModel;
 
 public class SuggestionDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="suggestion.db";
-    private Context Context;
+
     public SuggestionDBHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
-        Context = context;
     }
 
     @Override
@@ -47,9 +44,7 @@ public class SuggestionDBHelper extends SQLiteOpenHelper {
         values.put("suggestion_basis_id", suggestionBasisId);
 
         long result = db.insert("suggestion", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public SuggestionDataModel getSuggestion(Integer suggestionId) {
@@ -62,6 +57,7 @@ public class SuggestionDBHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         String restaurantName = cursor.getString(1);
         Integer suggestionBasisId = cursor.getInt(2);
+        cursor.close();
         RestaurantDataModel restaurant = MainActivity.RestaurantDB.getRestaurant(restaurantName);
         SuggestionBasisDataModel suggestionBasis = SwipePreisrahmen.SuggestionBasisDB.getSuggestionBasis(suggestionBasisId);
 

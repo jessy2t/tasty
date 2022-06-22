@@ -6,15 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
-import com.acme.tasty.dataModels.DietDataModel;
 import com.acme.tasty.dataModels.PriceRangeDataModel;
 
 public class PriceRangeDBHelper extends SQLiteOpenHelper {
     public static final String DBNAME="price_range.db";
-    private Context Context;
+
     public PriceRangeDBHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
-        Context = context;
     }
 
     @Override
@@ -41,9 +39,7 @@ public class PriceRangeDBHelper extends SQLiteOpenHelper {
         values.put("max_price", maxPrice);
 
         long result = db.insert("price_range", null, values);
-        if(result == -1) return false;
-        else
-            return true;
+        return result != -1;
     }
 
     public Boolean updateData(Integer minPrice, Integer maxPrice) {
@@ -53,10 +49,8 @@ public class PriceRangeDBHelper extends SQLiteOpenHelper {
         values.put("min_price", minPrice);
         values.put("max_price", maxPrice);
 
-        Integer result = db.update("price_range", values, "price_range_id=1", null);
-        if(result == 0) return false;
-        else
-            return true;
+        int result = db.update("price_range", values, "price_range_id=1", null);
+        return result != 0;
     }
 
     public PriceRangeDataModel getPriceRange() {
@@ -69,6 +63,7 @@ public class PriceRangeDBHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         Integer minPrice = cursor.getInt(1);
         Integer maxPrice = cursor.getInt(2);
+        cursor.close();
 
         return new PriceRangeDataModel(minPrice, maxPrice);
     }

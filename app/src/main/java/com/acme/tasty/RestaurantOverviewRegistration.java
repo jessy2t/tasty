@@ -1,16 +1,11 @@
 package com.acme.tasty;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupWindow;
-import android.widget.RatingBar;
-import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,65 +15,26 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
-import com.acme.tasty.dataModels.RatingDataModel;
-import com.acme.tasty.databaseHelpers.RatingDBHelper;
-import com.acme.tasty.fragments.CustomerRestaurantOverviewGeneralFragment;
-import com.acme.tasty.fragments.CustomerRestaurantOverviewRatingsFragment;
 import com.acme.tasty.fragments.RestaurantOverviewRegistrationGeneralFragment;
 import com.acme.tasty.fragments.RestaurantOverviewRegistrationRatingsFragment;
 import com.acme.tasty.popup.PopupWindowService;
-import com.google.android.material.chip.Chip;
 import com.google.android.material.tabs.TabLayout;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RestaurantOverviewRegistration extends AppCompatActivity {
-    private PopupWindow _popupWindow;
-    private Toolbar toolbar;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-    private RestaurantOverviewRegistrationGeneralFragment generalFragment;
-    private RestaurantOverviewRegistrationRatingsFragment ratingsFragment;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_restaurant_overview);
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    private static class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> fragments = new ArrayList<>();
+        private final List<String> fragmentTitles = new ArrayList<>();
 
-        viewPager = findViewById(R.id.view_pager);
-        tabLayout = findViewById(R.id.tab_layout);
-        generalFragment = new RestaurantOverviewRegistrationGeneralFragment();
-        ratingsFragment = new RestaurantOverviewRegistrationRatingsFragment();
-        tabLayout.setupWithViewPager(viewPager);
-
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
-        viewPagerAdapter.addFragment(generalFragment,"");
-        viewPagerAdapter.addFragment(ratingsFragment,"");
-        viewPager.setAdapter(viewPagerAdapter);
-
-        tabLayout.getTabAt(0).setText("Übersicht");
-        tabLayout.getTabAt(1).setText("Bewertungen");
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.main_menu_restaurant, menu);
-        return true;
-    }
-
-    private class ViewPagerAdapter extends FragmentPagerAdapter {
-        private List<Fragment> fragments = new ArrayList<>();
-        private List<String> fragmentTitles = new ArrayList<>();
         public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
             super(fm, behavior);
         }
 
-        public void addFragment(Fragment fragment, String title){
+        public void addFragment(Fragment fragment, String title) {
             fragments.add(fragment);
             fragmentTitles.add(title);
         }
@@ -101,9 +57,45 @@ public class RestaurantOverviewRegistration extends AppCompatActivity {
         }
     }
 
+    private PopupWindow _popupWindow;
+    private RestaurantOverviewRegistrationRatingsFragment ratingsFragment;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_customer_restaurant_overview);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        setFragments();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.main_menu_restaurant, menu);
+        return true;
+    }
+
+    private void setFragments() {
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
+
+        RestaurantOverviewRegistrationGeneralFragment generalFragment = new RestaurantOverviewRegistrationGeneralFragment();
+        ratingsFragment = new RestaurantOverviewRegistrationRatingsFragment();
+
+        viewPagerAdapter.addFragment(generalFragment,"");
+        viewPagerAdapter.addFragment(ratingsFragment,"");
+        viewPager.setAdapter(viewPagerAdapter);
+
+        Objects.requireNonNull(tabLayout.getTabAt(0)).setText("Übersicht");
+        Objects.requireNonNull(tabLayout.getTabAt(1)).setText("Bewertungen");
+    }
+
     public void clickOnReservationOrDelivery(View view) {
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         _popupWindow = PopupWindowService.getOrderConfirmationPopupWindow(inflater, view);
     }
 
@@ -111,6 +103,7 @@ public class RestaurantOverviewRegistration extends AppCompatActivity {
         Intent intent = new Intent(this, RestaurantLoginActivity.class);
         startActivity(intent);
     }
+
     public void closePopUp(View view) {
         PopupWindowService.closePopUp(_popupWindow, view);
     }
@@ -126,14 +119,4 @@ public class RestaurantOverviewRegistration extends AppCompatActivity {
     public void sortByLowestRating(View view) {
         ratingsFragment.sortByLowest();
     }
-
-    /*public void navigateToHome(MenuItem item){
-        Intent intent = new Intent(this, CustomerStartActivity.class);
-        startActivity(intent);
-    }
-
-    public void navigateToPreferences(MenuItem item){
-        Intent intent = new Intent(this, CustomerPreferencesActivity.class);
-        startActivity(intent);
-    }*/
 }
