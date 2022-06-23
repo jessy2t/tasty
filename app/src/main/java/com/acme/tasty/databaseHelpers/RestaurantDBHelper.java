@@ -18,6 +18,11 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        createRestaurantTable(db);
+        createAttributesTable(db);
+    }
+
+    private void createRestaurantTable(SQLiteDatabase db) {
         db.execSQL("create table restaurant(restaurant_name TEXT primary key," +
                 "image_name TEXT, attributes_id INTEGER, address_id INTEGER, foreign key(attributes_id) references " +
                 "attributes(attributes_id), foreign key(address_id) references address(address_id))");
@@ -28,7 +33,19 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
         insertData("Chinese Rises", "rice", 4, 4, db);
         insertData("Indonesian Food", "indonesian", 5, 5, db);
         insertData("Pizza Bellissima", "pizza", 6, 6, db);
+    }
 
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("drop table if exists restaurant_owner");
+    }
+
+    public void clearData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from restaurant");
+    }
+
+    private void createAttributesTable(SQLiteDatabase db) {
         db.execSQL("create table attributes(attributes_id INTEGER primary key, has_delivery_service BOOLEAN," +
                 "supports_reservation BOOLEAN, reservation_necessary BOOLEAN, supports_in_app_payment BOOLEAN," +
                 "vegetarian BOOLEAN, vegan BOOLEAN, categories_id INTEGER, foreign key(categories_id) references " +
@@ -64,16 +81,6 @@ public class RestaurantDBHelper extends SQLiteOpenHelper {
 
         long result = db.insert("attributes", null, values);
         return result != -1;
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists restaurant_owner");
-    }
-
-    public void clearData() {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("delete from restaurant");
     }
 
     public long insertData(String restaurantName, String imageName, Integer attributesId, Integer addressId,

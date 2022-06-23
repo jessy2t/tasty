@@ -75,6 +75,7 @@ public class AddressDBHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         Integer adressId = cursor.getInt(0);
         cursor.close();
+
         return adressId;
     }
 
